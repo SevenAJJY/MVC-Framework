@@ -108,7 +108,7 @@
         public function save($primaryKeyCheck = true):bool
         {
             if (false === $primaryKeyCheck) {
-                return $this->create() ;
+                return $this->create();
             }
             return $this->{static::$primaryKey} === null ? $this->create() : $this->update() ;
         }

@@ -4,6 +4,7 @@ namespace SEVENAJJY\Controllers;
 
 use SEVENAJJY\Library\FrontController;
 use SEVENAJJY\Library\InputFilter;
+use SEVENAJJY\Library\Redirection;
 
 /**
  * Abstract Controller
@@ -16,6 +17,7 @@ class AbstractController
 {
 
     use InputFilter;
+    use Redirection;
 
     /**
      * Controller Name

@@ -4,7 +4,6 @@ namespace SEVENAJJY\Library;
 
 trait InputFilter
 {
-
     /**
      * Returns the filtered data (INT), or false if the filter fails.
      * 
