@@ -3,6 +3,7 @@
 namespace SEVENAJJY\Controllers;
 
 use SEVENAJJY\Library\FrontController;
+use SEVENAJJY\Library\InputFilter;
 
 /**
  * Abstract Controller
@@ -13,6 +14,8 @@ use SEVENAJJY\Library\FrontController;
 
 class AbstractController
 {
+
+    use InputFilter;
 
     /**
      * Controller Name
@@ -76,7 +79,7 @@ class AbstractController
         $this->_params = $params;
     }
 
-    
+
     public function notFoundAction()
     {
         $this->_renderView();
