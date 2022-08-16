@@ -10,7 +10,7 @@ trait InputFilter
      * @param int $input
      * @return mixed 
      */
-    public function filterInt(int $input):mixed
+    public function filterInt($input):mixed
     {
         return filter_var($input, FILTER_SANITIZE_NUMBER_INT);
     }
@@ -21,7 +21,7 @@ trait InputFilter
      * @param float $input
      * @return mixed
      */
-    public function filterFloat(float $input):mixed
+    public function filterFloat($input):mixed
     {
         return filter_var($input, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     }
@@ -32,7 +32,7 @@ trait InputFilter
      * @param string $input
      * @return mixed
      */
-    public function filterString(string $input):mixed
+    public function filterString($input):mixed
     {
         return htmlentities(strip_tags($input), ENT_QUOTES, "UTF-8");
     }

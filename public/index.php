@@ -10,6 +10,7 @@ require_once '..' . DS . 'app' . DS . 'config' . DS . 'config.php' ;
 
 require_once APP_PATH . DS . 'library' . DS .  'autoload.php' ;
 
+session_start();
 // $session = new SessionManager();
 // $session->start();
 

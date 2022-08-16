@@ -17,6 +17,16 @@
             <span><i class="fa-solid fa-plus me-2 ms-2"></i>ADD NEW USER</span>
         </a>
     </div>
+    <div class="errors">
+            <?php
+                if (isset($_SESSION['message'])) {
+                    echo '<div class="alert alert-success  mt-3">
+                            <i class="fas fa-check me-3"></i> '.$_SESSION['message'].'
+                        </div>';
+                        unset($_SESSION['message']) ;
+                }
+            ?>
+    </div>
     <div class="table-responsive tables">
         <table class="table__content">
             <thead>
@@ -41,7 +51,7 @@
                         echo '<td>' . $user->tax . '</td>' ;?>
                             <td>
                                 <a href="/user/edit/<?php echo $user->id ?>" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="/user/delete/<?php echo $user->id ?>" class="btn btn-sm btn-danger"><i class="fas fa-times" onclick="if(!confirm('Are You Sure ?')) return false;"></i> Delete</a>
+                                <a href="/user/delete/<?php echo $user->id ?>" class="btn btn-sm btn-danger" onclick="if(!confirm('Are You Sure ?')) return false;"><i class="fas fa-times"></i> Delete</a>
                             </td>
                         <?php
                         echo '</tr>' ;

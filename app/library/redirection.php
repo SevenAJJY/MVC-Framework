@@ -21,7 +21,7 @@ trait Redirection
      * @param mixed $path
      * @return never
      */
-    public function redirectBack($path)
+    public function redirectBack($path = '')
     {
         session_write_close();
         if (array_key_exists("HTTP_REFERER",$_SERVER)) {

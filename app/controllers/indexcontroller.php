@@ -14,7 +14,6 @@ class IndexController extends AbstractController
 
     public function addAction()
     {
-        
         $this->_renderView();
     }
 }

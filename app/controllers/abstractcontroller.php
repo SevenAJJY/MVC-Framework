@@ -87,6 +87,37 @@ class AbstractController
         $this->_renderView();
     }
 
+    /**
+     * Used to get a stored parameter back in a given type
+     *
+     * @param int $key            
+     * @param string $type            
+     * @example _getParam(1, 'int');
+     * @return mixed
+     */
+    protected function _getParams(int $key, string $type):mixed
+    {
+        if (array_key_exists($key, $this->_params)) {
+            $type = strtolower($type);
+            $value = '';
+            switch($type){
+                case 'int':
+                    $value = $this->filterInt($this->_params[$key]);
+                    break;
+                case 'string':
+                    $value = $this->filterString($this->_params[$key]);
+                    break;
+                case 'float':
+                    $value = $this->filterFloat($this->_params[$key]);
+                    break;
+            }
+            return $value ;
+        }
+        else{
+            return false;
+        }
+    }
+
     protected function _renderView()
     {   
         if ($this->_action === FrontController::NOT_FOUND_ACTION) {
