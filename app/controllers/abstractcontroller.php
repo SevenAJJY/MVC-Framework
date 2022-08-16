@@ -37,10 +37,13 @@ class AbstractController
      */
     protected $_params;
 
-    public function notFoundAction()
-    {
-        $this->_renderView();
-    }
+        /**
+     * Data array used to keep track of
+     * all data passed to the view
+     * @var array
+     */
+    protected $_data = [];
+
 
     /**
      * Controller name setter
@@ -62,16 +65,21 @@ class AbstractController
         $this->_action = $actionName;
     }
 
+
     /**
-     * URL extracted parameters
-     * which could be used for
-     * any action
+     * Parameters array setter
      *
-     * @var array
+     * @param array $params            
      */
     public function setParams($params)
     {
         $this->_params = $params;
+    }
+
+    
+    public function notFoundAction()
+    {
+        $this->_renderView();
     }
 
     protected function _renderView()
@@ -82,6 +90,7 @@ class AbstractController
         else{
             $view = VIEWS_PATH . $this->_controller . DS . $this->_action . '.view.php';
             if (file_exists($view )) {
+                extract($this->_data);
                 require_once $view ;
             }
             else{
