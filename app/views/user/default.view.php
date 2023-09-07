@@ -50,8 +50,8 @@
                         echo '<td>' . $user->salary  . ' DH</td>' ;
                         echo '<td>' . $user->tax . '</td>' ;?>
                             <td>
-                                <a href="/user/edit/<?php echo $user->id ?>" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="/user/delete/<?php echo $user->id ?>" class="btn btn-sm btn-danger" onclick="if(!confirm('Are You Sure ?')) return false;"><i class="fas fa-times"></i> Delete</a>
+                                <a href="/user/edit/<?= $user->id ?>" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="/user/delete/<?= $user->id ?>" class="btn btn-sm btn-danger" onclick="if(!confirm('Are You Sure ?')) return false;"><i class="fas fa-times"></i> Delete</a>
                             </td>
                         <?php
                         echo '</tr>' ;
