@@ -5,6 +5,7 @@ namespace SEVENAJJY\Controllers;
 use SEVENAJJY\Library\FrontController;
 use SEVENAJJY\Library\InputFilter;
 use SEVENAJJY\Library\Redirection;
+use SEVENAJJY\Library\Template;
 
 /**
  * Abstract Controller
@@ -55,6 +56,14 @@ class AbstractController
      *
      * @param string $controller            
      */
+
+         /**
+     * template
+     *
+     * @var Template
+     */
+     protected Template $_template;
+
     public function setController($controllerName)
     {
         $this->_controller = $controllerName;
@@ -81,6 +90,9 @@ class AbstractController
         $this->_params = $params;
     }
 
+    public function setTemplate(Template $template){
+        $this->_template = $template;
+    }
 
     public function notFoundAction()
     {
@@ -126,15 +138,9 @@ class AbstractController
         else{
             $view = VIEWS_PATH . $this->_controller . DS . $this->_action . '.view.php';
             if (file_exists($view )) {
-                extract($this->_data);
-                require_once TEMPLATE_PATH . 'templateheaderstart.php';
-                require_once TEMPLATE_PATH . 'templateheaderend.php';
-                require_once TEMPLATE_PATH . 'wrapperstart.php';
-                require_once TEMPLATE_PATH . 'nav.php';
-                require_once TEMPLATE_PATH . 'header.php';
-                require_once $view ;
-                require_once TEMPLATE_PATH . 'wrapperend.php';
-                require_once TEMPLATE_PATH . 'templatefooter.php';
+                $this->_template->setActionViewFile($view);
+                $this->_template->setAppData($this->_data);
+                $this->_template->renderApp();
             }
             else{
                 require_once VIEWS_PATH . 'notfound' . DS . 'noview.view.php' ;

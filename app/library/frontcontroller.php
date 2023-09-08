@@ -14,23 +14,31 @@ class FrontController
      * controller Name
      * @var string $_controller
      */
-    private $_controller = self::CONTROLLER_DEFAULT_VALUE;
+    private string $_controller = self::CONTROLLER_DEFAULT_VALUE;
 
     /**
      * Action Name
      * @var string $_action
      */
-    private $_action = self::ACTION_DEFAULT_VALUE;
+    private string $_action = self::ACTION_DEFAULT_VALUE;
 
     /**
      * controller Name
      * @var array $_params
      */
-    private $_params = [];
+    private array $_params = [];
 
-    public function __construct()
+    /**
+     * template
+     *
+     * @var Template
+     */
+    private  $_template;
+
+    public function __construct(Template $template)
     {
         $this->_parseURL();
+        $this->_template = $template;
     }
 
     private function _parseURL()
@@ -64,6 +72,7 @@ class FrontController
         $controller->setController($this->_controller);
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);
+        $controller->setTemplate($this->_template);
         $controller->$actionName();
     }
 }
