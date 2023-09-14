@@ -4,16 +4,19 @@ namespace SEVENAJJY\Controllers;
 
 use SEVENAJJY\Models\UserModel;
 
-class UserController extends AbstractController
+class UsersController extends AbstractController
 {
     public function defaultAction()
     {
+        $this->_language->load('template.common');
+        $this->_language->load('users.default');
         $this->_data['users'] = UserModel::getAll();
         $this->_renderView();
     }
 
     public function createAction()
     {
+        $this->_language->load('template.common');
         if (isset($_POST['submit'])) {
             $user = new UserModel();
             $user->name    = $this->filterString($_POST['name']);
@@ -34,6 +37,8 @@ class UserController extends AbstractController
 
     public function editAction()
     {
+        $this->_language->load('template.common');
+
         $pk = $this->_getParams(0, "int");
         $user = UserModel::getByKey($pk);
         if ($user === false) {
@@ -60,6 +65,8 @@ class UserController extends AbstractController
 
     public function deleteAction()
     {
+        $this->_language->load('template.common');
+
         $pk = $this->_getParams(0, "int");
         $user = UserModel::getByKey($pk);
         if ($user === false) {

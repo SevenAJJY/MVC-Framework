@@ -34,11 +34,18 @@ class FrontController
      * @var Template
      */
     private  $_template;
+    /**
+     * template
+     *
+     * @var Language
+     */
+    private  $_language;
 
-    public function __construct(Template $template)
+    public function __construct(Template $template, Language $language)
     {
         $this->_parseURL();
         $this->_template = $template;
+        $this->_language = $language;
     }
 
     private function _parseURL()
@@ -73,6 +80,7 @@ class FrontController
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);
         $controller->setTemplate($this->_template);
+        $controller->setLanguage($this->_language);
         $controller->$actionName();
     }
 }

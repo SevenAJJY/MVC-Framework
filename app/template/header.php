@@ -12,15 +12,15 @@
                         </div>
                         <span></span>
                         <ul class="profile-n">
-                            <li><a href="/users/view">My Profile</a></li>
+                            <li><a href="/users/view"><?= $text_profile ?></a></li>
                             <li><a href="/users/editprofile">Edit Profile</a></li>
-                            <li><a href="#">Settings</a></li>
-                            <li><a href="/auth/logout">Logout</a></li>
+                            <li><a href="#"><?= $text_account_settings?></a></li>
+                            <li><a href="/auth/logout"><?= $text_logout?></a></li>
                         </ul>
 
                         <ul>
-                            <li><a href="/">dashboard</a></li>
-                            <li><a href="/language">lang</a></li>
+                            <li><a href="/"><?= $text_dashboard ?></a></li>
+                            <li><a href="/language"><?= $text_change_language ?></a></li>
                         </ul>
                         <ul class="social-media">
                             <li><a href="https://www.facebook.com/marwa.brada.39"><i
@@ -39,8 +39,8 @@
                     } ?></span>
                     <div class="container-inner">
                         <ul>
-                            <li class="center"><a href="/">dashboard</a></li>
-                            <li class="center"><a href="/language">lang</a>
+                            <li class="center"><a href="/"><?= $text_dashboard ?></a></li>
+                            <li class="center"><a href="/language"><?= $text_change_language ?></a>
                             </li>
                         </ul>
                         <a class="photo-name-n" href="/users/view">

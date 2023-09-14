@@ -12,96 +12,104 @@
         <li>
             <a href="/">
                 <i class="fa-solid fa-chart-column "></i>
-                <span class="link_name">general_statistics</span>
+                <span class="link_name"><?= $text_general_statistics ?></span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">general_statistics</a></li>
+                <li><a class="link_name" href="#"><?= $text_general_statistics ?></a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-arrow-right-arrow-left "></i>
-                    <span class="link_name">transactions</span>
+                    <span class="link_name"><?= $text_transactions ?></span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="javascript:;">transactions</li>
-                <li><a href="/purchases"><i class="fa-solid fa-gift sub-icons"></i>transactions_purchases</a></li>
-                <li><a href="/sales"><i class="fa-solid fa-bag-shopping sub-icons"></i>transactions_sales</a></li>
+                <li><a class="link_name" href="javascript:;"><?= $text_transactions ?></li>
+                <li><a href="/purchases"><i
+                            class="fa-solid fa-gift sub-icons"></i><?= $text_transactions_purchases ?></a></li>
+                <li><a href="/sales"><i
+                            class="fa-solid fa-bag-shopping sub-icons"></i><?= $text_transactions_sales ?></a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-wallet "></i>
-                    <span class="link_name">expences</span>
+                    <span class="link_name"><?= $text_expences ?></span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
-                <li><a href="/transactions" class="link_name">expences</a></li>
-                <li><a href="/expensescategories"><i class="fa-solid fa-tags sub-icons"></i>expences_categories</a></li>
+                <li><a href="/transactions" class="link_name"><?= $text_expences ?></a></li>
+                <li><a href="/expensescategories"><i
+                            class="fa-solid fa-tags sub-icons"></i><?= $text_expences_categories ?></a></li>
                 <li><a href="/dailyexpenses"><i
-                            class="fa-solid fa-circle-dollar-to-slot sub-icons"></i>expences_daily_expences</a></li>
+                            class="fa-solid fa-circle-dollar-to-slot sub-icons"></i><?= $text_expences_daily_expences ?></a>
+                </li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-store "></i>
-                    <span class="link_name">store</span>
+                    <span class="link_name"><?= $text_store ?></span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">store</a></li>
-                <li><a href="/productcategories"><i class="fa-solid fa-sitemap sub-icons"></i>store_categories</a></li>
-                <li><a href="/productlist"><i class="fa-solid fa-tags sub-icons"></i>store_pruducts</a></li>
+                <li><a class="link_name" href="#"><?= $text_store ?></a></li>
+                <li><a href="/productcategories"><i
+                            class="fa-solid fa-sitemap sub-icons"></i><?= $text_store_categories ?></a></li>
+                <li><a href="/productlist"><i class="fa-solid fa-tags sub-icons"></i><?= $text_store_pruducts ?></a>
+                </li>
             </ul>
         </li>
         <li>
             <a href="/clients">
                 <i class="fa-solid fa-user-tie "></i>
-                <span class="link_name">clients</span>
+                <span class="link_name"><?= $text_clients ?></span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="/clients">clients</a></li>
+                <li><a class="link_name" href="/clients"><?= $text_clients ?></a></li>
             </ul>
         </li>
         <li>
             <a href="/suppliers">
                 <i class="fa-solid fa-user-group"></i>
-                <span class="link_name">suppliers</span>
+                <span class="link_name"><?= $text_suppliers ?></span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="/suppliers">suppliers</a></li>
+                <li><a class="link_name" href="/suppliers"><?= $text_suppliers ?></a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-users"></i>
-                    <span class="link_name">users </span>
+                    <span class="link_name"><?= $text_users ?> </span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
-                <li class=""><a class="link_name" href="#">users </a></li>
-                <li><a href="/users"><i class="fa-solid fa-circle-user sub-icons"></i>users_list</a></li>
-                <li><a href="/usersgroups"><i class="fa-solid fa-users-gear sub-icons"></i>users_groups</a></li>
-                <li><a href="/privileges"><i class="fa-solid fa-key sub-icons"></i>users_privileges</a></li>
+                <li class=""><a class="link_name" href="#"><?= $text_users ?> </a></li>
+                <li><a href="/users"><i class="fa-solid fa-circle-user sub-icons"></i><?= $text_users_list ?></a></li>
+                <li><a href="/usersgroups"><i class="fa-solid fa-users-gear sub-icons"></i><?= $text_users_groups ?></a>
+                </li>
+                <li><a href="/privileges"><i class="fa-solid fa-key sub-icons"></i><?= $text_users_privileges ?></a>
+                </li>
             </ul>
         </li>
 
         <li>
             <a href="/notifications">
                 <i class="fa-regular fa-bell"></i>
-                <span class="link_name">notifications</span>
+                <span class="link_name"><?= $text_notifications ?> </span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="/notifications">notifications</a></li>
+                <li><a class="link_name" href="/notifications"><?= $text_notifications ?> </a></li>
             </ul>
         </li>
         <li>
@@ -110,7 +118,7 @@
                 <span class="link_name"></span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="/language">change_language</a></li>
+                <li><a class="link_name" href="/language"><?= $text_change_language ?></a></li>
             </ul>
         </li>
         <li>
@@ -137,7 +145,7 @@
                     <div class="profile_name">fname</div>
                     <div class="job">group name</div>
                 </div>
-                <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i><?= $text_logout ?></a></a>
             </div>
         </li>
     </ul>

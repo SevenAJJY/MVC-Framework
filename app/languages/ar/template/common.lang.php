@@ -1,0 +1,31 @@
+<?php
+
+    $_['text_dashboard'] = 'اللوحة الرئيسية' ;
+    $_['text_app_manager'] = 'مدير التطبيق' ;
+    $_['text_general_statistics'] = 'الإحصائيات العامة' ;
+    $_['text_users'] = 'المستخدمين' ;
+    $_['text_users_list'] = 'قائمة المستخدمين' ;
+    $_['text_users_groups'] = 'مجموعات المستخدمين' ;
+    $_['text_users_privileges'] = 'الصلاحيات' ;
+    $_['text_store'] = 'المخزن' ;
+    $_['text_store_categories'] = 'أصناف المنتجات' ;
+    $_['text_store_pruducts'] = 'المنتجات' ;
+    $_['text_clients'] = 'العملاء' ;
+    $_['text_suppliers'] = 'الموردين' ;
+    $_['text_expences'] = 'المصروفات' ;
+    $_['text_expences_categories'] = 'أنواع المصروفات' ;
+    $_['text_expences_daily_expences'] = 'المصروفات اليومية' ;
+    $_['text_transactions'] = 'المعاملات' ;
+    $_['text_transactions_purchases'] = 'المشتريات' ;
+    $_['text_transactions_sales'] = 'المبيعات' ;
+    $_['text_reports'] = 'التقارير' ;
+    $_['text_notifications'] = 'الإشعارات' ;
+    $_['text_change_language'] = 'اللغة' ;
+    $_['text_logout'] = 'تسجيل خروج' ;
+    $_['text_welcome'] = 'مرحبا' ;
+    $_['text_profile'] = 'البيانات الشخصية' ;
+    $_['text_account_settings'] = 'إعدادات الحساب' ;
+    $_['text_change_password'] = 'تغيير كلمة المرور';
+    $_['text_search'] = '...بحث';
+    $_['text_not_found'] = 'صفحة غير موجودة';
+    $_['text_access_denied'] = 'عذرا، انت لا تمتلك صلاحيات لدخول هذه الصفحة ';
