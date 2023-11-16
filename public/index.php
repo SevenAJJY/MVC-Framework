@@ -22,3 +22,4 @@ $language = new Language();
 $frontController = new FrontController($template, $language);
 
 $frontController->dispatch();
+?>

@@ -10,9 +10,11 @@ trait Redirection
      */
     public function redirect($path)
     {
-        session_write_close();
-        header('location: '. $path);
-        exit;
+        if (isset($path)) {
+            session_write_close();
+            header('location: '. $path);
+            exit;
+        }
     }
 
     /**

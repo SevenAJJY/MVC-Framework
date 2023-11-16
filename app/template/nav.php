@@ -3,15 +3,15 @@
     <div class="logo-details">
         <!-- <i class="fa-brands fa-shopify logo"></i> -->
         <div class="logo">
-            <img src="/img/estoreLogo.png" alt="">
+            S7
         </div>
-        <span class="logo_name"> eStore </span>
+        <span class="logo_name"> SEVENAJJY </span>
     </div>
     <i class="fa-solid fa-angle-right bx-menu"></i>
     <ul class="nav-links">
         <li>
             <a href="/">
-                <i class="fa-solid fa-chart-column "></i>
+                <i class="fa-solid fa-chart-column"></i>
                 <span class="link_name"><?= $text_general_statistics ?></span>
             </a>
             <ul class="sub-menu blank">
@@ -21,7 +21,7 @@
         <li>
             <div class="iocn-link">
                 <a href="javascript:;">
-                    <i class="fa-solid fa-arrow-right-arrow-left "></i>
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <span class="link_name"><?= $text_transactions ?></span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>

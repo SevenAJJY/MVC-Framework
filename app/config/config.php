@@ -7,7 +7,7 @@
     define('TEMPLATE_PATH' , APP_PATH . DS . 'template' . DS ) ;
     define('LANGUAGE_PATH' , APP_PATH . DS . 'languages' . DS ) ;
 
-    define('CSS' , '/css/') ;
+    define('CSS' , '/CSS/') ;
     define('JS' , '/js/') ;
 
     // Database Credentials
@@ -20,9 +20,9 @@
     
     //Default application language
     defined('APP_DEFAULT_LANGUAGE')     ? null : define ('APP_DEFAULT_LANGUAGE', 'en');
-    
+
     //Session Configuration
-    defined('SESSION_NAME')             ? null : define ('SESSION_NAME', 'ESTORE_SESSION');
+    defined('SESSION_NAME')             ? null : define ('SESSION_NAME', 'SEVENAJJY_SESSION');
     defined('SESSION_LIFE_TIME')        ? null : define ('SESSION_LIFE_TIME', 0);
     defined('SESSION_SAVE_PATH')        ? null : define ('SESSION_SAVE_PATH', APP_PATH  . DS . '..' . DS . 'sessions');
     

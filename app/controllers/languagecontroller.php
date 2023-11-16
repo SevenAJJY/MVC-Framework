@@ -16,6 +16,8 @@ class LanguageController extends AbstractController
         }else{
             $_SESSION['lang'] = 'en';
         }
-        $this->redirect($_SERVER['HTTP_REFERER']);
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $this->redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 }
