@@ -1,20 +1,19 @@
- <?php 
+<?php 
 
+namespace SEVENAJJY\Library;
 /**
  * Session manager
- * @author  yassine ELHAJJY (SevenAJJY) <yassine.elhajjy@gmail.com>
+ * @author  yassine El hajjy (SevenAJJY) <yassine.elhajjy@gmail.com>
  * 
  * @see https://github.com/SevenAJJY
  */
 
-require_once './config.php';
 
-
-class SessionManager extends SessionHandler
+class SessionManager extends \SessionHandler
 {
 
     const SESSION_NAME = "SEVENAJJYSESS";
-    const SESSION_LIFE_TIME = SESSION_LIFE_TIME;
+    const SESSION_LIFE_TIME = 0;
     const TIME_TO_LIVE = 10;
     const SESSION_CIPHER_ALGO = 'AES-128-ECB';
     CONST SESSION_CIPHER_KEY = 'S3V3NAJJYSN@2022';
@@ -62,7 +61,7 @@ class SessionManager extends SessionHandler
      *
      * @var string
      */
-    private string $_sessDomain = ".sevenajjy.com" ;
+    private string $_sessDomain = ".phpdev.com" ;
 
     /**
      * This is the path where the files are created.
@@ -106,7 +105,13 @@ class SessionManager extends SessionHandler
         session_name($this->_sessName);
         session_save_path($this->_sessSavePath);
 
-        session_set_cookie_params($this->_sessMaxLifeTime, $this->_sessPath, $this->_sessDomain, $this->_sessSSL, $this->_sessHTTPOnly);
+        session_set_cookie_params(
+            $this->_sessMaxLifeTime, 
+            $this->_sessPath, 
+            $this->_sessDomain, 
+            $this->_sessSSL,
+            $this->_sessHTTPOnly
+        );
     }
 
     /**
@@ -277,7 +282,3 @@ class SessionManager extends SessionHandler
         return false ;
     }
 }
-
-$session = new SessionManager();
-$session->start();
-// $session->kill();
