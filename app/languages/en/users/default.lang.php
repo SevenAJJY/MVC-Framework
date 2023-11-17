@@ -1,14 +1,13 @@
 <?php
 
-$_['text_title'] = 'Users';
-$_['text_add_new_user'] = 'Add new user';
-$_['text_table_name'] = 'Name';
-$_['text_table_age'] = 'Age';
-$_['text_table_address'] = 'Address';
-$_['text_table_salary'] = 'Salary';
-$_['text_table_tax'] = 'Tax %';
+$_['title'] = 'users and Privileges';
+$_['text_header'] = 'Users and Privileges';
+$_['text_new_item'] = 'New User';
+$_['text_table_username'] = 'Username';
+$_['text_table_group'] = 'User Group';
+$_['text_table_email'] = 'Email';
+$_['text_table_subscription_date'] = 'Subscription Date';
+$_['text_table_last_login'] = 'Last Logged in';
 $_['text_table_control'] = 'Control';
-$_['text_table_edit'] = 'Edit';
-$_['text_table_delete'] = 'Delete';
-$_['text_delete_confirm'] = 'Are you sure';
-$_['text_no_data'] = 'No data to show';
+$_['text_no_data'] = 'No data to display';
+$_['text_delete_confirm'] =  'Do you want to delete this user from database ?';

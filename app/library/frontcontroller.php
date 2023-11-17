@@ -74,7 +74,7 @@ class FrontController
         if (!method_exists(new $controllerClassName, $actionName)) {
             $this->_action = $actionName = self::NOT_FOUND_ACTION ;
         }
-
+        
         $controller = new $controllerClassName();
         $controller->setController($this->_controller);
         $controller->setAction($this->_action);
