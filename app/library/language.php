@@ -14,7 +14,7 @@ class Language{
         $defaultLanguage = APP_DEFAULT_LANGUAGE;
         if (isset($_SESSION['lang'])) {
             $defaultLanguage = $_SESSION['lang'] ;
-        }
+            }
         list($controller, $action) = explode('.', $path);
         $langFileToLoad = LANGUAGE_PATH . $defaultLanguage . DS . $controller . DS . $action . '.lang.php' ;
         if (file_exists($langFileToLoad)) {

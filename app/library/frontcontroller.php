@@ -2,6 +2,8 @@
 
 namespace SEVENAJJY\Library;
 
+use SEVENAJJY\Library\Template\Template;
+use SEVENAJJY\Library\Language;
 class FrontController
 {
 
@@ -31,13 +33,13 @@ class FrontController
     /**
      * template
      *
-     * @var Template
+     * @var SEVENAJJY\Library\Template\Template
      */
     private  $_template;
     /**
      * template
      *
-     * @var Language
+     * @var SEVENAJJY\Library\Language
      */
     private  $_language;
 
@@ -67,12 +69,9 @@ class FrontController
         $controllerClassName = 'SEVENAJJY\Controllers\\' . ucwords($this->_controller) . 'Controller';
         $actionName = $this->_action . 'Action';
 
-        if (!class_exists($controllerClassName)) {
+        if (!class_exists($controllerClassName) || !method_exists($controllerClassName , $actionName)) {
             $controllerClassName = self::NOT_FOUND_CONTROLLER ;
-        }
-
-        if (!method_exists(new $controllerClassName, $actionName)) {
-            $this->_action = $actionName = self::NOT_FOUND_ACTION ;
+            $this->_action = $actionName = self::NOT_FOUND_ACTION;
         }
         
         $controller = new $controllerClassName();

@@ -5,7 +5,7 @@ namespace SEVENAJJY\Controllers;
 use SEVENAJJY\Library\FrontController;
 use SEVENAJJY\Library\InputFilter;
 use SEVENAJJY\Library\Redirection;
-use SEVENAJJY\Library\Template;
+use SEVENAJJY\Library\Template\Template;
 use SEVENAJJY\Library\Language;
 
 /**
