@@ -9,7 +9,7 @@
     </div>
     <i class="fa-solid fa-angle-right bx-menu"></i>
     <ul class="nav-links">
-        <li>
+        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
             <a href="/">
                 <i class="fa-solid fa-chart-column"></i>
                 <span class="link_name"><?= $text_general_statistics ?></span>
@@ -18,7 +18,7 @@
                 <li><a class="link_name" href="#"><?= $text_general_statistics ?></a></li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
@@ -34,7 +34,7 @@
                             class="fa-solid fa-bag-shopping sub-icons"></i><?= $text_transactions_sales ?></a></li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-wallet "></i>
@@ -51,7 +51,7 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-store "></i>
@@ -67,7 +67,7 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/clients') ? "selected" : '' ?>">
             <a href="/clients">
                 <i class="fa-solid fa-user-tie "></i>
                 <span class="link_name"><?= $text_clients ?></span>
@@ -76,7 +76,7 @@
                 <li><a class="link_name" href="/clients"><?= $text_clients ?></a></li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/suppliers') ? "selected" : '' ?>">
             <a href="/suppliers">
                 <i class="fa-solid fa-user-group"></i>
                 <span class="link_name"><?= $text_suppliers ?></span>
@@ -85,7 +85,7 @@
                 <li><a class="link_name" href="/suppliers"><?= $text_suppliers ?></a></li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-users"></i>
@@ -103,7 +103,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="<?= $this->matchURL('/notifications') ? "selected" : '' ?>">
             <a href="/notifications">
                 <i class="fa-regular fa-bell"></i>
                 <span class="link_name"><?= $text_notifications ?> </span>
@@ -112,10 +112,10 @@
                 <li><a class="link_name" href="/notifications"><?= $text_notifications ?> </a></li>
             </ul>
         </li>
-        <li>
+        <li class="<?= $this->matchURL('/language') ? "selected" : '' ?>">
             <a href="/language">
                 <i class="icon-language"></i>
-                <span class="link_name"></span>
+                <span class="link_name"><?= $_SESSION['lang'] == 'ar' ? 'انجليزي' : 'Arabic' ?></span>
             </a>
             <ul class="sub-menu blank">
                 <li><a class="link_name" href="/language"><?= $text_change_language ?></a></li>
@@ -145,7 +145,7 @@
                     <div class="profile_name">fname</div>
                     <div class="job">group name</div>
                 </div>
-                <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i><?= $text_logout ?></a></a>
+                <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i></a></a>
             </div>
         </li>
     </ul>
