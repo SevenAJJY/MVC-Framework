@@ -1,1 +1,3 @@
-<h1>Welcome to MVC World</h1>
+<div class="home-content"">
+    <h1 class=" main-head"><?= $text_header ;?></h1>
+</div>

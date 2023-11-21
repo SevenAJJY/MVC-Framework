@@ -1,5 +1,5 @@
 <div class="home-content">
-    <h1 class="main-title text-center"><?= $text_header ;?></h1>
+    <h1 class="main-head"><?= $text_header ;?></h1>
     <div class="main-button">
         <a href="/users/create">
             <span><i class="fa-solid fa-plus me-2 ms-2"></i> <?= $text_new_item ?></span>
@@ -41,7 +41,7 @@
                 }
             }
             else {
-                    echo '<tr><td rowspan="6" class="alert alert-success text-center mb-2 mt-2">
+                    echo '<tr><td colspan="6" class="alert alert-success text-center mb-2 mt-2">
                                 <i class="fas fa-exclamation-triangle me-3 "></i> '.$text_no_data.
                         '</td></tr>';
             }
