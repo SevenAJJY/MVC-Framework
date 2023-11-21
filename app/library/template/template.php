@@ -1,7 +1,7 @@
 <?php
-namespace SEVENAJJY\Library;
+namespace SEVENAJJY\Library\Template;
 class Template{
-
+    use TemplateHelper;
     private array $_templateParts;
     private string $_actionView;
     private array $_data;
