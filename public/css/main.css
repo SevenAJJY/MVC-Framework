@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&family=RocknRoll+One&display=swap");
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Josefin Sans", "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -2757,6 +2757,7 @@ body.element-none .home-content {
   margin: 15px 15px 40px;
   font-size: 28px;
   color: var(--text-color);
+  padding: 0;
 }
 
 .main-head:before,
@@ -2764,7 +2765,7 @@ body.element-none .home-content {
   content: "";
   position: absolute;
   height: 3px;
-  bottom: -10px;
+  bottom: -3px;
   left: 0;
 }
 
