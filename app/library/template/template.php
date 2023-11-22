@@ -1,10 +1,22 @@
 <?php
 namespace SEVENAJJY\Library\Template;
+
+use SEVENAJJY\Library\Registry;
+
 class Template{
     use TemplateHelper;
     private array $_templateParts;
     private string $_actionView;
     private array $_data;
+    private Registry $_registry;
+
+    public function __get($key){
+        return $this->_registry->$key;
+    }
+
+    public function setRegistry(Registry $registry){
+        $this->_registry = $registry;
+    }
 
     public function __construct(array $parts){
         $this->_templateParts = $parts;
