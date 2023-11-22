@@ -3,6 +3,7 @@
     namespace SEVENAJJY\Controllers ;
 
 use SEVENAJJY\Models\PrivilegesModel;
+use SEVENAJJY\Models\UserGroupsPrivilegeModel;
 
     class PrivilegesController extends AbstractController
     {
@@ -68,8 +69,16 @@ use SEVENAJJY\Models\PrivilegesModel;
             $this->_language->load('privileges.messages');
 
 
-            if (!$privilege) {
+            if($privilege === false) {
                 $this->redirect('/privileges');
+            }
+
+            ### -> To remove the privilege, you must make sure that there is no group approved or associated with this privilege to have a constraint issue (foreign key)
+            $groupPrivileges = UserGroupsPrivilegeModel::getBy(['PrivilegeId' => $privilege->PrivilegeId]) ;
+            if (false !== $groupPrivileges) {
+                foreach ($groupPrivileges as $groupPrivilege) {
+                    $groupPrivilege->delete();
+                }
             }
 
             if ($privilege->delete()) {
