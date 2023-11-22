@@ -61,7 +61,7 @@ class SessionManager extends \SessionHandler
      *
      * @var string
      */
-    private string $_sessDomain = ".phpdev.com" ;
+    private string $_sessDomain = ".sevenajjy.com" ;
 
     /**
      * This is the path where the files are created.
@@ -114,11 +114,13 @@ class SessionManager extends \SessionHandler
         );
     }
 
+
     /**
      * @param mixed $key
+     * 
      * @return mixed
      */
-    public function __get(mixed $key):mixed
+    public function __get(mixed $key): mixed
     {
         if (isset($_SESSION[$key])) {
             $data = @unserialize($_SESSION[$key]) ;
