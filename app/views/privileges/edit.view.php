@@ -1,6 +1,6 @@
 <div class="home-content">
     <div class="row">
-        <h1 class="main-title text-center"><?php echo $text_header ;?></h1>
+        <h1 class=" main-head"><?= $text_header ;?></h1>
         <div class="col-md-12 d-flex align-items-center justify-content-center">
             <div class="my-container">
                 <h4><?php echo $text_legend ?></h4>
