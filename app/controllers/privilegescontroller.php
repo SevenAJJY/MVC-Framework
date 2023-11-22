@@ -9,9 +9,9 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
     {
         public function defaultAction()
         {
-            $this->_language->load('template.common');
-            $this->_language->load('privileges.default');
-            $this->_language->load('privileges.messages');
+            $this->language->load('template.common');
+            $this->language->load('privileges.default');
+            $this->language->load('privileges.messages');
 
             $this->_data['privileges'] = PrivilegesModel::getAll();
             $this->_renderView();
@@ -20,10 +20,10 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
         // TODO: We need to implement csrf prevention
         public function createAction()
         {
-            $this->_language->load('template.common');
-            $this->_language->load('privileges.labels');
-            $this->_language->load('privileges.create');
-            $this->_language->load('privileges.messages');
+            $this->language->load('template.common');
+            $this->language->load('privileges.labels');
+            $this->language->load('privileges.create');
+            $this->language->load('privileges.messages');
 
 
             if (isset($_POST['save'])) {
@@ -47,10 +47,10 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
             }
             $this->_data['privilege'] = $privilege ;
 
-            $this->_language->load('template.common');
-            $this->_language->load('privileges.labels');
-            $this->_language->load('privileges.edit');
-            $this->_language->load('privileges.messages');
+            $this->language->load('template.common');
+            $this->language->load('privileges.labels');
+            $this->language->load('privileges.edit');
+            $this->language->load('privileges.messages');
 
             if(isset($_POST['save'])){
                 $privilege->PrivilegeTitle = $this->filterString($_POST['PrivilegeTitle']);
@@ -66,7 +66,7 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
         public function deleteAction(){
             $id = $this->_getParams(0, 'int');
             $privilege = PrivilegesModel::getByKey($id);
-            $this->_language->load('privileges.messages');
+            $this->language->load('privileges.messages');
 
 
             if($privilege === false) {

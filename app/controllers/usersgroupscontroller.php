@@ -12,8 +12,8 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
 
         public function defaultAction()
         {
-            $this->_language->load('template.common');
-            $this->_language->load('usersgroups.default');
+            $this->language->load('template.common');
+            $this->language->load('usersgroups.default');
 
             $this->_data["groups"] = UserGroupsModel::getAll();
 
@@ -22,9 +22,9 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
 
         public function createAction()
         {
-            $this->_language->load('template.common');
-            $this->_language->load('usersgroups.create');
-            $this->_language->load('usersgroups.labels');
+            $this->language->load('template.common');
+            $this->language->load('usersgroups.create');
+            $this->language->load('usersgroups.labels');
 
             $this->_data['privileges'] = PrivilegesModel::getAll();
 
@@ -59,9 +59,9 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
                 $this->redirect('/usersgroups');
             }
 
-            $this->_language->load('template.common');
-            $this->_language->load('usersgroups.edit');
-            $this->_language->load('usersgroups.labels');
+            $this->language->load('template.common');
+            $this->language->load('usersgroups.edit');
+            $this->language->load('usersgroups.labels');
 
             $this->_data['group'] = $group ;
             $this->_data['privileges'] = PrivilegesModel::getAll();

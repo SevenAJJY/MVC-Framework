@@ -10,11 +10,11 @@ class LanguageController extends AbstractController
 {
     public function defaultAction()
     {
-        if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'en') {
-            $_SESSION['lang'] = 'ar' ;
+        if (isset($this->session->lang) &&$this->session->lang == 'en') {
+            $this->session->lang = 'ar' ;
         }
         else {
-            $_SESSION['lang'] = 'en' ;
+            $this->session->lang = 'en' ;
         }
         
         if (isset($_SERVER['HTTP_REFERER'])) {
