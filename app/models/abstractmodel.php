@@ -185,7 +185,7 @@
             }
             $whereClause = implode(' AND ', $whereClause);
             $sql = 'SELECT * FROM ' . static::$tableName . '  WHERE ' . $whereClause;
-            return static::get($sql, $options);
+            return static::get($sql);
         }
 
 
