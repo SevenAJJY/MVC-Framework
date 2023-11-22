@@ -7,6 +7,7 @@ use SEVENAJJY\Library\InputFilter;
 use SEVENAJJY\Library\Redirection;
 use SEVENAJJY\Library\Template\Template;
 use SEVENAJJY\Library\Language;
+use SEVENAJJY\Library\Registry;
 
 /**
  * Abstract Controller
@@ -64,12 +65,15 @@ class AbstractController
      * @var Template
      */
     protected Template $_template;
+
     /**
-     * template
-     *
-     * @var Language
+     * @var Registry
      */
-    protected Language $_language;
+    protected Registry $_registry;
+
+    public function __get($key){
+        return $this->_registry->$key;
+    }
 
     public function setController($controllerName)
     {
@@ -102,8 +106,8 @@ class AbstractController
         $this->_template = $template;
     }
     
-    public function setLanguage(Language $language){
-        $this->_language = $language;
+    public function setRegistry(Registry $registry){
+        $this->_registry = $registry;
     }
 
     public function notFoundAction()
@@ -148,7 +152,8 @@ class AbstractController
         if ($this->_action == FrontController::NOT_FOUND_ACTION || !file_exists($view)) {
             $view = VIEWS_PATH . 'notfound' . DS . 'notfound.view.php' ;
         }
-        $this->_data = array_merge($this->_data, $this->_language->getDictionary());
+        $this->_data = array_merge($this->_data, $this->language->getDictionary());
+        $this->_template->setRegistry($this->_registry);
         $this->_template->setActionViewFile($view);
         $this->_template->setAppData($this->_data);
         $this->_template->renderApp();

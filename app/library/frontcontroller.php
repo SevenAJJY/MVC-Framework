@@ -35,19 +35,18 @@ class FrontController
      *
      * @var SEVENAJJY\Library\Template\Template
      */
-    private  $_template;
-    /**
-     * template
-     *
-     * @var SEVENAJJY\Library\Language
-     */
-    private  $_language;
+    private Template $_template;
 
-    public function __construct(Template $template, Language $language)
+    /**
+     * @var Registry
+     */
+    private Registry $_registry;
+
+    public function __construct(Template $template, Registry $registry)
     {
         $this->_parseURL();
         $this->_template = $template;
-        $this->_language = $language;
+        $this->_registry = $registry;
     }
 
     private function _parseURL()
@@ -79,7 +78,7 @@ class FrontController
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);
         $controller->setTemplate($this->_template);
-        $controller->setLanguage($this->_language);
+        $controller->setRegistry($this->_registry);
         $controller->$actionName();
     }
 }
