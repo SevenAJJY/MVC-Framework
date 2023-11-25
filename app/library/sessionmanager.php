@@ -1,6 +1,7 @@
 <?php 
 
 namespace SEVENAJJY\Library;
+
 /**
  * Session manager
  * @author  yassine El hajjy (SevenAJJY) <yassine.elhajjy@gmail.com>
@@ -115,15 +116,11 @@ class SessionManager extends \SessionHandler
     }
 
 
-    /**
-     * @param mixed $key
-     * 
-     * @return mixed
-     */
-    public function __get(mixed $key): mixed
+
+    public function __get($key)
     {
         if (isset($_SESSION[$key])) {
-            $data = @unserialize($_SESSION[$key]) ;
+            $data = $_SESSION[$key] ;
             if ($data === false) {
                 return $_SESSION[$key];
             }
@@ -158,6 +155,11 @@ class SessionManager extends \SessionHandler
     public function __isset(mixed $key):bool
     {
         return isset($_SESSION[$key]) ? true : false ;
+    }
+
+    public function __unset($key)
+    {
+        unset($_SESSION[$key]);
     }
 
     /**
@@ -222,7 +224,7 @@ class SessionManager extends \SessionHandler
     private function _checkSessionValidity():bool
     {
         if ((time() - $this->sessionStartTime) > ($this->_ttl * 60)) {
-            $this->_rennewSession();
+            $this->_renewSession();
             $this->_generateFingerPrint();
         }
         return true ;
@@ -233,7 +235,7 @@ class SessionManager extends \SessionHandler
      * 
      * @return bool
      */
-    private function _rennewSession():bool
+    private function _renewSession():bool
     {
         $this->sessionStartTime = time();
         return session_regenerate_id(true);
