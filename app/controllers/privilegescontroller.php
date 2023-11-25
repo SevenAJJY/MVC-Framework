@@ -31,7 +31,11 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
                 $privilege->PrivilegeTitle = $this->filterString($_POST['PrivilegeTitle']);
                 $privilege->Privilege = $this->filterString($_POST['Privilege']);
                 if ($privilege->save()) {
+                    $this->messenger->add('message_create_success');
                     $this->redirect('/privileges');
+                }
+                else{
+                    $this->messenger->add('message_create_failed');
                 }
                 $this->redirect('/privileges');
             }
