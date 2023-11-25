@@ -88,15 +88,14 @@
         <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="link_name"><?= $text_users ?> </span>
+                    <i class="fa-solid fa-users-gear"></i> <span class="link_name"><?= $text_users ?> </span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
                 <li class=""><a class="link_name" href="#"><?= $text_users ?> </a></li>
                 <li><a href="/users"><i class="fa-solid fa-circle-user sub-icons"></i><?= $text_users_list ?></a></li>
-                <li><a href="/usersgroups"><i class="fa-solid fa-users-gear sub-icons"></i><?= $text_users_groups ?></a>
+                <li><a href="/usersgroups"><i class="fa-solid fa-users-rays sub-icons"></i><?= $text_users_groups ?></a>
                 </li>
                 <li><a href="/privileges"><i class="fa-solid fa-key sub-icons"></i><?= $text_users_privileges ?></a>
                 </li>

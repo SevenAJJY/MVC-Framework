@@ -61,5 +61,48 @@
 
     </section>
 
+    <?php 
+            $messages = $this->messenger->getMessages();
+            if (!empty($messages))
+            {
+                foreach ($messages as $message) {
+                    /**
+                     * 
+                     * @var array
+                     */
+                    $typeMsg = [];
+                    switch ($message[1]) {
+                        case 1:
+                            $typeMsg['type'] = 'fa-regular fa-circle-check' ;
+                            $typeMsg['msg'] = 'Success!' ;
+                            break;
+                        case 2:
+                            $typeMsg['type'] = 'fa-solid fa-circle-exclamation' ;
+                            $typeMsg['msg'] = 'Failed!' ;
+                            break;
+                        case 3:
+                            $typeMsg['type'] = 'fa-solid fa-circle-info' ;
+                            $typeMsg['msg'] = 'Info!' ;
+                            break;
+                        case 4:
+                            $typeMsg['type'] = 'fa-solid fa-triangle-exclamation' ;
+                            $typeMsg['msg'] = 'Warning!' ;
+                            break;
+                    }
+                    echo '<div class="d-flex justify-content-center">
+                            <div class="my-alert-2 message t'.$message[1].'">
+                                <div class="my-alert-2-content ">
+                                <i class="'.$typeMsg['type'].' check _icon-message t'.$message[1].'"></i>
+                                    <div class="message_content">
+                                        <span class="text-alert text-1"><strong>'.$typeMsg['msg'].'</strong></span>
+                                        <span class="text-alert text-2">'. $message[0].'</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>' ;
+                }
+            }
+            ?>
+
 
     <!-- End Navbar -->

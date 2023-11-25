@@ -6,6 +6,7 @@ use SEVENAJJY\Library\SessionManager;
 use SEVENAJJY\Library\Language;
 use SEVENAJJY\LIBRARY\Template\Template;
 use SEVENAJJY\LIBRARY\FrontController;
+use SEVENAJJY\Library\Messenger;
 use SEVENAJJY\Library\Registry;
 
 defined('DS') or define('DS' , DIRECTORY_SEPARATOR);
@@ -14,8 +15,6 @@ require_once '..' . DS . 'app' . DS . 'config' . DS . 'config.php' ;
 require_once APP_PATH . DS . 'library' . DS .  'autoload.php' ;
 
 $template_parts = require_once '..' . DS . 'app' . DS . 'config' . DS . 'templateconfig.php' ;
-
-// session_start();
 
 $session = new SessionManager();
 $session->start();
@@ -28,12 +27,17 @@ $template = new Template($template_parts);
 
 $language = new Language();
 
+$messenger = Messenger::getInstance($session);
+
 $registry = Registry::getInstance();
-$registry->session = $session;
-$registry->language = $language;
+$registry->session   = $session;
+$registry->language  = $language;
+$registry->messenger = $messenger;
 
 
 $frontController = new FrontController($template, $registry);
 
 $frontController->dispatch();
+
+
 ?>
