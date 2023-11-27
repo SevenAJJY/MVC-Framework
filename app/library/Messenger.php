@@ -71,7 +71,7 @@ class Messenger{
         return isset($this->_session->messages);
     }
 
-    /**s
+    /**
      * @return array
      */
     public function getMessages(){

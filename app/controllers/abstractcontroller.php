@@ -8,6 +8,7 @@ use SEVENAJJY\Library\Redirection;
 use SEVENAJJY\Library\Template\Template;
 use SEVENAJJY\Library\Language;
 use SEVENAJJY\Library\Registry;
+use SEVENAJJY\Library\Validate;
 
 /**
  * Abstract Controller
@@ -21,6 +22,7 @@ class AbstractController
 
     use InputFilter;
     use Redirection;
+    use Validate;
 
     /**
      * Controller Name
