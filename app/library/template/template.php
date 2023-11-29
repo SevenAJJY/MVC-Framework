@@ -23,6 +23,19 @@ class Template{
     }
 
     /**
+     * authentication
+     * 
+     * @param mixed $template
+     * 
+     * @return void
+     */
+    //TODO::implement a better solution
+    public function swapTemplate($template)
+    {
+        $this->_templateParts['template'] = $template ;
+    }
+
+    /**
      * The view that will appear to the user
      *
      * @param string $actionViewPath
