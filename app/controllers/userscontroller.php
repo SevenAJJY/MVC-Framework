@@ -74,6 +74,7 @@ class UsersController extends AbstractController
                 $this->redirect('/users') ;
             }
 
+            //TODO::SEND THE USER WELCOME EMAIL
             if ($user->save()) {
                 $userProfile = new UserProfileModel() ;
                 $userProfile->UserId = $user->UserId ;

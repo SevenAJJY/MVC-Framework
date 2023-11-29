@@ -12,7 +12,7 @@ return [
         'css' => [
             'NORMALIZE'      => CSS . 'normalize.css',
             'FAWSOME'        => CSS . 'fawsome.css',
-            'FAWSOME_MIN'    => CSS . 'fontawesome.min',
+            'FAWSOME_MIN'    => CSS . 'fontawesome.min.css',
             'STYLEBOOTSTRAP' => CSS . 'styleBootstrap.css',
             'STYLE'          => CSS . 'style.css',
             'MAIN'           => CSS . 'main.css',
