@@ -3,6 +3,7 @@
 namespace SEVENAJJY\Models;
 
 use ArrayIterator;
+use SEVENAJJY\Library\SessionManager;
 use SEVENAJJY\Models\AbstractModel;
 
 class UserModel extends AbstractModel
@@ -87,6 +88,41 @@ class UserModel extends AbstractModel
     public static function emailExists($email)
     {
         return self::getBy(['Email' => $email]);
+    }
+
+ /**
+  * @param string $username
+  * @param string $password
+  * @param SessionManager $session
+  * 
+  * @return false|int
+  */
+    public static function authenticate(string $username, string $password, SessionManager $session){
+        $password = crypt($password,APP_SALT);
+        $sql = 'SELECT *,(SELECT GroupName FROM app_users_groups WHERE app_users_groups.GroupId = '.self::$tableName.'.GroupId) as GroupName FROM '. self::$tableName .' WHERE Username = "' . $username . '" AND Password = "' . $password . '"' ;
+        $foundUser = self::getOne($sql);
+        if (false !==  $foundUser) {
+            /**
+             * 2 -> If the user is banned by the administration (disabled)
+             */
+            if ($foundUser->Status == 2) {
+                return 2 ;
+            }
+            $foundUser->LastLogin = date('Y-m-d H:i:s');
+            $foundUser->save();
+            $foundUser->profile = UserProfileModel::getByKey($foundUser->UserId);
+            $foundUser->privileges = UserGroupsPrivilegeModel::getPrivilegesForGroup($foundUser->GroupId) ;
+            $session->u = $foundUser;
+            /**
+             * 1 -> If the user is already registered, we will record his last login,
+             * and then store his information in the Session
+             */
+            return 1 ;
+        }
+        /**
+         *  false -> if it does not exist at all
+         */
+        return false ;
     }
 
 }
