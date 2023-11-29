@@ -2,6 +2,7 @@
 
 namespace SEVENAJJY\Controllers;
 
+use SEVENAJJY\Library\Messenger;
 use SEVENAJJY\Models\UserGroupsModel;
 use SEVENAJJY\Models\UserModel;
 use SEVENAJJY\Models\UserProfileModel;
@@ -42,79 +43,63 @@ class UsersController extends AbstractController
         $this->language->load('template.common');
         $this->language->load('users.create');
         $this->language->load('users.labels');
+        $this->language->load('users.messages');
         $this->language->load('validation.errors');
 
         $this->_data['groups'] = UserGroupsModel::getAll() ;
         
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit']) && $this->isValid($this->_createActionRoles, $_POST)) {
+            $user =  new UserModel();
+            $user->Username = $this->filterString($_POST['Username']);
+            $user->cryptPassword($_POST['Password']);
+            $user->Email = $this->filterString($_POST['Email']) ;
+            $user->PhoneNumber = $this->filterString($_POST['PhoneNumber']) ;
+            $user->GroupId = $this->filterInt($_POST['GroupId']) ;
+            $user->SubscriptionDate = $this->filterString($_POST['SubscriptionDate']) ;
+            $user->LastLogin = date('Y-m-d H:i:s') ;
+            $user->Status = 1;
 
-            $this->isValid($this->_createActionRoles, $_POST);
-            // $user =  new UserModel();
-            // $user->Username = $this->filterString($_POST['Username']);
-            // $user->$_POST['Password'];
-            // $user->Email = $this->filterString($_POST['Email']) ;
-            // $user->PhoneNumber = $this->filterString($_POST['PhoneNumber']) ;
-            // $user->GroupId = $this->filterInt($_POST['GroupId']) ;
-            // $user->SubscriptionDate = $this->filterString($_POST['SubscriptionDate']) ;
-            // $user->LastLogin = date('Y-m-d H:i:s') ;
-            // $user->Status = 1;
-
-            // if ($user->save()) {
-            //     $userProfile = new UserProfileModel() ;
-            //     $userProfile->UserId = $user->UserId ;
-            //     $userProfile->FirstName = $this->filterString($_POST['FirstName']) ;
-            //     $userProfile->LastName = $this->filterString($_POST['LastName']) ;
-            //     $userProfile->Address = $this->filterString($_POST['Address']) ;
-            //     $userProfile->DOB = $this->filterString($_POST['DOB']) ;            
-            // }
-        }
-        $this->_renderView();
-    }
-
-    public function editAction()
-    {
-        $this->language->load('template.common');
-
-        $pk = $this->_getParams(0, "int");
-        $user = UserModel::getByKey($pk);
-        if ($user === false) {
-            $this->redirectBack('/user');
-        }
-        $this->_data['user'] = $user ;
-
-        if (isset($_POST['submit'])) {
-            $user->name    = $this->filterString($_POST['name']);
-            $user->address = $this->filterString($_POST['address']);
-            $user->age     = $this->filterInt($_POST['age']);
-            $user->tax     = $this->filterFloat($_POST['tax']);
-            $user->salary  = $this->filterFloat($_POST['salary']);
             if ($user->save()) {
-                $_SESSION['message'] = 'Saving User '. $user->name . 'Sucessfully';
-                $this->redirect("/user");
+                $userProfile = new UserProfileModel() ;
+                $userProfile->UserId = $user->UserId ;
+                $userProfile->FirstName = $this->filterString($_POST['FirstName']) ;
+                $userProfile->LastName = $this->filterString($_POST['LastName']) ;
+                $userProfile->Address = $this->filterString($_POST['Address']) ;
+                $userProfile->DOB = $this->filterString($_POST['DOB']) ;
+                $this->messenger->add($this->language->get('message_create_success'));
+            }else{
+                $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
             }
-            else{
-                $this->redirectBack('/user/create');
-            }
+            $this->redirect('/users');            
         }
         $this->_renderView();
     }
 
-    public function deleteAction()
+
+    //TODO:: Make sure this is a Ajax Request Username Exists
+    public function checkUserExistsAjaxAction()
     {
-        $this->language->load('template.common');
-
-        $pk = $this->_getParams(0, "int");
-        $user = UserModel::getByKey($pk);
-        if ($user === false) {
-            $this->redirectBack('/user');
+        if (isset($_POST['Username'])) {
+            header('Content-type: text/plain') ;
+            if(UserModel::userExists($this->filterString($_POST['Username'])) !== false){
+                echo 1 ;
+            }
+            else {
+                echo 2 ;
+            }
         }
-
-        if ($user->delete()) {
-            $_SESSION['message'] = 'User Deleted Sucessfully';
-            $this->redirect("/user");
-        }
-        else{
-            $this->redirectBack('/user');
+    }
+   //TODO:: Make sure this is a Ajax Request Email Exists
+    public function checkEmailExistsAjaxAction()
+    {
+        if (isset($_POST['Email'])) {
+            header('Content-type: text/plain') ;
+            if(UserModel::emailExists($this->filterString($_POST['Email'])) !== false){
+                echo 1 ;
+            }
+            else {
+                echo 2 ;
+            }
         }
     }
 }
