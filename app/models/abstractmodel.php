@@ -121,7 +121,7 @@
          */
         public function delete():mixed
         {
-            $sql = 'DELETE FROM ' . static::$tableName . ' WHERE ' . static::$primaryKey . '='. $this->{static::$primaryKey};
+            $sql = 'DELETE FROM ' . static::$tableName . ' WHERE ' . static::$primaryKey . ' = '. $this->{static::$primaryKey};
             $stmt = DatabaseHandler::factory()->prepare($sql);
             return $stmt->execute();
         }

@@ -30,6 +30,12 @@ class UsersController extends AbstractController
         'PhoneNumber'    => 'alphanum|max(15)',
         'GroupId'        => 'req|int',
     ];
+
+    private $_editActionRoles = 
+    [
+        'PhoneNumber'    => 'alphanum|max(15)',
+        'GroupId'        => 'req|int',
+    ];
     public function defaultAction()
     {
         $this->language->load('template.common');
@@ -59,6 +65,15 @@ class UsersController extends AbstractController
             $user->LastLogin = date('Y-m-d H:i:s') ;
             $user->Status = 1;
 
+            if (UserModel::userExists($this->filterString($user->Username))) {
+                $this->messenger->add($this->language->get('message_user_exists') , Messenger::APP_MESSAGE_ERROR);
+                $this->redirect('/users') ;
+            }
+            if (UserModel::emailExists($this->filterString($_POST['Email']))) {
+                $this->messenger->add($this->language->get('message_email_exists') , Messenger::APP_MESSAGE_ERROR);
+                $this->redirect('/users') ;
+            }
+
             if ($user->save()) {
                 $userProfile = new UserProfileModel() ;
                 $userProfile->UserId = $user->UserId ;
@@ -66,13 +81,78 @@ class UsersController extends AbstractController
                 $userProfile->LastName = $this->filterString($_POST['LastName']) ;
                 $userProfile->Address = $this->filterString($_POST['Address']) ;
                 $userProfile->DOB = $this->filterString($_POST['DOB']) ;
-                $this->messenger->add($this->language->get('message_create_success'));
-            }else{
-                $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
-            }
+                }
+                if($userProfile->save(false))
+                {
+                    $this->messenger->add($this->language->get('message_create_success'));
+                    $this->redirect('/users');
+                } 
+                else {
+                    $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+                }
             $this->redirect('/users');            
         }
         $this->_renderView();
+    }
+
+    public function editAction()
+    {
+        $id = $this->_getParams(0, 'int');
+        $user = UserModel::getByKey( $id);
+
+        if (false === $user) {
+            $this->redirect('/users');
+        }
+        $this->_data['user'] = $user ;
+
+        $this->language->load('template.common');
+        $this->language->load('users.edit');
+        $this->language->load('users.labels');
+        $this->language->load('users.messages');
+        $this->language->load('validation.errors');
+
+        $this->_data['groups'] = UserGroupsModel::getAll() ;
+
+        if (isset($_POST['submit']) && $this->isValid($this->_editActionRoles , $_POST)) {
+
+            $user->PhoneNumber = $this->filterString($_POST['PhoneNumber']) ;
+            $user->GroupId = $this->filterInt($_POST['GroupId']) ;
+
+            if ($user->save()) {
+                $this->messenger->add($this->language->get('message_create_success'));
+            }
+            else {
+                $this->messenger->add($this->language->get('message_create_failed') , Messenger::APP_MESSAGE_ERROR);
+            }
+            $this->redirect('/users') ;
+        }
+
+        $this->_renderView();
+    }
+
+    public function deleteAction()
+    {
+        $id = $this->_getParams(0, 'int');
+        $user = UserModel::getByKey( $id);
+        $userProfile = UserProfileModel::getByKey($id);
+
+        if (false === $user) {
+            $this->redirect('/users');
+        }
+
+        $this->language->load('users.messages');
+
+        
+        var_dump($user, $userProfile);
+        if ($userProfile->delete()) {
+            if ($user->delete()) {
+                $this->messenger->add($this->language->get('message_delete_success'));
+            }
+            else {
+                $this->messenger->add($this->language->get('message_delete_failed') , Messenger::APP_MESSAGE_ERROR);
+            }
+            $this->redirect('/users') ;
+        }
     }
 
 
