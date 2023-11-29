@@ -130,9 +130,9 @@
         /**
          * method is used to fetch all data from the table.
          * 
-         * @return array|false
+         * @return \ArrayIterator
          */
-        public static function getAll():array|false
+        public static function getAll(): \ArrayIterator|false
         {
             $sql = 'SELECT * FROM '. static::$tableName ;
             $stmt = DatabaseHandler::factory()->prepare($sql);
@@ -142,7 +142,10 @@
             } else {
                 $results = $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
             }
-            return (is_array($results) && !empty($results)) ? $results : false ;
+            if ((is_array($results) && !empty($results))) {
+                return new \ArrayIterator($results);
+            };
+            return false;
         }
 
 
