@@ -3,9 +3,9 @@
 namespace SEVENAJJY\Library;
 
 use SEVENAJJY\Library\Template\Template;
-use SEVENAJJY\Library\Language;
 class FrontController
 {
+    use Redirection;
 
     const NOT_FOUND_ACTION = 'notFoundAction' ;
     const NOT_FOUND_CONTROLLER = 'SEVENAJJY\Controllers\NotFoundController' ;
@@ -41,12 +41,17 @@ class FrontController
      * @var Registry
      */
     private Registry $_registry;
+    /**
+     * @var Authentication
+     */
+    private Authentication $_authentication;
 
-    public function __construct(Template $template, Registry $registry)
+    public function __construct(Template $template, Registry $registry, Authentication $authentication)
     {
-        $this->_parseURL();
         $this->_template = $template;
         $this->_registry = $registry;
+        $this->_authentication = $authentication;
+        $this->_parseURL();
     }
 
     private function _parseURL()
@@ -67,6 +72,12 @@ class FrontController
     {
         $controllerClassName = 'SEVENAJJY\Controllers\\' . ucwords($this->_controller) . 'Controller';
         $actionName = $this->_action . 'Action';
+
+        if (!$this->_authentication->isAuthorized()) {
+            if ($this->_controller != 'auth' && $this->_action != 'login') {
+                $this->redirect('/auth/login');
+            }
+        }
 
         if (!class_exists($controllerClassName) || !method_exists($controllerClassName , $actionName)) {
             $controllerClassName = self::NOT_FOUND_CONTROLLER ;

@@ -2,6 +2,7 @@
 
 namespace SEVENAJJY ;
 
+use SEVENAJJY\Library\Authentication;
 use SEVENAJJY\Library\SessionManager;
 use SEVENAJJY\Library\Language;
 use SEVENAJJY\LIBRARY\Template\Template;
@@ -29,13 +30,15 @@ $language = new Language();
 
 $messenger = Messenger::getInstance($session);
 
+$authentication = Authentication::getInstance($session);
+
 $registry = Registry::getInstance();
 $registry->session   = $session;
 $registry->language  = $language;
 $registry->messenger = $messenger;
 
 
-$frontController = new FrontController($template, $registry);
+$frontController = new FrontController($template, $registry, $authentication);
 
 $frontController->dispatch();
 
