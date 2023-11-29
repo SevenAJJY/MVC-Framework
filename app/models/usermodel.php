@@ -2,6 +2,7 @@
 
 namespace SEVENAJJY\Models;
 
+use ArrayIterator;
 use SEVENAJJY\Models\AbstractModel;
 
 class UserModel extends AbstractModel
@@ -61,11 +62,31 @@ class UserModel extends AbstractModel
         'Status'            => self::DATA_TYPE_INT
     );
 
-
-
-
-    public function calculateSalary()
+    /** 
+     * Encrypt user password 
+     * 
+     * @param string $password
+     * @return void
+     */
+    public function cryptPassword($password)
     {
-        return $this->salary - ($this->salary * $this->tax /100);
+        $this->Password = crypt($password,APP_SALT);
     }
+
+    public static function getAll(): ArrayIterator|false {
+        return self::get("
+            SELECT au.*,aug.GroupName FROM " . self::$tableName ." as au INNER JOIN app_users_groups as aug ON au.GroupId = aug.GroupId
+        ");
+    }
+
+    public static function userExists($username)
+    {
+        return self::getBy(['Username' => $username]);
+    }
+
+    public static function emailExists($email)
+    {
+        return self::getBy(['Email' => $email]);
+    }
+
 }
