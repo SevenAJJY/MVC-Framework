@@ -258,20 +258,27 @@ trait Validate{
         return (bool) preg_match($this->_regexPatterns['url'], $value);
     }
 
-    public function isValid($roles , $inputType)
+    /**
+     * @param array $roles
+     * @param array  $inputType
+     * 
+     * @return bool
+     */
+    public function isValid(array $roles , array $inputType)
     {
         $errors = [] ;
         if (!empty($roles)) {
             foreach ($roles as $fieldName => $validationRoles) {
                 $value = $inputType[$fieldName] ;
                 $validationRoles = explode('|' , $validationRoles) ;
-                var_dump($validationRoles);
-                // exit;
                 foreach ($validationRoles as $validationRole) {
-                    ### -> To Shows at least one error in the field
-                    ### -> hna f foreach fach tkml roles ila l9at f array dyl errors field name kain using array_key_exists() adir continue bach iduz lvalidation roles li b3dha o ghadi itl3 lina error w7d 3la a9al
+                    /**
+                     * To Shows at least one error in the field.
+                     * & To avoid saving two errors of the same type.
+                     */
                     if (array_key_exists($fieldName, $errors))  
                         continue;
+                    
                     /**
                      * in case of min role
                      */
@@ -358,7 +365,7 @@ trait Validate{
                         }
                     }
                     /**
-                     * in case of equal role
+                     * in case of equals role
                      */
                     elseif (preg_match_all('/(eq_field)\((\w+)\)/' , $validationRole , $m)) {
                         $otherFieldValue =  $inputType[$m[2][0]] ;

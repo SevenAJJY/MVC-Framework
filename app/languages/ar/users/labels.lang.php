@@ -2,8 +2,8 @@
 
 $_['text_legend'] = 'بيانات المستخدم';
 $_['text_label_Username'] = 'اسم المستخدم';
-$_['text_label_lastname'] = 'الإسم الأول';
-$_['text_label_firstname'] = 'الإسم الأخير';
+$_['text_label_LastName'] = 'الإسم الأول';
+$_['text_label_FirstName'] = 'الإسم الأخير';
 $_['text_label_Password'] = 'كلمه المرور';
 $_['text_label_CPassword'] = 'تأكيد كلمة المرور';
 $_['text_label_Email'] = 'البريد الإلكتروني';
