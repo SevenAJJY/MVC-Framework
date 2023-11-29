@@ -34,6 +34,26 @@ class UserGroupsPrivilegeModel extends AbstractModel
             return $extractPrivilegesIds ;
         }
 
-
+       /**
+        * To get the permissions of the current user
+        *
+        * @param mixed $groupId
+        * @return array
+        */
+        public static function getPrivilegesForGroup($groupId)
+        {   
+            $sql = 'SELECT augp.*,aup.Privilege FROM '. self::$tableName .' as augp '  ;
+            $sql .= ' INNER JOIN app_users_privileges as aup ON aup.PrivilegeId = augp.PrivilegeId '  ;
+            $sql .= 'WHERE augp.GroupId = '. $groupId ;
+            $privileges =  self::get($sql) ;
+            ### -> Store all the permissions of the current user in $extractURLs ;
+            $extractURLs = [];
+            if (false !== $privileges) {
+                foreach ($privileges as $privilege) {
+                    $extractURLs[] = $privilege->Privilege ;
+                }
+            }
+            return $extractURLs ;
+        }
 
     }
