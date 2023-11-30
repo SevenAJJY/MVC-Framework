@@ -33,7 +33,9 @@ class UserModel extends AbstractModel
      * @var UserProfileModel
      */
     public $profile ;
-
+    /**
+     * @var array
+     */
     public $privileges ;
 
     /**
@@ -74,10 +76,17 @@ class UserModel extends AbstractModel
         $this->Password = crypt($password,APP_SALT);
     }
 
-    public static function getAll(): ArrayIterator|false {
-        return self::get("
-            SELECT au.*,aug.GroupName FROM " . self::$tableName ." as au INNER JOIN app_users_groups as aug ON au.GroupId = aug.GroupId
-        ");
+    /**
+     * Fetch the list of all users except the current user, through the information they recorded in the session when logging in
+     *
+     * @param UserModel $user
+     * @return \ArrayIterator|false
+     */
+    public static function getUsers($user): ArrayIterator|false
+    {
+        return self::get(
+            'SELECT au.*,aug.GroupName GroupName FROM ' . self::$tableName . ' as au INNER JOIN app_users_groups as aug ON aug.GroupId = au.GroupId WHERE au.UserId != ' .$user->UserId
+        );
     }
 
     public static function userExists($username)

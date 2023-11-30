@@ -141,7 +141,7 @@ class SessionManager extends \SessionHandler
     public function __set(mixed $key, mixed $value):void
     {
         if (is_object($value)) {
-            $_SESSION[$key] = @serialize($value);
+            $_SESSION[$key] = $value;
         }
         else{
             $_SESSION[$key] = $value ;

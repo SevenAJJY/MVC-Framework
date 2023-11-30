@@ -13,7 +13,9 @@ class AuthController extends AbstractController
         $this->_template->swapTemplate(
             [':VIEW' => ':actionView' ]
         );
+
         $this->language->load("auth.login");
+        
         if (isset($_POST['login'])) {
             $isAuthorized = UserModel::authenticate($_POST['ucname'], $_POST['ucpwd'], $this->session);
             if ($isAuthorized == 2) {

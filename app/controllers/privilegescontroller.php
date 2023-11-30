@@ -31,11 +31,11 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
                 $privilege->PrivilegeTitle = $this->filterString($_POST['PrivilegeTitle']);
                 $privilege->Privilege = $this->filterString($_POST['Privilege']);
                 if ($privilege->save()) {
-                    $this->messenger->add('message_create_success');
+                    $this->messenger->add($this->language->get('message_create_success'));
                     $this->redirect('/privileges');
                 }
                 else{
-                    $this->messenger->add('message_create_failed');
+                    $this->messenger->add($this->language->get('message_create_failed'));
                 }
                 $this->redirect('/privileges');
             }
@@ -60,6 +60,7 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
                 $privilege->PrivilegeTitle = $this->filterString($_POST['PrivilegeTitle']);
                 $privilege->Privilege = $this->filterString($_POST['Privilege']);
                 if ($privilege->save()) {
+                    $this->messenger->add($this->language->get('message_edit_success'));
                     $this->redirect('/privileges');
                 }
             }
@@ -86,6 +87,7 @@ use SEVENAJJY\Models\UserGroupsPrivilegeModel;
             }
 
             if ($privilege->delete()) {
+                $this->messenger->add($this->language->get('message_delete_success'));
                 $this->redirect('/privileges');
             }
         }

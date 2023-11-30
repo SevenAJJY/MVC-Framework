@@ -9,8 +9,6 @@ use SEVENAJJY\Models\UserProfileModel;
 
 class UsersController extends AbstractController
 {
-
-   
     /**
      *  Here we put an Array $_createActionRoles in it the name of each of the fields
      *  we want to check with Type validate that you need 
@@ -40,7 +38,9 @@ class UsersController extends AbstractController
     {
         $this->language->load('template.common');
         $this->language->load('users.default');
-        $this->_data['users'] = UserModel::getAll();
+
+        $this->_data['users'] = UserModel::getUsers($this->session->u);
+        
         $this->_renderView();
     }
 
@@ -74,7 +74,7 @@ class UsersController extends AbstractController
                 $this->redirect('/users') ;
             }
 
-            //TODO::SEND THE USER WELCOME EMAIL
+            //TODO:: SEND THE USER WELCOME EMAIL
             if ($user->save()) {
                 $userProfile = new UserProfileModel() ;
                 $userProfile->UserId = $user->UserId ;
@@ -101,7 +101,7 @@ class UsersController extends AbstractController
         $id = $this->_getParams(0, 'int');
         $user = UserModel::getByKey( $id);
 
-        if (false === $user) {
+        if (false === $user || $this->session->u->UserId == $id) {
             $this->redirect('/users');
         }
         $this->_data['user'] = $user ;
@@ -137,14 +137,13 @@ class UsersController extends AbstractController
         $user = UserModel::getByKey( $id);
         $userProfile = UserProfileModel::getByKey($id);
 
-        if (false === $user) {
+        if (false === $user || $this->session->u->UserId == $id) {
             $this->redirect('/users');
         }
 
         $this->language->load('users.messages');
 
         
-        var_dump($user, $userProfile);
         if ($userProfile->delete()) {
             if ($user->delete()) {
                 $this->messenger->add($this->language->get('message_delete_success'));

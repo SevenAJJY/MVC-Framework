@@ -46,7 +46,9 @@ class UserGroupsPrivilegeModel extends AbstractModel
             $sql .= ' INNER JOIN app_users_privileges as aup ON aup.PrivilegeId = augp.PrivilegeId '  ;
             $sql .= 'WHERE augp.GroupId = '. $groupId ;
             $privileges =  self::get($sql) ;
-            ### -> Store all the permissions of the current user in $extractURLs ;
+            /**
+             *  Store all the permissions of the current user in $extractURLs ;
+             */
             $extractURLs = [];
             if (false !== $privileges) {
                 foreach ($privileges as $privilege) {
