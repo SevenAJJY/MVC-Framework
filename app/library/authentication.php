@@ -7,8 +7,37 @@ namespace SEVENAJJY\Library;
  */
 class Authentication{
 
+    /**
+     * @var self
+     */
     private static $_instance;
+    /**
+     * @var SessionManager
+     */
     private $_session;
+
+    /**
+     * Excluded Routes to not be sure of them with the Privileges  الاستثناءات
+     *
+     * @var array
+     */
+    private $_excludedRoutes = 
+    [
+        '/index/default' ,
+        '/auth/logout' ,
+        '/users/profile' ,
+        '/users/checkuserexistsajax' ,
+        '/users/checkemailexistsajax' ,
+        '/users/settings' ,
+        '/language/default' ,
+        '/accessdenied/default' ,
+        '/notfound/notfound',
+        '/users/profile',
+        '/users/editprofile',
+        '/users/changepassword',
+        '/users/view',
+        '/test/default',
+    ];
 
     /**
      * Private __construct() to prevent making an instance
@@ -37,5 +66,13 @@ class Authentication{
 
     public function isAuthorized(){
         return isset($this->_session->u);
+    }
+
+    public function hasAccess($controller, $action)
+    {
+        $url = strtolower('/'.$controller.'/'.$action);
+        if (in_array($url,$this->_excludedRoutes) || in_array($url, $this->_session->u->privileges)) {
+            return true ;
+        }
     }
 }
