@@ -15,10 +15,10 @@ defined('DS') or define('DS' , DIRECTORY_SEPARATOR);
 require_once '..' . DS . 'app' . DS . 'config' . DS . 'config.php' ;
 require_once APP_PATH . DS . 'library' . DS .  'autoload.php' ;
 
-$template_parts = require_once '..' . DS . 'app' . DS . 'config' . DS . 'templateconfig.php' ;
-
 $session = new SessionManager();
 $session->start();
+
+$template_parts = require_once '..' . DS . 'app' . DS . 'config' . DS . 'templateconfig.php' ;
 
 if (!isset($session->lang)) {
     $session->lang = APP_DEFAULT_LANGUAGE;
@@ -32,6 +32,9 @@ $messenger = Messenger::getInstance($session);
 
 $authentication = Authentication::getInstance($session);
 
+/**
+ * Which object we will make in index.php and we will need in Controller we will pass it in our Registry class
+ */
 $registry = Registry::getInstance();
 $registry->session   = $session;
 $registry->language  = $language;

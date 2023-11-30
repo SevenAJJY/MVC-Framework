@@ -73,9 +73,30 @@ class FrontController
         $controllerClassName = 'SEVENAJJY\Controllers\\' . ucwords($this->_controller) . 'Controller';
         $actionName = $this->_action . 'Action';
 
+        /**
+         * check if user is authorized to access the application .
+         * Here if you are not registered and try to log in to any Controllers, it will direct you to /auth/login to make the login .
+         */
         if (!$this->_authentication->isAuthorized()) {
             if ($this->_controller != 'auth' && $this->_action != 'login') {
                 $this->redirect('/auth/login');
+            }
+        }else {
+            /**
+            * Here if the user is registered and tries to return to a page /auth/login without logging out, we will direct him to the home page.
+            * But if he clicks on a link that leads him to a page /auth/login we will direct him to the page from which he clicked on the link via $_SERVER['HTTP_REFERER']
+            * Summary: Deny access to /auth/login if there $this->session->u exists.
+            */
+            if ($this->_controller == 'auth' && $this->_action == 'login') {
+                isset($_SERVER['HTTP_REFERER']) ? $this->redirect($_SERVER['HTTP_REFERER']) : $this->redirect('/') ;
+            }
+            /**
+             * check if the user has access to Specific URL
+             */
+            if ((bool) CHECK_FOR_PRIVILEGES === true) {
+                if (!$this->_authentication->hasAccess($this->_controller, $this->_action)) {
+                    $this->redirect('/accessdenied');
+                }
             }
         }
 
