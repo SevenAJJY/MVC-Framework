@@ -19,6 +19,8 @@ use SEVENAJJY\Models\SupplierModel;
             'Email'          => 'req|email',
             'PhoneNumber'    => 'alphanum|max(15)',
             'Address'        => 'req|alphanum|max(100)',
+            'PartitaIVA'     => 'alphanum|max(100)',
+            'CodFISC'        => 'alphanum|max(100)',
         ];
 
         public function defaultAction()
