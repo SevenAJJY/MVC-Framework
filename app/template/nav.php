@@ -61,7 +61,7 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#"><?= $text_store ?></a></li>
-                <li><a href="/productcategories"><i
+                <li><a href="/productscategories"><i
                             class="fa-solid fa-sitemap sub-icons"></i><?= $text_store_categories ?></a></li>
                 <li><a href="/productlist"><i class="fa-solid fa-tags sub-icons"></i><?= $text_store_pruducts ?></a>
                 </li>
