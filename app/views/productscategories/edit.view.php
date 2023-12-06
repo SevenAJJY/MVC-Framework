@@ -16,10 +16,11 @@
                             <?php echo $text_label_Image ?></label>
                     </div>
                     <?Php if($category->Image !== null): ?>
-                    <div class="input-box image-box">
-                        <div class="image">
-                            <img src="/uploads/images/<?= $category->Image ?>" class="" width="50%">
-                        </div>
+                    <div class="input-box image__upload">
+                        <!-- <div class="image">
+                            <img  class="" width="50%">
+                        </div> -->
+                        <img src="/uploads/images/<?= $category->Image ?>" class="upload-image" data-action="edit">
                     </div>
                     <?Php endif; ?>
                     <div class="input-box">

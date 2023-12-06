@@ -15,8 +15,8 @@
                         <label for="file"><i class="fa-solid fa-cloud-arrow-up"></i> &nbsp;&nbsp;&nbsp;
                             <?php echo $text_label_Image ?></label>
                     </div>
-                    <div class="input-box">
-
+                    <div class="input-box image__upload">
+                        <img class="upload-image" data-action="create">
                     </div>
                     <div class="input-box">
                         <input type="submit" class="mt-3" name="submit" value="<?php echo $text_label_save ?>"

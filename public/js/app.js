@@ -1,3 +1,18 @@
+const image = document.querySelector(".upload-image");
+const inputFile = document.querySelector("input[type=file]");
+const divContainer = document.querySelector(".image__upload");
+
+let showHideImageBox = () => {
+  if (image.dataset.action == "create") {
+    divContainer.classList.add("hide");
+  }
+};
+
+showHideImageBox();
+inputFile.addEventListener("change", (e) => {
+  divContainer.classList.remove("hide");
+  image.src = URL.createObjectURL(e.target.files[0]);
+});
 /**
  *  ===================================
  *  ========== Navbar Menu ============
@@ -102,7 +117,6 @@ for (var i = 0; i < arrow.length; i++) {
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".bx-menu");
 let imageBtn = document.querySelector(".image");
-console.log(sidebarBtn);
 sidebarBtn.addEventListener("click", () => {
   sidebar.classList.toggle("close");
 });
@@ -118,7 +132,7 @@ imageBtn.addEventListener("click", () => {
 const togglePass = document.querySelector(".togglePass"),
   input = document.querySelector(".input");
 
-togglePass.addEventListener("click", () => {
+togglePass.onclick = () => {
   if (input.type === "password") {
     input.type = "text";
     togglePass.classList.replace("fa-eye-slash", "fa-eye");
@@ -126,7 +140,7 @@ togglePass.addEventListener("click", () => {
     input.type = "password";
     togglePass.classList.replace("fa-eye", "fa-eye-slash");
   }
-});
+};
 /**
  *  ===============================
  *  ==== Confirm Password eyes ====

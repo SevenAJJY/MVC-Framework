@@ -2774,3 +2774,23 @@ body.element-none .home-content {
   background-color: var(--secondary-color);
   width: 30px;
 }
+
+.image__upload {
+  height: 20px;
+  width: 100%;
+}
+
+.image__upload {
+  height: 200px !important;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.image__upload.hide {
+  display: none;
+}
+
+.image__upload img {
+  width: 100%;
+  height: 100%;
+}
