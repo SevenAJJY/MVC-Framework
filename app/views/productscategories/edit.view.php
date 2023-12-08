@@ -17,9 +17,6 @@
                     </div>
                     <?Php if($category->Image !== null): ?>
                     <div class="input-box image__upload">
-                        <!-- <div class="image">
-                            <img  class="" width="50%">
-                        </div> -->
                         <img src="/uploads/images/<?= $category->Image ?>" class="upload-image" data-action="edit">
                     </div>
                     <?Php endif; ?>

@@ -13,6 +13,7 @@ inputFile.addEventListener("change", (e) => {
   divContainer.classList.remove("hide");
   image.src = URL.createObjectURL(e.target.files[0]);
 });
+
 /**
  *  ===================================
  *  ========== Navbar Menu ============
