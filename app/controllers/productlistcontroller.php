@@ -77,7 +77,7 @@ class ProductListController extends AbstractController
     public function editAction()
     {
 
-        $id = $this->filterInt($this->_params[0]);
+        $id = $this->_getParams(0, 'int');
         $product = ProductModel::getByKey($id);
 
         if($product === false) {
@@ -134,7 +134,7 @@ class ProductListController extends AbstractController
     public function deleteAction()
     {
 
-        $id = $this->filterInt($this->_params[0]);
+        $id = $this->_getParams(0, 'int');
         $product = ProductModel::getByKey($id);
 
         if($product === false) {

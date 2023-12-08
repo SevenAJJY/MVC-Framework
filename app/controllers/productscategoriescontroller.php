@@ -115,7 +115,7 @@
     public function deleteAction()
     {
 
-        $id = $this->filterInt($this->_params[0]);
+        $id = $this->_getParams(0, 'int');
         $category = ProductCategoryModel::getByKey($id);
 
         if($category === false) {
