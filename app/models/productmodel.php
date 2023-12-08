@@ -10,7 +10,7 @@ class ProductModel extends AbstractModel
     public $Name ;
     public $Image ; 
     public $Quantity ; 
-    public $BuyPrice ; 
+    public $BuyPrice ;
     public $SellPrice ; 
     public $Unit ; 
     public $BarCode ; 
