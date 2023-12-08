@@ -3,16 +3,20 @@ const inputFile = document.querySelector("input[type=file]");
 const divContainer = document.querySelector(".image__upload");
 
 let showHideImageBox = () => {
-  if (image.dataset.action == "create") {
-    divContainer.classList.add("hide");
+  if (image != null) {
+    if (image.dataset.action == "create") {
+      divContainer.classList.add("hide");
+    }
   }
 };
 
 showHideImageBox();
-inputFile.addEventListener("change", (e) => {
-  divContainer.classList.remove("hide");
-  image.src = URL.createObjectURL(e.target.files[0]);
-});
+if (inputFile !== null) {
+  inputFile.addEventListener("change", (e) => {
+    divContainer.classList.remove("hide");
+    image.src = URL.createObjectURL(e.target.files[0]);
+  });
+}
 
 /**
  *  ===================================
@@ -133,15 +137,17 @@ imageBtn.addEventListener("click", () => {
 const togglePass = document.querySelector(".togglePass"),
   input = document.querySelector(".input");
 
-togglePass.onclick = () => {
-  if (input.type === "password") {
-    input.type = "text";
-    togglePass.classList.replace("fa-eye-slash", "fa-eye");
-  } else {
-    input.type = "password";
-    togglePass.classList.replace("fa-eye", "fa-eye-slash");
-  }
-};
+if (togglePass !== null) {
+  togglePass.onclick = () => {
+    if (input.type === "password") {
+      input.type = "text";
+      togglePass.classList.replace("fa-eye-slash", "fa-eye");
+    } else {
+      input.type = "password";
+      togglePass.classList.replace("fa-eye", "fa-eye-slash");
+    }
+  };
+}
 /**
  *  ===============================
  *  ==== Confirm Password eyes ====
@@ -150,15 +156,17 @@ togglePass.onclick = () => {
 const togglePass2 = document.querySelector(".togglePass2"),
   input2 = document.querySelector(".input2");
 
-togglePass2.addEventListener("click", () => {
-  if (input2.type === "password") {
-    input2.type = "text";
-    togglePass2.classList.replace("fa-eye-slash", "fa-eye");
-  } else {
-    input2.type = "password";
-    togglePass2.classList.replace("fa-eye", "fa-eye-slash");
-  }
-});
+if (togglePass2 !== null) {
+  togglePass2.addEventListener("click", () => {
+    if (input2.type === "password") {
+      input2.type = "text";
+      togglePass2.classList.replace("fa-eye-slash", "fa-eye");
+    } else {
+      input2.type = "password";
+      togglePass2.classList.replace("fa-eye", "fa-eye-slash");
+    }
+  });
+}
 
 /**
  *  ===================================

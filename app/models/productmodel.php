@@ -35,7 +35,6 @@ class ProductModel extends AbstractModel
         $sql = 'SELECT apl.*,apc.Name as categoryName FROM '.self::$tableName . ' as apl ';
         $sql .= 'INNER JOIN '.ProductCategoryModel::getModelTableName() . ' as apc ';
         $sql .= 'ON apc.CategoryId = apl.CategoryId ';
-        var_dump(self::get($sql));
         return self::get($sql);
     }
 }
