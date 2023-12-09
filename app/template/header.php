@@ -6,14 +6,16 @@
             <div class="nav-n" id="navbar">
                 <div class="menu-n">
                     <div>
-
+                        <?php
+                        $imageProfile = !empty($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
+                        ?>
                         <div class="info-n">
                             <img src="/uploads/images/" class="logo-n">
                         </div>
                         <span></span>
                         <ul class="profile-n">
                             <li><a href="/users/view"><?= $text_profile ?></a></li>
-                            <li><a href="/users/editprofile">Edit Profile</a></li>
+                            <li><a href="/users/editprofile"><?= $text_edit_profile ?></a></li>
                             <li><a href="#"><?= $text_account_settings?></a></li>
                             <li><a href="/auth/logout"><?= $text_logout?></a></li>
                         </ul>
@@ -35,7 +37,7 @@
                 </div>
                 <div class="container-n">
                     <span class="brand-n"><?php if (isset($title)) {
-                        echo ' > ' . 'title' ;
+                        echo ' > ' . 'Dashboard' ;
                     } ?></span>
                     <div class="container-inner">
                         <ul>
@@ -45,9 +47,10 @@
                         </ul>
                         <a class="photo-name-n" href="/users/view">
                             <div class="photo-n">
-                                <img src="/uploads/images/" alt="">
+                                <img src="/uploads/images/<?= $imageProfile ?>" alt="">
                             </div>
-                            <span class="name-n"></span>
+                            <span
+                                class="name-n"><?= isset($this->session->u->profile->FirstName) ? $this->session->u->profile->FirstName : 'unknown' ?></span>
                         </a>
                     </div>
                     <div class="menu-icon-n" id="menu-btn">
