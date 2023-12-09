@@ -24,6 +24,7 @@
     $_['text_logout'] = 'تسجيل خروج' ;
     $_['text_welcome'] = 'مرحبا' ;
     $_['text_profile'] = 'البيانات الشخصية' ;
+    $_['text_edit_profile'] = 'تعديل الملف الشخصي' ;
     $_['text_account_settings'] = 'إعدادات الحساب' ;
     $_['text_change_password'] = 'تغيير كلمة المرور';
     $_['text_search'] = '...بحث';

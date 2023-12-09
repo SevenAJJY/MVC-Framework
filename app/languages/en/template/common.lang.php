@@ -25,6 +25,8 @@
     $_['text_welcome'] = 'Welcome' ;
     $_['text_profile'] = 'My Profile' ;
     $_['text_account_settings'] = 'Account settings' ;
+    $_['text_edit_profile'] = 'Edit profile' ;
+
     $_['text_change_password'] = 'Change password';
     $_['text_search'] = 'Search...';
     $_['text_not_found'] = 'Page not found';
