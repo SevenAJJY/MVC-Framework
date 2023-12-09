@@ -86,7 +86,8 @@
                     </div>
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="input-box">
-                            <input type="file" id="Image" name="Image" value="<?= $this->showValueV2('Image') ?>" />
+                            <input type="file" accept="image/*" id="Image" name="image"
+                                value="<?= $this->showValueV2('Image') ?>" />
                             <label for="Image"><i class="fa-solid fa-cloud-arrow-up"></i><span
                                     class="ms-4"><?= $text_profile_image ?></span></label>
                         </div>

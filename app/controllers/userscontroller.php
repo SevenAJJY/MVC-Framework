@@ -2,6 +2,7 @@
 
 namespace SEVENAJJY\Controllers;
 
+use SEVENAJJY\Library\FileUpload;
 use SEVENAJJY\Library\Messenger;
 use SEVENAJJY\Models\UserGroupsModel;
 use SEVENAJJY\Models\UserModel;
@@ -53,7 +54,8 @@ class UsersController extends AbstractController
         $this->language->load('validation.errors');
 
         $this->_data['groups'] = UserGroupsModel::getAll() ;
-        
+        $uploadError = false;
+
         if (isset($_POST['submit']) && $this->isValid($this->_createActionRoles, $_POST)) {
             $user =  new UserModel();
             $user->Username = $this->filterString($_POST['Username']);
@@ -65,32 +67,51 @@ class UsersController extends AbstractController
             $user->LastLogin = date('Y-m-d H:i:s') ;
             $user->Status = 1;
 
+            $error = false ;
             if (UserModel::userExists($this->filterString($user->Username))) {
                 $this->messenger->add($this->language->get('message_user_exists') , Messenger::APP_MESSAGE_ERROR);
                 $this->redirect('/users') ;
+                $error = true ;
             }
             if (UserModel::emailExists($this->filterString($_POST['Email']))) {
                 $this->messenger->add($this->language->get('message_email_exists') , Messenger::APP_MESSAGE_ERROR);
                 $this->redirect('/users') ;
+                $error = true ;
             }
 
             //TODO:: SEND THE USER WELCOME EMAIL
-            if ($user->save()) {
-                $userProfile = new UserProfileModel() ;
-                $userProfile->UserId = $user->UserId ;
-                $userProfile->FirstName = $this->filterString($_POST['FirstName']) ;
-                $userProfile->LastName = $this->filterString($_POST['LastName']) ;
-                $userProfile->Address = $this->filterString($_POST['Address']) ;
-                $userProfile->DOB = $this->filterString($_POST['DOB']) ;
+            if ($error != true) {
+                if ($user->save()) {
+                    $userProfile = new UserProfileModel() ;
+                    $userProfile->UserId = $user->UserId ;
+                    $userProfile->FirstName = $this->filterString($_POST['FirstName']) ;
+                    $userProfile->LastName = $this->filterString($_POST['LastName']) ;
+                    $userProfile->Address = $this->filterString($_POST['Address']) ;
+                    $userProfile->DOB = $this->filterString($_POST['DOB']) ;
+                    if(!empty($_FILES['image']['name'])) {
+                        $uploader = new FileUpload($_FILES);
+                        try {
+                            $uploader->upload();
+                            $userProfile->Image = $uploader->getFileName();
+                        } catch (\Exception $e) {
+                            $this->messenger->add($e->getMessage(), Messenger::APP_MESSAGE_ERROR);
+                            $uploadError = true;
+                        }
+                    }
+                    // var_dump($uploadError);exit;
+                    if($uploadError === false && $userProfile->save(false))
+                    {
+                        $this->messenger->add($this->language->get('message_create_success'));
+                        $this->redirect('/users');
+                    } 
+                    else {
+                        $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+                    }
                 }
-                if($userProfile->save(false))
-                {
-                    $this->messenger->add($this->language->get('message_create_success'));
-                    $this->redirect('/users');
-                } 
                 else {
-                    $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+                    $this->messenger->add($this->language->get('message_create_failed') , Messenger::APP_MESSAGE_ERROR);
                 }
+            }
             $this->redirect('/users');            
         }
         $this->_renderView();

@@ -137,12 +137,14 @@
         <li>
             <div class="profile-details">
                 <div class="profile-content">
-
-                    <img src="/uploads/images/" class="image" alt="profileImg">
+                    <?php
+                        $imageProfile = !empty($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
+                    ?>
+                    <img src="/uploads/images/<?= $imageProfile ?>" class="image" alt="profileImg">
                 </div>
                 <div class="name-job">
-                    <div class="profile_name">fname</div>
-                    <div class="job">group name</div>
+                    <div class="profile_name"><?php echo $this->session->u->profile->FirstName ;?></div>
+                    <div class="job"><?php echo $this->session->u->GroupName ;?></div>
                 </div>
                 <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i></a></a>
             </div>
