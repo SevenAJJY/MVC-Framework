@@ -1,5 +1,6 @@
 <div class="home-content">
     <h1 class="main-head"><?php echo $text_header ;?></h1>
+
     <div class="main-button">
         <a href="/clients/create">
             <span><i class="fa-solid fa-plus me-2 ms-2"></i> <?php echo $text_new_item ?></span>
