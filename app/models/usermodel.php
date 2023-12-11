@@ -76,6 +76,11 @@ class UserModel extends AbstractModel
         $this->Password = crypt($password,APP_SALT);
     }
 
+    public function confirmCryptPassword($password)
+    {
+        return crypt($password,APP_SALT);
+    }
+
     /**
      * Fetch the list of all users except the current user, through the information they recorded in the session when logging in
      *
@@ -134,4 +139,13 @@ class UserModel extends AbstractModel
         return false ;
     }
 
+    /**
+     * @param $user
+     * @return User $User
+     */
+    public static function getUserProfile($user)
+    {
+        $sql = 'SELECT * FROM '. self::$tableName . ' WHERE UserId='.$user->UserId  ;
+        return self::getOne($sql) ;
+    }
 }
