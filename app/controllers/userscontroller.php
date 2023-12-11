@@ -35,6 +35,20 @@ class UsersController extends AbstractController
         'PhoneNumber'    => 'alphanum|max(15)',
         'GroupId'        => 'req|int',
     ];
+
+    private $_changePasswordActionRoles = 
+    [
+        'OPassword'       => 'req|min(6)',
+        'NPassword'       => 'req|min(6)|eq_field(CNPassword)',
+        'CNPassword'      => 'req|min(6)',
+    ];
+
+    private $_resetPasswordActionRoles = 
+    [
+        'Password'       => 'req|min(6)|eq_field(CPassword)',
+        'CPassword'      => 'req|min(6)',
+    ];
+    
     public function defaultAction()
     {
         $this->language->load('template.common');
@@ -202,5 +216,186 @@ class UsersController extends AbstractController
                 echo 2 ;
             }
         }
+    }
+    public function viewAction()
+    {
+        $this->language->load('template.common');
+        $this->language->load('users.view');
+        $this->language->load('users.labels');
+        $this->language->load('users.messages');
+        $this->language->load('validation.errors');
+
+        $userProfile = UserProfileModel::getProfile($this->session->u);
+        $this->_data['profile'] = $userProfile ;
+
+        $user = UserModel::getUserProfile($this->session->u) ;
+        $this->_data['user'] = $user ;
+
+        $uploadError = false ;
+        if (isset($_POST['submit'])) {
+            if(!empty($_FILES['image']['name'])) {
+                // Remove the old image
+                if($userProfile->Image !== '' && file_exists(IMAGES_UPLOAD_STORAGE.DS.$userProfile->Image) && is_writable(IMAGES_UPLOAD_STORAGE)) {
+                    unlink(IMAGES_UPLOAD_STORAGE.DS.$userProfile->Image);
+                }
+                // Create a new image
+                $uploader = new FileUpload($_FILES);
+                try {
+                    $uploader->upload();
+                    $userProfile->Image = $uploader->getFileName();
+                } catch (\Exception $e) {
+                    $this->messenger->add($e->getMessage(), Messenger::APP_MESSAGE_ERROR);
+                    $uploadError = true;
+                }
+            }
+            if($uploadError === false && $userProfile->save())
+            {
+                $this->messenger->add($this->language->get('message_create_success'));
+                $this->redirect('/users/view');
+            } else {
+                $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+            }
+        }
+        
+
+        $this->_renderView();
+    }
+
+    public function editprofileAction()
+    {
+        $this->language->load('template.common');
+        $this->language->load('users.editprofile');
+        $this->language->load('users.labels');
+        $this->language->load('users.messages');
+        $this->language->load('validation.errors');
+
+        $user = UserModel::getUserProfile($this->session->u) ;
+        $this->_data['user'] = $user ;
+
+        $userProfile = UserProfileModel::getProfile($this->session->u);
+        $this->_data['profile'] = $userProfile ;
+
+        $uploadError = false ;
+        if (isset($_POST['saveImage'])) {
+            if (!empty($_FILES['Image']['name'])) {
+                ### -> Remove the old Image
+                if ($userProfile->Image !== '' && file_exists(IMAGES_UPLOAD_STORAGE.DS.$userProfile->Image) && is_writable(IMAGES_UPLOAD_STORAGE)) {
+                    unlink(IMAGES_UPLOAD_STORAGE.DS.$userProfile->Image);
+                }
+                ### -> Create a new image
+                $uploader = new FileUpload($_FILES['Image']);
+                try {
+                    $uploader->upload();
+                    $userProfile->Image = $uploader->getFileName();
+                } catch (\Exception $e) {
+                    $this->messenger->add($e->getMessage(), Messenger::APP_MESSAGE_ERROR);
+                    $uploadError = true;
+                }
+            }
+            if($uploadError === false && $userProfile->save())
+            {
+                $this->messenger->add($this->language->get('message_create_success'));
+                $this->redirect('/users/view');
+            } else {
+                $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+            }
+        }
+
+        if (isset($_POST['submit'])) {
+            $user->PhoneNumber = $this->filterString($_POST['PhoneNumber']) ;
+            if ($user->save()) {
+                $userProfile->FirstName = $this->filterString($_POST['FirstName']) ;
+                $userProfile->LastName = $this->filterString($_POST['LastName']) ;
+                $userProfile->Address = $this->filterString($_POST['Address']) ;
+                $userProfile->DOB = $this->filterString($_POST['DOB']) ;
+                if($userProfile->save())
+                {
+                    $this->messenger->add($this->language->get('message_create_success'));
+                    $this->redirect('/users/view');
+                } 
+                else {
+                    $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+                }
+            }
+            else {
+                $this->messenger->add($this->language->get('message_create_failed') , Messenger::APP_MESSAGE_ERROR);
+            }
+            $this->redirect('/users') ;
+        }
+
+        $this->_renderView();
+    }
+
+    public function changepasswordAction()
+    {
+        $this->language->load('template.common');
+        $this->language->load('users.changepassword');
+        $this->language->load('users.labels');
+        $this->language->load('users.messages');
+        $this->language->load('validation.errors');
+
+        $user = UserModel::getByKey($this->session->u->UserId) ;
+        $this->_data['user'] = $user ;
+
+        $userProfile = UserProfileModel::getProfile($this->session->u);
+        $this->_data['profile'] = $userProfile ; 
+
+        if (isset($_POST['submit']) && $this->isValid($this->_changePasswordActionRoles , $_POST)) {
+            $newPassword = $user->confirmCryptPassword($_POST['OPassword']);
+            if($user->Password === $newPassword){
+                $user->cryptPassword($_POST['NPassword']);
+                if ($user->save()) {
+                    $this->messenger->add($this->language->get('message_create_success'));
+                }
+                else {
+                    $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+                }
+            }else {
+                $this->messenger->add($this->language->get('message_password_mismatch'), Messenger::APP_MESSAGE_ERROR);
+                $this->redirect('/users/changepassword') ;
+            }
+            $this->redirect('/users/view') ;
+        }
+
+        $this->_renderView();
+    }
+
+
+    public function resetpasswordAction()
+    {
+        $this->language->load('template.common');
+        $this->language->load('users.resetpassword');
+        $this->language->load('users.messages');
+        $this->language->load('validation.errors');
+
+        $id = $this->_getParams(0, 'int');
+
+        $user = UserModel::getByKey($id);
+
+        if($user === false || $user->UserId === $this->session->u->UserId) {
+            $this->redirect('/users');
+        }
+
+        if (isset($_POST['submit'])) {
+            if ($this->isValid($this->_resetPasswordActionRoles , $_POST)) {
+                if ($this->filterString($_POST['Password']) == $this->filterString($_POST['CPassword'])) {
+                    $user->cryptPassword($_POST['Password']);
+                    if ($user->save()) {
+                        $this->messenger->add($this->language->get('message_create_success'));
+                    }
+                    else {
+                        $this->messenger->add($this->language->get('message_password_mismatch'), Messenger::APP_MESSAGE_ERROR);
+                        $this->redirect('/users/resetpassword') ;
+                    }
+                }
+                else {
+                    $this->messenger->add($this->language->get('message_password_mismatch'), Messenger::APP_MESSAGE_ERROR);
+                    $this->redirect('/users/resetpassword') ;
+                }
+            }
+            $this->redirect('/users/default') ;
+        }
+
+        $this->_renderView();
     }
 }
