@@ -9,7 +9,7 @@
     </div>
     <i class="fa-solid fa-angle-right bx-menu"></i>
     <ul class="nav-links">
-        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu('index')) echo 'selected_links'; ?>">
             <a href="/">
                 <i class="fa-solid fa-chart-column"></i>
                 <span class="link_name"><?= $text_general_statistics ?></span>
@@ -18,7 +18,7 @@
                 <li><a class="link_name" href="#"><?= $text_general_statistics ?></a></li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu(['purchases', 'sales'])) echo 'selected_links'; ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
@@ -34,7 +34,7 @@
                             class="fa-solid fa-bag-shopping sub-icons"></i><?= $text_transactions_sales ?></a></li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu(['expensescategories', 'dailyexpenses'])) echo 'selected_links'; ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-wallet "></i>
@@ -51,7 +51,7 @@
                 </li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu(['productscategories', 'productlist'])) echo 'selected_links'; ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-store "></i>
@@ -67,7 +67,7 @@
                 </li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/clients') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu('clients')) echo 'selected_links'; ?>">
             <a href="/clients">
                 <i class="fa-solid fa-user-tie "></i>
                 <span class="link_name"><?= $text_clients ?></span>
@@ -76,7 +76,7 @@
                 <li><a class="link_name" href="/clients"><?= $text_clients ?></a></li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/suppliers') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu('suppliers')) echo 'selected_links'; ?>">
             <a href="/suppliers">
                 <i class="fa-solid fa-user-group"></i>
                 <span class="link_name"><?= $text_suppliers ?></span>
@@ -85,7 +85,7 @@
                 <li><a class="link_name" href="/suppliers"><?= $text_suppliers ?></a></li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu(['users', 'users', 'privileges'])) echo 'selected_links'; ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-users-gear"></i> <span class="link_name"><?= $text_users ?> </span>
@@ -95,14 +95,14 @@
             <ul class="sub-menu">
                 <li class=""><a class="link_name" href="#"><?= $text_users ?> </a></li>
                 <li><a href="/users"><i class="fa-solid fa-circle-user sub-icons"></i><?= $text_users_list ?></a></li>
-                <li><a href="/usersgroups"><i class="fa-solid fa-users-rays sub-icons"></i><?= $text_users_groups ?></a>
+                <li><a href="/users"><i class="fa-solid fa-users-rays sub-icons"></i><?= $text_users_groups ?></a>
                 </li>
                 <li><a href="/privileges"><i class="fa-solid fa-key sub-icons"></i><?= $text_users_privileges ?></a>
                 </li>
             </ul>
         </li>
 
-        <li class="<?= $this->matchURL('/notifications') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu('notifications')) echo 'selected_links'; ?>">
             <a href="/notifications">
                 <i class="fa-regular fa-bell"></i>
                 <span class="link_name"><?= $text_notifications ?> </span>
@@ -111,7 +111,7 @@
                 <li><a class="link_name" href="/notifications"><?= $text_notifications ?> </a></li>
             </ul>
         </li>
-        <li class="<?= $this->matchURL('/language') ? "selected" : '' ?>">
+        <li class="<?php if($this->highlightMenu('language')) echo 'selected_links'; ?>">
             <a href="/language">
                 <i class="icon-language"></i>
                 <span class="link_name"><?= $_SESSION['lang'] == 'ar' ? 'انجليزي' : 'Arabic' ?></span>
@@ -151,5 +151,6 @@
         </li>
     </ul>
 </div>
+
 
 <!-- End Sidebar -->

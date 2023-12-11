@@ -7,6 +7,29 @@ trait TemplateHelper {
     }
 
     /**
+     * @param mixed $controller
+     * 
+     * @return bool
+     */
+    public function highlightMenu($controller)
+    {
+        $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        @list($cont) = explode('/', $url, 2);
+        
+        if(!isset($cont) || empty($cont)) {
+            $cont = 'index';
+        }
+        // var_dump(strtolower($cont) === $controller);
+        
+        if(is_array($controller) && in_array(strtolower($cont), $controller)) {
+            return true;
+        } else if(strtolower($cont) === $controller) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * method to help me when I made a mistake in a field version 1
      * 
      * @param mixed $fielfName

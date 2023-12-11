@@ -452,6 +452,11 @@ ul {
   border-left: 2px solid var(--secondary-color);
 }
 
+.sidebar .nav-links li.selected_links {
+  background-color: var(--primary-color-light);
+  border-left: 2px solid var(--secondary-color);
+}
+
 .sidebar .nav-links > li:hover {
   background: var(--primary-color-light);
   border-left: 2px solid var(--secondary-color);
