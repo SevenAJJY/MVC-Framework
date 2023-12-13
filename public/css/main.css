@@ -1116,6 +1116,7 @@ body.dark .home-section nav .profile-details {
 .home-content {
   padding: 0 20px;
   transition: var(--tran-04);
+  overflow: hidden;
 }
 
 .tables {

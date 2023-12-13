@@ -19,7 +19,6 @@ trait TemplateHelper {
         if(!isset($cont) || empty($cont)) {
             $cont = 'index';
         }
-        // var_dump(strtolower($cont) === $controller);
         
         if(is_array($controller) && in_array(strtolower($cont), $controller)) {
             return true;
