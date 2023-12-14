@@ -2395,6 +2395,10 @@ body.element-none .home-content {
   padding: 8px;
   border-radius: 6px;
   text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .addProduct:hover {

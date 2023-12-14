@@ -10,7 +10,7 @@
                         $imageProfile = !empty($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
                         ?>
                         <div class="info-n">
-                            <img src="/uploads/images/" class="logo-n">
+                            <img src="/uploads/images/<?= $imageProfile ?>" class="logo-n">
                         </div>
                         <span></span>
                         <ul class="profile-n">
@@ -61,10 +61,9 @@
                 </div>
             </div>
         </header>
-
     </section>
 
-    <?php 
+    <?php
             $messages = $this->messenger->getMessages();
             if (!empty($messages))
             {
