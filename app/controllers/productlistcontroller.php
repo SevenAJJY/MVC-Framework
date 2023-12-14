@@ -14,6 +14,7 @@ class ProductListController extends AbstractController
         'CategoryId'  => 'req|num',
         'Name'        => 'req|alphanum|between(3,50)',
         'Quantity'    => 'req|num',
+        'PiecesInBox'    => 'req|num',
         'BuyPrice'    => 'req|num',
         'SellPrice'   => 'req|num',
         'Unit'        => 'req|num',
@@ -47,6 +48,7 @@ class ProductListController extends AbstractController
             $product->Name = $this->filterString($_POST['Name']);
             $product->CategoryId = $this->filterInt($_POST['CategoryId']);
             $product->Quantity = $this->filterInt($_POST['Quantity']);
+            $product->PiecesInBox = $this->filterInt($_POST['PiecesInBox']);
             $product->BuyPrice = $this->filterFloat($_POST['BuyPrice']);
             $product->SellPrice = $this->filterFloat($_POST['SellPrice']);
             $product->Unit = $this->filterInt($_POST['Unit']);
@@ -101,6 +103,7 @@ class ProductListController extends AbstractController
             $product->Name = $this->filterString($_POST['Name']);
             $product->CategoryId = $this->filterInt($_POST['CategoryId']);
             $product->Quantity = $this->filterInt($_POST['Quantity']);
+            $product->PiecesInBox = $this->filterInt($_POST['PiecesInBox']);
             $product->BuyPrice = $this->filterFloat($_POST['BuyPrice']);
             $product->SellPrice = $this->filterFloat($_POST['SellPrice']);
             $product->Unit = $this->filterInt($_POST['Unit']);

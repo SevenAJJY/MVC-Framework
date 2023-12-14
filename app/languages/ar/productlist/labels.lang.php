@@ -8,4 +8,5 @@ $_['text_label_BuyPrice'] = 'سعر الشراء';
 $_['text_label_SellPrice'] = 'سعر البيع';
 $_['text_label_Unit'] = 'وحدة قياس المنتج';
 $_['text_label_Image'] = 'صورة المنتج';
+$_['text_label_PiecesInBox'] = 'كم قطعة في الصندوق';
 $_['text_label_save'] = 'حفظ';

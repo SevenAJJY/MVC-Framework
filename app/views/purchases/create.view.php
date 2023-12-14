@@ -1,4 +1,4 @@
-<div class="home-content" >
+<div class="home-content">
     <div class="">
         <h1 class="main-head"><?php echo $text_header ;?></h1>
 
@@ -81,7 +81,7 @@
                                 <select name="products" class="form-select select-box " id="products">
                                     <option value=""><?= $text_select ?></option>
                                     <?php if (false !== $products): foreach ($products as $product): ?>
-                                    <option data-price="<?= $product->SellPrice ?>"
+                                    <option data-price="<?= $product->BuyPrice ?>"
                                         <?= $this->selectedIf('products' ,  $product->ProductId);  ?>
                                         value="<?= $product->ProductId ?>"><?= $product->Name ?></option>
                                     <?php endforeach;endif; ?>

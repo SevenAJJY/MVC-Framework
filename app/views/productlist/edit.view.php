@@ -62,7 +62,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class=" col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-sm-12">
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                        <div class="input-box">
+                            <input type="number" spellcheck="false" name="PiecesInBox" min="1" step="1"
+                                value="<?= $this->showValueV2('PiecesInBox', $product) ?>" required />
+                            <label><?= $text_label_PiecesInBox ?></label>
+                        </div>
+                    </div>
+                    <div class=" col-md-6  col-lg-6 col-sm-12">
                         <div class="input-box">
                             <input type="file" accept="image/*" spellcheck="false" id="file" name="image" />
                             <label for="file"><i class="fa-solid fa-cloud-arrow-up"></i><span

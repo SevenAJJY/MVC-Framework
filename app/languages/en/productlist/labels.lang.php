@@ -8,4 +8,6 @@ $_['text_label_BuyPrice'] = 'Purchasing Price';
 $_['text_label_SellPrice'] = 'Selling Price';
 $_['text_label_Unit'] ='product unit of measure';
 $_['text_label_Image'] = 'Product Image';
+$_['text_label_PiecesInBox'] = 'how many pieces in the box';
+
 $_['text_label_save'] = 'Save';
