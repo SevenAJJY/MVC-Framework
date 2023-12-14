@@ -68,4 +68,10 @@ trait TemplateHelper {
     {
         return ((isset($_POST[$fielfName]) && $_POST[$fielfName] == $value) || (!is_null($object) && $object->$fielfName  == $value)) ? 'selected="selected"' : '' ; 
     }
+
+    
+    public function boxCheckedIf($fieldName, $value, $object = null)
+    {
+        return (isset($_POST[$fieldName]) == $value || ($object !== null && $value == $object->$fieldName)) ? 'checked' : '';
+    }
 }
