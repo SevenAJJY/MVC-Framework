@@ -36,4 +36,18 @@ trait InputFilter
     {
         return htmlentities(strip_tags($input), ENT_QUOTES, "UTF-8");
     }
+
+    /**
+     * filter ans sanitize array of strings
+     * @param array $arr
+     * 
+     * @return  array
+     */
+    public function filterStringArray(array $arr)
+    {
+        foreach ($arr as $key => $value) {
+            $arr[$key] = htmlentities(strip_tags(trim($value)), ENT_QUOTES, 'utf-8');
+        }
+        return $arr;
+    }
 }
