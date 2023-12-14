@@ -16,10 +16,15 @@ return [
             'STYLEBOOTSTRAP' => CSS . 'styleBootstrap.css',
             'STYLE'          => CSS . 'style.css',
             'MAIN'           => CSS . 'main.css',
-        ],
+        ]
+        ,
+        'JS' => [
+            'modernizr' => JS . 'vendor/modernizr-2.6.2.min.js'
+        ]
     ],
     'footerResources' => [
         'js' => [ 
+            'JQUERY'         => JS . 'vendor/jquery-1.10.2.min.js',
             'BOOTSTRAP'      => JS . 'bootstrap.js',
             'APP'            => JS . 'app.js',
             'MAIN'           => JS . 'main.js',
