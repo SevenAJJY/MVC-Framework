@@ -13,6 +13,7 @@ class ProductModel extends AbstractModel
     public $BuyPrice ;
     public $SellPrice ; 
     public $Unit ; 
+    public $PiecesInBox ; 
     public $BarCode ; 
 
     protected static $tableName = 'app_products_list' ;
@@ -25,6 +26,7 @@ class ProductModel extends AbstractModel
         'BuyPrice'      => self::DATA_TYPE_DECIMAL,
         'SellPrice'     => self::DATA_TYPE_DECIMAL,
         'Unit'          => self::DATA_TYPE_INT,
+        'PiecesInBox'   => self::DATA_TYPE_INT,
         'BarCode'       => self::DATA_TYPE_STR
     );
 

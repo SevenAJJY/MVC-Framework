@@ -2809,3 +2809,19 @@ body.element-none .home-content {
 .n-height {
   height: 250px !important;
 }
+
+.self_info {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.self_info strong {
+  font-size: 35px;
+  font-weight: 800;
+  color: var(--secondary-color);
+}
+
+.line {
+  position: relative;
+  border-right: 2px solid var(--text-color);
+}
