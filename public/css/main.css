@@ -2475,7 +2475,8 @@ body.element-none .home-content {
 .invoice-view {
   background-color: var(--store-Degree-four);
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100%;
+  margin: 20px 0;
 }
 
 .invoice-view div > .headder {
@@ -2499,6 +2500,7 @@ body.element-none .home-content {
 .purchase-invoice {
   padding: 40px;
   border: 1px solid var(--store-Degree-one);
+  color: var(--text-color);
 }
 
 .purchase-invoice ul li span {
@@ -2813,6 +2815,7 @@ body.element-none .home-content {
 .self_info {
   text-align: center;
   color: var(--text-color);
+  margin-bottom: 50px;
 }
 
 .self_info strong {
@@ -2824,4 +2827,54 @@ body.element-none .home-content {
 .line {
   position: relative;
   border-right: 2px solid var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .line {
+    border-right: none;
+  }
+}
+
+.table > :not(:first-child) {
+  border-top: none;
+}
+
+.table > :not(:first-child) {
+  border-top: none;
+}
+
+.product-list {
+  border: 1px solid #cccccc7a;
+}
+
+.product-list tr td {
+  border: 1px solid #cccccc7a;
+}
+
+.bill-table th {
+  text-align: center;
+}
+
+.bill-total {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-bottom: 20px;
+}
+
+.bill-total > p {
+  margin-right: 20px;
+}
+
+.bill-total > p,
+.bill-total > span {
+  color: var(--text-color);
+  font-weight: 800;
+}
+
+.bill-total > span {
+  border: 2px solid var(--text-color);
+  width: 200px;
+  padding: 3px;
+  text-align: center;
 }
