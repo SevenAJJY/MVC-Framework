@@ -184,7 +184,7 @@
                 'SELECT *, (SELECT Name FROM app_suppliers WHERE app_suppliers.SupplierId = app_purchases_invoices.SupplierId) Name
                 FROM app_purchases_invoices
                 WHERE InvoiceId = ' . $id
-            );
+            );            
     
             if($invoice === false) {
                 $this->redirectBack('/purchases');
@@ -193,9 +193,10 @@
             $this->language->load('template.common');
             $this->language->load('purchases.view');
             $this->language->load('purchases.labels');
+            $this->language->load('purchases.units');
     
             $this->_data['invoice'] = $invoice;
-            $this->_data['details'] = SupplierInvoiceDetailsModel::getInvoiceById($invoice);
+            $this->_data['productDetails'] = SupplierInvoiceDetailsModel::getInvoiceById($invoice);
 
             $this->_data['title'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->Created))->format('ym') . $invoice->InvoiceId;
             $this->_data['text_header'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->Created))->format('ym') . $invoice->InvoiceId;
