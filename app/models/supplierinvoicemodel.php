@@ -27,26 +27,30 @@ class SupplierInvoiceModel extends AbstractModel
         {
             $invoices = self::get(
                 'SELECT api.*,  
-                (SELECT SUM(ProductPrice * Quantity) FROM app_purchases_invoices_detailes WHERE InvoiceID = api.InvoiceId) total,
+                (SELECT SUM((APID.Quantity * APL.PiecesInBox) * APID.ProductPrice) FROM app_purchases_invoices_detailes APID INNER JOIN app_products_list APL  ON APID.ProductId = APL.ProductId  WHERE APID.InvoiceID = api.InvoiceId) Total,
                 (SELECT COUNT(*) FROM app_purchases_invoices_detailes WHERE InvoiceID = api.InvoiceId) ptotal,
-                (SELECT SUM(PaymentAmount) FROM app_purchases_invoices_receipts WHERE app_purchases_invoices_receipts.InvoiceId = api.InvoiceId) totalPaid,
+                (SELECT SUM(PaymentAmount) FROM app_suppliers_invoices_payment_vouchers WHERE app_suppliers_invoices_payment_vouchers.InvoiceId = api.InvoiceId) totalPaid,
                 (SELECT Name FROM app_suppliers WHERE app_suppliers.SupplierId = api.SupplierId) supplier
                 FROM ' . self::$tableName . ' api'
             );
             return $invoices;
         }
 
-        public function getInvoiceTotal()
+        public function getInvoiceTotal($invoice)
         {
-            return (int) self::get('SELECT SUM(ProductPrice * Quantity) total FROM app_purcheses_invoices_details WHERE InvoiceID = ' . $this->InvoiceId)->current()->total;
+            return (float) self::get(
+                'SELECT SUM((APID.Quantity * APL.PiecesInBox) * APID.ProductPrice) Total FROM app_purchases_invoices_detailes APID 
+                INNER JOIN app_products_list APL 
+                ON APID.ProductId = APL.ProductId
+                WHERE APID.InvoiceId = ' . $invoice->InvoiceId )->current()->Total;
         }
 
         public static function getLatest(): \ArrayIterator|false{
             $invoices = self::get(
                 'SELECT api.*,  
-                (SELECT SUM(ProductPrice * Quantity) FROM app_purcheses_invoices_details WHERE InvoiceID = api.InvoiceId) total,
-                (SELECT COUNT(*) FROM app_purcheses_invoices_details WHERE InvoiceID = api.InvoiceId) ptotal,
-                (SELECT SUM(PaymentAmount) FROM app_purchases_invoices_receipts WHERE app_purchases_invoices_receipts.InvoiceId = api.InvoiceId) totalPaid,
+                (SELECT SUM(ProductPrice * Quantity) FROM app_purchases_invoices_detailes WHERE InvoiceID = api.InvoiceId) total,
+                (SELECT COUNT(*) FROM app_purchases_invoices_detailes WHERE InvoiceID = api.InvoiceId) ptotal,
+                (SELECT SUM(PaymentAmount) FROM app_suppliers_invoices_payment_vouchers WHERE app_suppliers_invoices_payment_vouchers.InvoiceId = api.InvoiceId) totalPaid,
                 (SELECT Name FROM app_suppliers WHERE app_suppliers.SupplierId = api.SupplierId) supplier
                 FROM ' . self::$tableName . ' api ORDER BY '.self::$primaryKey.' DESC LIMIT 5'
             );
