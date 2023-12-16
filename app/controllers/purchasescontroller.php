@@ -23,7 +23,6 @@
             $this->language->load('purchases.labels');
 
             $this->_data['invoices'] = SupplierInvoiceModel::getAll();
-
             $this->_renderView();
         }
 
