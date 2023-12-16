@@ -33,7 +33,7 @@
                     <td><span class="added-to-store added-<?= $invoice->AddedToStore ?>">
                             <?= ${'text_added_to_store_' . $invoice->AddedToStore}; ?> </span></td>
                     <td><?= $invoice->ptotal ?></td>
-                    <td><?= round($invoice->total, 2) ?> €</td>
+                    <td><?= number_format((float) $invoice->Total, 2, '.', '') ?> €</td>
                     <td><?= ${'text_payment_type_' . $invoice->PaymentType}; ?></td>
                     <td><?= $invoice->totalPaid == null ? 0 : $invoice->totalPaid ?> €</td>
                     <td class="controls_td">
@@ -47,14 +47,14 @@
                             onclick="return confirm('<?= $text_table_control_deliver_confirm ; ?>');"><i
                                 class="fa-solid fa-truck-fast"></i></a>
                         <?php endif ?>
-                        <?php if ($invoice->total > $invoice->totalPaid): ?>
+                        <?php if ($invoice->Total > $invoice->totalPaid): ?>
                         <a href="/paymentvoucher/create/<?= $invoice->InvoiceId ?>"><i
-                                class="fa fa-credit-card"></i></a>
-                        <?php endif; ?>
-                        <?php if ($invoice->totalPaid != null): ?>
-                        <a href="/paymentvoucher/default/<?= $invoice->InvoiceId ?>"><i
-                                class="fa-solid fa-clipboard-list"></i></a>
-                        <?php endif; ?>
+                                class="fa-solid fa-money-bill-transfer"></i>
+                            <?php endif; ?>
+                            <?php if ($invoice->totalPaid != null): ?>
+                            <a href="/paymentvoucher/default/<?= $invoice->InvoiceId ?>"><i
+                                    class="fa-solid fa-clipboard-list"></i></a>
+                            <?php endif; ?>
                     </td>
                     <?php
                     echo '</tr>' ;

@@ -11,7 +11,7 @@
             <p class="self_iva">P. iva 03588290837</p>
         </div>
 
-        <?php var_dump($this->session->lang); ?>
+        <?php /*var_dump($this->session->lang);*/ ?>
 
         <div class="purchase-invoice" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
             <div class="row">
