@@ -48,4 +48,12 @@ class Language{
             return call_user_func_array('sprintf',$data);
         }
     } 
+
+    public function feed($key, $replace)
+    {
+        if(array_key_exists($key, $this->_dictionary)) {
+            array_unshift($replace, $this->_dictionary[$key]);
+            $this->_dictionary[$key] = call_user_func_array('sprintf', $replace);
+        }
+    }
 }
