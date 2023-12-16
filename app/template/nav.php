@@ -85,7 +85,7 @@
                 <li><a class="link_name" href="/suppliers"><?= $text_suppliers ?></a></li>
             </ul>
         </li>
-        <li class="<?php if($this->highlightMenu(['users', 'users', 'privileges'])) echo 'selected_links'; ?>">
+        <li class="<?php if($this->highlightMenu(['users', 'usersgroups', 'privileges'])) echo 'selected_links'; ?>">
             <div class="iocn-link">
                 <a href="javascript:;">
                     <i class="fa-solid fa-users-gear"></i> <span class="link_name"><?= $text_users ?> </span>
@@ -95,7 +95,7 @@
             <ul class="sub-menu">
                 <li class=""><a class="link_name" href="#"><?= $text_users ?> </a></li>
                 <li><a href="/users"><i class="fa-solid fa-circle-user sub-icons"></i><?= $text_users_list ?></a></li>
-                <li><a href="/users"><i class="fa-solid fa-users-rays sub-icons"></i><?= $text_users_groups ?></a>
+                <li><a href="/usersgroups"><i class="fa-solid fa-users-rays sub-icons"></i><?= $text_users_groups ?></a>
                 </li>
                 <li><a href="/privileges"><i class="fa-solid fa-key sub-icons"></i><?= $text_users_privileges ?></a>
                 </li>
