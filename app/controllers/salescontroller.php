@@ -57,7 +57,7 @@
                 if ($sales->save()) {
                     for ($i=0; $i < count($productsIds); $i++) { 
                         $details = new ClientInvoiceDetailsModel();
-                        $details->InvoiceID = $sales->InvoiceId ;
+                        $details->InvoiceId = $sales->InvoiceId ;
                         $details->ProductId = $productsIds[$i] ;
                         $details->Quantity = $productsQuantities[$i] ;
                         $details->ProductPrice = $productsPrices[$i] ;
@@ -135,7 +135,7 @@
 
                             for ( $i = 0, $ii = count($productsIds); $i < $ii; $i++ ) {
                                 $details = new ClientInvoiceDetailsModel();
-                                $details->InvoiceID = $invoice->InvoiceId;
+                                $details->InvoiceId = $invoice->InvoiceId;
                                 $details->ProductId = $productsIds[$i];
                                 $details->Quantity = $productsQuantities[$i];
                                 $details->ProductPrice = $productsPrices[$i];
@@ -180,8 +180,8 @@
         {
             $id = $this->_getParams(0, 'int');
     
-            $invoice = SupplierInvoiceModel::getOne(
-                'SELECT *, (SELECT Name FROM app_suppliers WHERE app_suppliers.SupplierId = app_sales_invoices.SupplierId) Name
+            $invoice = ClientInvoiceModel::getOne(
+                'SELECT *, (SELECT Name FROM app_clients WHERE app_clients.ClientId = app_sales_invoices.ClientId) Name
                 FROM app_sales_invoices
                 WHERE InvoiceId = ' . $id
             );
@@ -193,9 +193,10 @@
             $this->language->load('template.common');
             $this->language->load('sales.view');
             $this->language->load('sales.labels');
+            $this->language->load('sales.units');
     
             $this->_data['invoice'] = $invoice;
-            $this->_data['details'] = SupplierInvoiceDetailsModel::getInvoiceById($invoice);
+            $this->_data['productDetails'] = ClientInvoiceDetailsModel::getInvoiceById($invoice);
 
             $this->_data['title'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->Created))->format('ym') . $invoice->InvoiceId;
             $this->_data['text_header'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->Created))->format('ym') . $invoice->InvoiceId;
