@@ -27,7 +27,7 @@ class ClientInvoiceModel extends AbstractModel
         {
             $invoices = self::get(
                 'SELECT asi.*,  
-                (SELECT SUM(ProductPrice * Quantity) FROM app_sales_invoices_details WHERE InvoiceID = asi.InvoiceId) total,
+                (SELECT SUM((ASID.Quantity * APL.PiecesInBox) * ASID.ProductPrice) FROM app_sales_invoices_details ASID INNER JOIN app_products_list APL  ON ASID.ProductId = APL.ProductId  WHERE ASID.InvoiceId = asi.InvoiceId) Total,
                 (SELECT COUNT(*) FROM app_sales_invoices_details WHERE InvoiceID = asi.InvoiceId) ptotal,
                 (SELECT SUM(PaymentAmount) FROM app_sales_invoices_receipts WHERE app_sales_invoices_receipts.InvoiceId = asi.InvoiceId) totalPaid,
                 (SELECT Name FROM app_clients WHERE app_clients.ClientId = asi.ClientId) supplier
@@ -45,7 +45,7 @@ class ClientInvoiceModel extends AbstractModel
         {
             $invoices = self::get(
                 'SELECT asi.*,  
-                (SELECT SUM(ProductPrice * Quantity) FROM app_sales_invoices_details WHERE InvoiceID = asi.InvoiceId) total,
+                (SELECT SUM(ProductPrice * Quantity) FROM app_sales_invoices_details WHERE Id = asi.InvoiceId) total,
                 (SELECT COUNT(*) FROM app_sales_invoices_details WHERE InvoiceID = asi.InvoiceId) ptotal,
                 (SELECT SUM(PaymentAmount) FROM app_sales_invoices_receipts WHERE app_sales_invoices_receipts.InvoiceId = asi.InvoiceId) totalPaid,
                 (SELECT Name FROM app_clients WHERE app_clients.ClientId = asi.ClientId) ClientName
