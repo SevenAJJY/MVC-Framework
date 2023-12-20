@@ -18,6 +18,8 @@
                     <th><?= $text_table_total ?></th>
                     <th><?= $text_table_payment_type; ?></th>
                     <th><?= $text_table_paid; ?></th>
+                    <th><?= $text_table_payment_status; ?></th>
+
                     <th><?= $text_table_control ?></th>
                 </tr>
             </thead>
@@ -36,6 +38,17 @@
                     <td><?= number_format((float) $invoice->Total, 2, '.', '') ?> €</td>
                     <td><?= ${'text_payment_type_' . $invoice->PaymentType}; ?></td>
                     <td><?= $invoice->totalPaid == null ? 0 : $invoice->totalPaid ?> €</td>
+                    <td>
+                        <?php 
+                            $invoice->totalPaid == null ? 0 : $invoice->totalPaid ;
+                            if (floor($invoice->Total) == floor($invoice->totalPaid)) {
+                                echo "<span class='status-1'> </span>";
+                            }elseif (floor($invoice->Total) >= floor($invoice->totalPaid)) {
+                                echo "<span class='status-2'> </span>";
+                            }
+                            
+                            ?>
+                    </td>
                     <td class="controls_td">
                         <a href="/purchases/view/<?= $invoice->InvoiceId ?>"><i class="fa-regular fa-eye"></i></a>
                         <?php if ($invoice->AddedToStore != 1): ?>

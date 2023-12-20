@@ -1,5 +1,5 @@
 <div class="home-content">
-    <h1 class="main_head"><?php echo $text_header ;?></h1>
+    <h1 class="main-head"><?php echo $text_header ;?></h1>
     <div class="main-button">
         <a href="/sales/create">
             <span><i class="fa-solid fa-plus me-2 ms-2"></i> <?php echo $text_new_item ?></span>
@@ -34,15 +34,15 @@
                     <td><span class="added-to-store added-<?= $invoice->ProductsDelivery ?>">
                             <?= ${'text_added_to_store_' . $invoice->ProductsDelivery}; ?> </span></td>
                     <td><?= $invoice->ptotal ?></td>
-                    <td><?= round($invoice->total,2) ?> DH</td>
+                    <td><?= round($invoice->Total,2) ?> €</td>
                     <td><?= ${'text_payment_type_' . $invoice->PaymentType}; ?></td>
-                    <td><?= $invoice->totalPaid == null ? 0 : $invoice->totalPaid ?> DH</td>
+                    <td><?= $invoice->totalPaid == null ? 0 : $invoice->totalPaid ?> €</td>
                     <td>
                         <?php 
                             $invoice->totalPaid == null ? 0 : $invoice->totalPaid ;
-                            if (floor($invoice->total) == floor($invoice->totalPaid)) {
+                            if (floor($invoice->Total) == floor($invoice->totalPaid)) {
                                 echo "<span class='status-1'> </span>";
-                            }elseif (floor($invoice->total) >= floor($invoice->totalPaid)) {
+                            }elseif (floor($invoice->Total) >= floor($invoice->totalPaid)) {
                                 echo "<span class='status-2'> </span>";
                             }
                             
@@ -59,7 +59,7 @@
                             onclick="return confirm('<?= $text_table_control_deliver_confirm ; ?>');"><i
                                 class="fa-solid fa-truck-fast"></i></a>
                         <?php endif ?>
-                        <?php if ($invoice->total > $invoice->totalPaid): ?>
+                        <?php if ($invoice->Total > $invoice->totalPaid): ?>
                         <a href="/receiptvoucher/create/<?= $invoice->InvoiceId ?>"><i
                                 class="fa fa-credit-card"></i></a>
                         <?php endif; ?>
