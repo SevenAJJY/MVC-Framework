@@ -21,14 +21,14 @@
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="input-box">
-                            <input type="number" spellcheck="false" name="BuyPrice" min="1" step="0.01"
+                            <input type="number" spellcheck="false" name="BuyPrice" step="0.01"
                                 value="<?= $this->showValueV2('BuyPrice', $product) ?>" required />
                             <label><?= $text_label_BuyPrice ?></label>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="input-box">
-                            <input type="number" spellcheck="false" name="SellPrice" min="1" step="0.01"
+                            <input type="number" spellcheck="false" name="SellPrice" step="0.01"
                                 value="<?= $this->showValueV2('SellPrice', $product) ?>" required />
                             <label><?= $text_label_SellPrice ?></label>
                         </div>

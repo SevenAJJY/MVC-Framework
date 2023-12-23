@@ -34,9 +34,10 @@
                     <td><span class="added-to-store added-<?= $invoice->ProductsDelivery ?>">
                             <?= ${'text_added_to_store_' . $invoice->ProductsDelivery}; ?> </span></td>
                     <td><?= $invoice->ptotal ?></td>
-                    <td><?= round($invoice->Total,2) ?> €</td>
+                    <td><?= number_format((float) $invoice->Total, 2, '.', '') ?> €</td>
                     <td><?= ${'text_payment_type_' . $invoice->PaymentType}; ?></td>
-                    <td><?= $invoice->totalPaid == null ? 0 : $invoice->totalPaid ?> €</td>
+                    <td><?= $invoice->totalPaid == null ? 0 : number_format((float) $invoice->totalPaid, 2, '.', '')  ?>
+                        €</td>
                     <td>
                         <?php 
                             $invoice->totalPaid == null ? 0 : $invoice->totalPaid ;
@@ -59,7 +60,8 @@
                             onclick="return confirm('<?= $text_table_control_deliver_confirm ; ?>');"><i
                                 class="fa-solid fa-truck-fast"></i></a>
                         <?php endif ?>
-                        <?php if ($invoice->Total > $invoice->totalPaid): ?>
+
+                        <?php if (floor($invoice->Total) > floor($invoice->totalPaid)): ?>
                         <a href="/receiptvoucher/create/<?= $invoice->InvoiceId ?>"><i
                                 class="fa fa-credit-card"></i></a>
                         <?php endif; ?>
