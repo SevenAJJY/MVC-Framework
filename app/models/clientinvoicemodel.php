@@ -36,9 +36,13 @@ class ClientInvoiceModel extends AbstractModel
             return $invoices;
         }
 
-        public function getInvoiceTotal()
+        public function getInvoiceTotal($invoice)
         {
-            return (int) self::get('SELECT SUM(ProductPrice * Quantity) total FROM app_sales_invoices_details WHERE InvoiceID = ' . $this->InvoiceId)->current()->total;
+            return (float) self::get(
+                'SELECT SUM((ASID.Quantity * APL.PiecesInBox) * ASID.ProductPrice) Total FROM app_sales_invoices_details ASID 
+                INNER JOIN app_products_list APL 
+                ON ASID.ProductId = APL.ProductId
+                WHERE ASID.InvoiceId = ' . $invoice->InvoiceId )->current()->Total;
         }
 
         public static function getLatest(): \ArrayIterator|false
