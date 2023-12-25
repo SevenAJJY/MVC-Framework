@@ -7,7 +7,7 @@
                 <form action="" class="appform row" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="input-box">
-                            <input type="text" spellcheck="false" name="Name" maxlength="20"
+                            <input type="text" spellcheck="false" name="Name" maxlength="50"
                                 value="<?= $this->showValueV2('Name', $product) ?>" required>
                             <label for=""><?= $text_label_Name ?></label>
                         </div>
