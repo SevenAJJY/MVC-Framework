@@ -1,6 +1,6 @@
 <div class="home-content" style="direction:<?= ($_SESSION['lang'] == 'ar')? 'rtl' : 'ltr'; ?>">
     <div class="">
-        <h1 class="main-title text-center"><?php echo $text_header ;?></h1>
+        <h1 class="main-head"><?php echo $text_header ;?></h1>
 
         <form action="" class="appform" method="post" autocomplete="off" enctype="application/x-www-form-urlencoded">
             <div class="d-flex justify-content-center invoice-title">
