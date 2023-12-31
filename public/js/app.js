@@ -374,6 +374,9 @@ let showErrors = () => {
   }
 };
 
-document.querySelector(".check").onclick = (event) => {
-  if (errors.size != 0) event.preventDefault();
-};
+let salesForm = document.querySelector(".check");
+if (salesForm != null) {
+  salesForm.onclick = (event) => {
+    if (errors.size != 0) event.preventDefault();
+  };
+}
