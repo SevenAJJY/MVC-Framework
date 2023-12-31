@@ -83,6 +83,7 @@
                                     <option value=""><?= $text_select ?></option>
                                     <?php if (false !== $products): foreach ($products as $product): ?>
                                     <option data-price="<?= $product->SellPrice ?>"
+                                        data-quantity="<?= $product->Quantity ?>"
                                         <?= $this->selectedIf('products' ,  $product->ProductId);  ?>
                                         value="<?= $product->ProductId ?>"><?= $product->Name ?></option>
                                     <?php endforeach;endif; ?>
@@ -101,6 +102,9 @@
                 <span><?= $text_tilte_3 ?></span>
             </div>
             <div class="my-container _invoivce">
+                <div class="quantity__errors">
+
+                </div>
                 <div class="row">
                     <!-- <h4><?php echo $text_legend ?></h4> -->
                     <div class="table-responsive tables">
@@ -121,8 +125,11 @@
                                             <p><?= $detail->Name ?></p>
                                         </td>
                                         <td>
-                                            <input name="productq[]" class="input-products" type="number" required
-                                                min="1" value="<?= $detail->Quantity ?>">
+                                            <input name="productq[]" class="input-products"
+                                                onkeyup="checkQuantity(this, '<?= $detail->Name ?>')"
+                                                onclick="checkQuantity(this, '<?= $detail->Name ?>')"
+                                                data-quantity="<?= $detail->Quantity ?>" type="number" required min="1"
+                                                value="<?= $detail->Quantity ?>">
                                         </td>
                                         <td>
                                             <input name="productp[]" class="input-products" type="number" required

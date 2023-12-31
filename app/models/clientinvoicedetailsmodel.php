@@ -28,6 +28,7 @@ class ClientInvoiceDetailsModel extends AbstractModel
             return self::get(
                 "SELECT *,
                 (SELECT Name FROM  ".ProductModel::getModelTableName()." WHERE ".ProductModel::getModelTableName().".ProductId = ".self::$tableName .".ProductId) Name, 
+                (SELECT Quantity FROM  ".ProductModel::getModelTableName()." WHERE ".ProductModel::getModelTableName().".ProductId = ".self::$tableName .".ProductId) Quantity, 
                 (SELECT Unit FROM  ".ProductModel::getModelTableName()." WHERE ".ProductModel::getModelTableName().".ProductId = ".self::$tableName .".ProductId) Unit, 
                 (SELECT PiecesInBox FROM  ".ProductModel::getModelTableName()." WHERE ".ProductModel::getModelTableName().".ProductId = ".self::$tableName .".ProductId) PiecesInBox
                 FROM ".self::$tableName ." WHERE InvoiceID = ".$invoice->InvoiceId
