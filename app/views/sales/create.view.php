@@ -104,16 +104,7 @@
             </div>
             <div class="my-container _invoivce">
                 <div class="quantity__errors">
-                    //TODO:: CONTINUE FROM HERE
-                    <span class="quantity_error"><i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
-                        The written quantity is greater than the quantity available in
-                        stock!</span>
-                    <span class="quantity_error"><i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
-                        The written quantity is greater than the quantity available in
-                        stock</span>
-                    <span class="quantity_error"><i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
-                        The written quantity is greater than the quantity available in
-                        stock</span>
+
                 </div>
                 <div class="row">
                     <!-- <h4><?php echo $text_legend ?></h4> -->

@@ -39,30 +39,43 @@ $("a.addProduct").click(function (evt) {
   }
 });
 const log = console.log;
-let errors = [];
-let ii = 0;
+let errors = new Map();
 checkQuantity = (input, pName) => {
   log(input.value);
   log(input.dataset.quantity);
 
   if (Number.parseInt(input.value) > input.dataset.quantity) {
     input.style.border = "2px solid var(--color-danger)";
-    errors.push({
-      id: ii++,
-      productName: pName,
-      productQuantity: input.dataset.quantity,
-    });
+    if (!errors.has(pName)) {
+      errors.set(pName, input.dataset.quantity);
+    }
   } else {
     input.style.border = "2px solid var(--color-success)";
   }
   //TODO:: CONTINUE FROM HERE
   log(errors);
+  showErrors();
 
   // let select = document.querySelector("select[name=products]");
   // select.addEventListener("change", (e) => {
   //   const select = e.target;
   //   const desc = select.selectedOptions[0];
   // });
+};
+
+let showErrors = () => {
+  let errorsContainer = document.querySelector(".quantity__errors");
+  if (!errors.size != 0) {
+    for (const [key, value] of errors.entries()) {
+      let span = document.createElement("span");
+      span.className = "quantity_error";
+      span.innerHTML = `
+    <i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
+    The quantity written for the product <code>${key}</code> is greater than the quantity available in stock (<code>${value}</code>)
+    `;
+      errorsContainer.appendChild(span);
+    }
+  }
 };
 
 function removeProduct(t) {
