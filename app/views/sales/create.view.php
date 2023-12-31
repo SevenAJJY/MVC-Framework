@@ -88,7 +88,7 @@
                                         value="<?= $product->ProductId ?>"><?= $product->Name ?></option>
                                     <?php endforeach;endif; ?>
                                 </select>
-                                <s onclick="chh(this, "")"></s>
+
                             </div>
                         </div>
                         <div class="col-md-2 add-prodcuts d-flex align-items-center">
