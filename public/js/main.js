@@ -48,14 +48,15 @@ checkQuantity = (input, pName) => {
     input.style.border = "2px solid var(--color-danger)";
     if (!errors.has(pName)) {
       errors.set(pName, input.dataset.quantity);
+      showErrors();
     }
   } else {
+    if (errors.has(pName)) {
+      errors.delete(pName);
+      showErrors();
+    }
     input.style.border = "2px solid var(--color-success)";
   }
-  //TODO:: CONTINUE FROM HERE
-  log(errors);
-  showErrors();
-
   // let select = document.querySelector("select[name=products]");
   // select.addEventListener("change", (e) => {
   //   const select = e.target;
@@ -65,7 +66,8 @@ checkQuantity = (input, pName) => {
 
 let showErrors = () => {
   let errorsContainer = document.querySelector(".quantity__errors");
-  if (!errors.size != 0) {
+  errorsContainer.innerHTML = "";
+  if (errors.size != 0) {
     for (const [key, value] of errors.entries()) {
       let span = document.createElement("span");
       span.className = "quantity_error";
