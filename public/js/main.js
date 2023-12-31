@@ -38,47 +38,6 @@ $("a.addProduct").click(function (evt) {
     $("select[name=products] option:selected").remove();
   }
 });
-const log = console.log;
-let errors = new Map();
-checkQuantity = (input, pName) => {
-  log(input.value);
-  log(input.dataset.quantity);
-
-  if (Number.parseInt(input.value) > input.dataset.quantity) {
-    input.style.border = "2px solid var(--color-danger)";
-    if (!errors.has(pName)) {
-      errors.set(pName, input.dataset.quantity);
-      showErrors();
-    }
-  } else {
-    if (errors.has(pName)) {
-      errors.delete(pName);
-      showErrors();
-    }
-    input.style.border = "2px solid var(--color-success)";
-  }
-  // let select = document.querySelector("select[name=products]");
-  // select.addEventListener("change", (e) => {
-  //   const select = e.target;
-  //   const desc = select.selectedOptions[0];
-  // });
-};
-
-let showErrors = () => {
-  let errorsContainer = document.querySelector(".quantity__errors");
-  errorsContainer.innerHTML = "";
-  if (errors.size != 0) {
-    for (const [key, value] of errors.entries()) {
-      let span = document.createElement("span");
-      span.className = "quantity_error";
-      span.innerHTML = `
-    <i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
-    The quantity written for the product <code>${key}</code> is greater than the quantity available in stock (<code>${value}</code>)
-    `;
-      errorsContainer.appendChild(span);
-    }
-  }
-};
 
 function removeProduct(t) {
   var parent = $(t).parent().parent();

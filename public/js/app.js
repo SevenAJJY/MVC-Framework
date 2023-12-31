@@ -1,3 +1,5 @@
+// per il debug
+const log = console.log;
 const image = document.querySelector(".upload-image");
 const inputFile = document.querySelector("input[type=file]");
 const divContainer = document.querySelector(".image__upload");
@@ -334,3 +336,40 @@ function validateReceipt(s1, s2, s3, s4, s5) {
     bankname_input.removeAttribute("required");
   }
 }
+
+let errors = new Map();
+checkQuantity = (input, pName) => {
+  if (Number.parseInt(input.value) > input.dataset.quantity) {
+    input.style.border = "2px solid var(--color-danger)";
+    if (!errors.has(pName)) {
+      errors.set(pName, input.dataset.quantity);
+      showErrors();
+    }
+  } else {
+    deleteErrors(pName);
+    input.style.border = "2px solid var(--color-success)";
+  }
+};
+
+let deleteErrors = (productName) => {
+  if (errors.has(productName)) {
+    errors.delete(productName);
+    showErrors();
+  }
+};
+
+let showErrors = () => {
+  let errorsContainer = document.querySelector(".quantity__errors");
+  errorsContainer.innerHTML = "";
+  if (errors.size != 0) {
+    for (const [key, value] of errors.entries()) {
+      let span = document.createElement("span");
+      span.className = "quantity_error";
+      span.innerHTML = `
+          <i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
+          The quantity written for the product <code>${key}</code> is greater than the quantity available in stock (<code>${value}</code>)
+      `;
+      errorsContainer.appendChild(span);
+    }
+  }
+};
