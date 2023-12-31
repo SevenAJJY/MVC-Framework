@@ -16,7 +16,13 @@ $("a.addProduct").click(function (evt) {
         "<p>" +
         $("select[name=products] option:selected").text() +
         "</p></td>" +
-        '<td><input name="productq[]" class="input-products" type="number" required min="1"></td>' +
+        '<td><input name="productq[]" onkeyup="checkQuantity(this, \'' +
+        $("select[name=products] option:selected").text() +
+        "')\" onclick=\"checkQuantity(this, '" +
+        $("select[name=products] option:selected").text() +
+        '\')" class="input-products" type="number" required min="1" data-quantity="' +
+        $("select[name=products] option:selected").attr("data-quantity") +
+        '"></td>' +
         '<td><input name="productp[]" class="input-products" type="number" required min="' +
         $("select[name=products] option:selected").attr("data-price") +
         '" value="' +
@@ -32,6 +38,32 @@ $("a.addProduct").click(function (evt) {
     $("select[name=products] option:selected").remove();
   }
 });
+const log = console.log;
+let errors = [];
+let ii = 0;
+checkQuantity = (input, pName) => {
+  log(input.value);
+  log(input.dataset.quantity);
+
+  if (Number.parseInt(input.value) > input.dataset.quantity) {
+    input.style.border = "2px solid var(--color-danger)";
+    errors.push({
+      id: ii++,
+      productName: pName,
+      productQuantity: input.dataset.quantity,
+    });
+  } else {
+    input.style.border = "2px solid var(--color-success)";
+  }
+  //TODO:: CONTINUE FROM HERE
+  log(errors);
+
+  // let select = document.querySelector("select[name=products]");
+  // select.addEventListener("change", (e) => {
+  //   const select = e.target;
+  //   const desc = select.selectedOptions[0];
+  // });
+};
 
 function removeProduct(t) {
   var parent = $(t).parent().parent();

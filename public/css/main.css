@@ -2878,3 +2878,13 @@ body.element-none .home-content {
   padding: 3px;
   text-align: center;
 }
+
+.quantity__errors {
+  margin-bottom: 15px;
+}
+
+.quantity_error {
+  display: block;
+  font-size: 15px;
+  color: var(--color-danger);
+}

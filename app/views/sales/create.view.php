@@ -83,10 +83,12 @@
                                     <option value=""><?= $text_select ?></option>
                                     <?php if (false !== $products): foreach ($products as $product): ?>
                                     <option data-price="<?= $product->SellPrice ?>"
+                                        data-quantity="<?= $product->Quantity ?>"
                                         <?= $this->selectedIf('products' ,  $product->ProductId);  ?>
                                         value="<?= $product->ProductId ?>"><?= $product->Name ?></option>
                                     <?php endforeach;endif; ?>
                                 </select>
+                                <s onclick="chh(this, "")"></s>
                             </div>
                         </div>
                         <div class="col-md-2 add-prodcuts d-flex align-items-center">
@@ -101,6 +103,18 @@
                 <span><?= $text_tilte_3 ?></span>
             </div>
             <div class="my-container _invoivce">
+                <div class="quantity__errors">
+                    //TODO:: CONTINUE FROM HERE
+                    <span class="quantity_error"><i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
+                        The written quantity is greater than the quantity available in
+                        stock!</span>
+                    <span class="quantity_error"><i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
+                        The written quantity is greater than the quantity available in
+                        stock</span>
+                    <span class="quantity_error"><i class="fa-solid fa-circle-exclamation check _icon-message t2"></i>
+                        The written quantity is greater than the quantity available in
+                        stock</span>
+                </div>
                 <div class="row">
                     <!-- <h4><?php echo $text_legend ?></h4> -->
                     <div class="table-responsive tables">
