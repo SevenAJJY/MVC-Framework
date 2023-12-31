@@ -373,3 +373,7 @@ let showErrors = () => {
     }
   }
 };
+
+document.querySelector(".check").onclick = (event) => {
+  if (errors.size != 0) event.preventDefault();
+};
