@@ -143,10 +143,10 @@
                     <img src="/uploads/images/<?= $imageProfile ?>" class="image" alt="profileImg">
                 </div>
                 <div class="name-job">
-                    <div class="profile_name"><?php echo $this->session->u->profile->FirstName ;?></div>
-                    <div class="job"><?php echo $this->session->u->GroupName ;?></div>
+                    <div class="profile_name"><?= $this->session->u->profile->FirstName ;?></div>
+                    <div class="job"><?= $this->session->u->GroupName ;?></div>
                 </div>
-                <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i></a></a>
+                <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
         </li>
     </ul>
