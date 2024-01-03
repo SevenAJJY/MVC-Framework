@@ -66,8 +66,7 @@ $("input.purchaseBtn").click(function (evt) {
 });
 
 let iElem = document.createElement("i");
-// let checkUserExists =
-(function (URL, selector, method, fieldName) {
+let check_user_email = function (URL, selector, method, fieldName) {
   return new Promise((resolve, reject) => {
     let inputField = document.querySelector(selector);
     if (inputField !== null) {
@@ -117,13 +116,11 @@ let iElem = document.createElement("i");
       );
     }
   });
-})(
+};
+
+check_user_email(
   "http://sevenajjy.com/users/checkuserexistsajax",
   "input[name=Username]",
   "POST",
   "Username"
 ).then((result) => {});
-
-// usernameField.addEventListener("blur", () => {
-//   checkUserExists("http://sevenajjy.com/users/checkuserexistsajax");
-// });
