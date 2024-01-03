@@ -64,4 +64,66 @@ $("input.purchaseBtn").click(function (evt) {
     );
   }
 });
-//
+
+let iElem = document.createElement("i");
+// let checkUserExists =
+(function (URL, selector, method, fieldName) {
+  return new Promise((resolve, reject) => {
+    let inputField = document.querySelector(selector);
+    if (inputField !== null) {
+      inputField.addEventListener(
+        "blur",
+        function () {
+          let request = new XMLHttpRequest();
+          request.open(method, URL);
+          request.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+          );
+          request.onload = function () {
+            if (request.readyState == request.DONE && request.status == 200) {
+              if (request.response == 1) {
+                iElem.className = "fa-solid fa-circle-xmark u-error";
+                if (inputField.classList.contains("bordersuccess")) {
+                  inputField.classList.remove("bordersuccess");
+                  inputField.classList.add("borderError");
+                }
+                inputField.classList.add("borderError");
+              } else if (request.response == 2) {
+                if (inputField.value !== "") {
+                  if (inputField.classList.contains("borderError")) {
+                    inputField.classList.remove("borderError");
+                    inputField.classList.add("bordersuccess");
+                  }
+                  iElem.className = "fa-solid fa-circle-check u-success";
+                  inputField.classList.add("bordersuccess");
+                }
+              }
+              let iElems = inputField.parentNode.childNodes;
+              for (let i = 0, ii = iElems.length; i < ii; i++) {
+                if (iElems[i].nodeName.toLowerCase() == "i") {
+                  iElems[i].parentNode.removeChild(iElems[i]);
+                }
+              }
+              inputField.parentNode.appendChild(iElem);
+            }
+            // else {
+            //   reject(Error("User already exists!"));
+            // }
+          };
+          request.send(`${fieldName}=` + this.value);
+        },
+        false
+      );
+    }
+  });
+})(
+  "http://sevenajjy.com/users/checkuserexistsajax",
+  "input[name=Username]",
+  "POST",
+  "Username"
+).then((result) => {});
+
+// usernameField.addEventListener("blur", () => {
+//   checkUserExists("http://sevenajjy.com/users/checkuserexistsajax");
+// });

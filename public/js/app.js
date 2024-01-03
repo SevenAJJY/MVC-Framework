@@ -174,93 +174,93 @@ if (togglePass2 !== null) {
  *  ===================================
  * */
 
-(function () {
-  let userNameField = document.querySelector("input[name=Username]");
+// (function () {
+//   let userNameField = document.querySelector("input[name=Username]");
 
-  if (null !== userNameField) {
-    userNameField.addEventListener(
-      "blur",
-      function () {
-        let req = new XMLHttpRequest();
-        req.open("POST", "http://sevenajjy.com/users/checkuserexistsajax");
-        req.setRequestHeader(
-          "Content-type",
-          "application/x-www-form-urlencoded"
-        );
+//   if (null !== userNameField) {
+//     userNameField.addEventListener(
+//       "blur",
+//       function () {
+//         let req = new XMLHttpRequest();
+//         req.open("POST", "http://sevenajjy.com/users/checkuserexistsajax");
+//         req.setRequestHeader(
+//           "Content-type",
+//           "application/x-www-form-urlencoded"
+//         );
 
-        req.onreadystatechange = function () {
-          let iElem = document.createElement("i");
-          let borderInput = document.querySelector(".Username");
-          if (req.readyState == req.DONE && req.status == 200) {
-            if (req.response == 1) {
-              iElem.className = "fa-solid fa-circle-xmark u-error";
-              borderInput.classList.toggle("borderError");
-            } else if (req.response == 2) {
-              if (userNameField.value !== "") {
-                iElem.className = "fa-solid fa-circle-check u-success";
-                borderInput.classList.toggle("bordersuccess");
-              }
-            }
-            let iElems = userNameField.parentNode.childNodes;
-            for (let i = 0, ii = iElems.length; i < ii; i++) {
-              if (iElems[i].nodeName.toLowerCase() == "i") {
-                iElems[i].parentNode.removeChild(iElems[i]);
-              }
-            }
-            userNameField.parentNode.appendChild(iElem);
-          }
-        };
+//         req.onreadystatechange = function () {
+//           let iElem = document.createElement("i");
+//           let borderInput = document.querySelector(".Username");
+//           if (req.readyState == req.DONE && req.status == 200) {
+//             if (req.response == 1) {
+//               iElem.className = "fa-solid fa-circle-xmark u-error";
+//               borderInput.classList.toggle("borderError");
+//             } else if (req.response == 2) {
+//               if (userNameField.value !== "") {
+//                 iElem.className = "fa-solid fa-circle-check u-success";
+//                 borderInput.classList.toggle("bordersuccess");
+//               }
+//             }
+//             let iElems = userNameField.parentNode.childNodes;
+//             for (let i = 0, ii = iElems.length; i < ii; i++) {
+//               if (iElems[i].nodeName.toLowerCase() == "i") {
+//                 iElems[i].parentNode.removeChild(iElems[i]);
+//               }
+//             }
+//             userNameField.parentNode.appendChild(iElem);
+//           }
+//         };
 
-        req.send("Username=" + this.value);
-      },
-      false
-    );
-  }
-})();
+//         req.send("Username=" + this.value);
+//       },
+//       false
+//     );
+//   }
+// })();
 /**
  *  ===================================
  *  ===== Ajax Check Email Exists ======
  *  ===================================
  * */
 
-(function () {
-  let emailField = document.querySelector("input[name=Email]");
-  if (null !== emailField) {
-    emailField.addEventListener(
-      "blur",
-      function () {
-        let req_2 = new XMLHttpRequest();
-        req_2.open("POST", "http://sevenajjy.com/users/checkemailexistsajax");
-        req_2.setRequestHeader(
-          "Content-type",
-          "application/x-www-form-urlencoded"
-        );
+// (function () {
+//   let emailField = document.querySelector("input[name=Email]");
+//   if (null !== emailField) {
+//     emailField.addEventListener(
+//       "blur",
+//       function () {
+//         let req_2 = new XMLHttpRequest();
+//         req_2.open("POST", "http://sevenajjy.com/users/checkemailexistsajax");
+//         req_2.setRequestHeader(
+//           "Content-type",
+//           "application/x-www-form-urlencoded"
+//         );
 
-        req_2.onload = function () {
-          let iElem_2 = document.createElement("i");
-          log(req_2.response);
-          if (req_2.readyState == req_2.DONE && req_2.status == 200) {
-            if (req_2.response == 1) {
-              iElem_2.className = "fa-solid fa-circle-xmark u-error";
-            } else if (req_2.response == 2) {
-              iElem_2.className = "fa-solid fa-circle-check u-success";
-            }
-            let iElems_2 = emailField.parentNode.childNodes;
-            for (let i = 0, ii = iElems_2.length; i < ii; i++) {
-              if (iElems_2[i].nodeName.toLowerCase() == "i") {
-                iElems_2[i].parentNode.removeChild(iElems_2[i]);
-              }
-            }
-            emailField.parentNode.appendChild(iElem_2);
-          }
-        };
+//         req_2.onload = function () {
+//           let iElem_2 = document.createElement("i");
+//           log(req_2.response);
+//           if (req_2.readyState == req_2.DONE && req_2.status == 200) {
+//             if (req_2.response == 1) {
+//               iElem_2.className = "fa-solid fa-circle-xmark u-error";
+//             } else if (req_2.response == 2) {
+//               iElem_2.className = "fa-solid fa-circle-check u-success";
+//             }
+//             let iElems_2 = emailField.parentNode.childNodes;
+//             for (let i = 0, ii = iElems_2.length; i < ii; i++) {
+//               if (iElems_2[i].nodeName.toLowerCase() == "i") {
+//                 iElems_2[i].parentNode.removeChild(iElems_2[i]);
+//               }
+//             }
+//             emailField.parentNode.appendChild(iElem_2);
+//           }
+//         };
 
-        req_2.send("Email=" + this.value);
-      },
-      false
-    );
-  }
-})();
+//         req_2.send("Email=" + this.value);
+//       },
+//       false
+//     );
+//   }
+// })();
 
 /**
  *  ===================================
