@@ -8,7 +8,7 @@
                     <div class="u_profile__details">
                         <div class="imageBox">
                             <form action="" id="formId" method="post" autocomplete="off" enctype="multipart/form-data">
-                                <input type="file" name="Image" class="my__file" id="">
+                                <input type="file" name="image" class="my__file" id="">
                             </form>
                             <?php
                                 $imageProfile = !empty($profile->Image) ? $profile->Image : 'noImage.jpg';
@@ -21,19 +21,21 @@
                             style="background-color: rgba(255, 255, 255, 0.3);" value="Change photo" />
                     </div>
                     <ul class="u_menu">
-                        <li class="<?= ($this->matchUrl('/users/view')) === true ? 'u_active' : ''; ?>"> <a
-                                href="/users/view"><i
+                        <li class="<?= ($this->matchUrl('/users/view')) ? 'u_active' : ''; ?>"> <a href="/users/view"><i
                                     class="fa-solid fa-id-badge"></i><span><?= $text_profile ?></span></a></li>
-                        <li class="<?= ($this->matchUrl('/users')) === true ? 'u_active' : ''; ?>"> <a href="/users"><i
+                        <li class="<?= ($this->matchUrl('/users')) ? 'u_active' : ''; ?>"> <a href="/users"><i
                                     class="fa-solid fa-calendar-days"></i><span><?= $text_recent_activity ?></span></a>
                         </li>
-                        <li class="<?= ($this->matchUrl('/users/editprofile')) === true ? 'u_active' : ''; ?>"> <a
+                        <li class="<?= ($this->matchUrl('/users/editprofile')) ? 'u_active' : ''; ?>"> <a
                                 href="/users/editprofile"><i
                                     class="fa-solid fa-pen-to-square"></i><span><?= $text_edit_profile ?></span></a>
                         </li>
-                        <li class="<?= ($this->matchUrl('/users/changepasssword')) === true ? 'u_active' : ''; ?>"> <a
+                        <li class="<?= ($this->matchUrl('/users/changepassword')) ? 'u_active' : ''; ?>"> <a
                                 href="/users/changepasssword"><i
                                     class="fa-solid fa-key"></i><span><?= $text_change_password ?></span></a></li>
+                        <li class="<?= ($this->matchUrl('/users/settings')) ? 'u_active' : ''; ?>"> <a
+                                href="/users/settings"><i
+                                    class="fa-solid fa-gears"></i><span><?= "Other settings" ?></span></a></li>
                     </ul>
                 </div>
             </div>

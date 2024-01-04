@@ -37,6 +37,9 @@
                         <li class="<?= ($this->matchUrl('/users/changepassword')) === true ? 'u_active' : ''; ?>"> <a
                                 href="/users/changepassword"><i
                                     class="fa-solid fa-key"></i><span><?= $text_change_password ?></span></a></li>
+                        <li class="<?= ($this->matchUrl('/users/settings')) ? 'u_active' : ''; ?>"> <a
+                                href="/users/settings"><i
+                                    class="fa-solid fa-gears"></i><span><?= "Other settings" ?></span></a></li>
                     </ul>
                 </div>
             </div>

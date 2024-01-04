@@ -92,6 +92,10 @@
                                     class="ms-4"><?= $text_profile_image ?></span></label>
                         </div>
                     </div>
+                    <div class="input-box image__upload n-height">
+                        <img class="upload-image" data-action="create">
+                    </div>
+
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="input-box">
                             <input type="date" spellcheck="false" id="Dob" name="DOB" value="<?= date('Y-m-d') ?>"
