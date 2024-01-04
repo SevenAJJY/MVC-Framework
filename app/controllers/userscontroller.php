@@ -427,8 +427,41 @@ class UsersController extends AbstractController
 
     public function settingsAction(){
         $this->language->load('template.common');
-        $this->language->load('users.resetpassword');
+        $this->language->load('users.settings');
         $this->language->load('users.messages');
         $this->language->load('validation.errors');
+
+        $user = UserModel::getByKey($this->session->u->UserId) ;
+        $this->_data['user'] = $user ;
+
+        $userProfile = UserProfileModel::getProfile($this->session->u);
+        $this->_data['profile'] = $userProfile ; 
+
+        $uploadError = false ;
+        if (isset($_POST['saveImage'])) {
+            if (!empty($_FILES['image']['name'])) {
+                ### -> Remove the old Image
+                if ($userProfile->Image !== '' && file_exists(IMAGES_UPLOAD_STORAGE.DS.$userProfile->Image) && is_writable(IMAGES_UPLOAD_STORAGE)) {
+                    unlink(IMAGES_UPLOAD_STORAGE.DS.$userProfile->Image);
+                }
+                ### -> Create a new image
+                $uploader = new FileUpload($_FILES);
+                try {
+                    $uploader->upload();
+                    $userProfile->Image = $uploader->getFileName();
+                } catch (\Exception $e) {
+                    $this->messenger->add($e->getMessage(), Messenger::APP_MESSAGE_ERROR);
+                    $uploadError = true;
+                }
+            }
+            if($uploadError === false && $userProfile->save())
+            {
+                $this->messenger->add($this->language->get('message_create_success'));
+                $this->redirect('/users/view');
+            } else {
+                $this->messenger->add($this->language->get('message_create_failed'), Messenger::APP_MESSAGE_ERROR);
+            }
+        }
+        $this->_renderView();
     }
 }
