@@ -124,3 +124,10 @@ check_user_email(
   "POST",
   "Username"
 ).then((result) => {});
+
+check_user_email(
+  "http://sevenajjy.com/users/checkemailexistsajax",
+  "input[name=Email]",
+  "POST",
+  "Email"
+).then((result) => {});
