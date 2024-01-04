@@ -169,98 +169,78 @@ if (togglePass2 !== null) {
 }
 
 /**
- *  ===================================
- *  ===== Ajax Check User Exists ======
- *  ===================================
+ *  ======================================
+ *  === AJAX Check User & Email Exists ===
+ *  ======================================
  * */
 
-// (function () {
-//   let userNameField = document.querySelector("input[name=Username]");
+let iElem = document.createElement("i");
+let check_user_email = function (URL, selector, method, fieldName) {
+  return new Promise((resolve, reject) => {
+    let inputField = document.querySelector(selector);
+    if (inputField !== null) {
+      inputField.addEventListener(
+        "blur",
+        function () {
+          let request = new XMLHttpRequest();
+          request.open(method, URL);
+          request.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+          );
 
-//   if (null !== userNameField) {
-//     userNameField.addEventListener(
-//       "blur",
-//       function () {
-//         let req = new XMLHttpRequest();
-//         req.open("POST", "http://sevenajjy.com/users/checkuserexistsajax");
-//         req.setRequestHeader(
-//           "Content-type",
-//           "application/x-www-form-urlencoded"
-//         );
+          request.onload = function () {
+            if (request.readyState == request.DONE && request.status == 200) {
+              if (request.response == 1) {
+                iElem.className = "fa-solid fa-circle-xmark u-error";
+                if (inputField.classList.contains("bordersuccess")) {
+                  inputField.classList.remove("bordersuccess");
+                  inputField.classList.add("borderError");
+                }
+                inputField.classList.add("borderError");
+              } else if (request.response == 2) {
+                if (inputField.value !== "") {
+                  if (inputField.classList.contains("borderError")) {
+                    inputField.classList.remove("borderError");
+                    inputField.classList.add("bordersuccess");
+                  }
+                  iElem.className = "fa-solid fa-circle-check u-success";
+                  inputField.classList.add("bordersuccess");
+                }
+              }
+              let iElems = inputField.parentNode.childNodes;
+              for (let i = 0, ii = iElems.length; i < ii; i++) {
+                if (iElems[i].nodeName.toLowerCase() == "i") {
+                  iElems[i].parentNode.removeChild(iElems[i]);
+                }
+              }
+              inputField.parentNode.appendChild(iElem);
+            }
+            // else {
+            //   reject(Error("User already exists!"));
+            // }
+          };
+          request.send(`${fieldName}=` + this.value);
+        },
+        false
+      );
+    }
+  });
+};
 
-//         req.onreadystatechange = function () {
-//           let iElem = document.createElement("i");
-//           let borderInput = document.querySelector(".Username");
-//           if (req.readyState == req.DONE && req.status == 200) {
-//             if (req.response == 1) {
-//               iElem.className = "fa-solid fa-circle-xmark u-error";
-//               borderInput.classList.toggle("borderError");
-//             } else if (req.response == 2) {
-//               if (userNameField.value !== "") {
-//                 iElem.className = "fa-solid fa-circle-check u-success";
-//                 borderInput.classList.toggle("bordersuccess");
-//               }
-//             }
-//             let iElems = userNameField.parentNode.childNodes;
-//             for (let i = 0, ii = iElems.length; i < ii; i++) {
-//               if (iElems[i].nodeName.toLowerCase() == "i") {
-//                 iElems[i].parentNode.removeChild(iElems[i]);
-//               }
-//             }
-//             userNameField.parentNode.appendChild(iElem);
-//           }
-//         };
+check_user_email(
+  "http://sevenajjy.com/users/checkuserexistsajax",
+  "input[name=Username]",
+  "POST",
+  "Username"
+).then((result) => {});
 
-//         req.send("Username=" + this.value);
-//       },
-//       false
-//     );
-//   }
-// })();
-/**
- *  ===================================
- *  ===== Ajax Check Email Exists ======
- *  ===================================
- * */
-
-// (function () {
-//   let emailField = document.querySelector("input[name=Email]");
-//   if (null !== emailField) {
-//     emailField.addEventListener(
-//       "blur",
-//       function () {
-//         let req_2 = new XMLHttpRequest();
-//         req_2.open("POST", "http://sevenajjy.com/users/checkemailexistsajax");
-//         req_2.setRequestHeader(
-//           "Content-type",
-//           "application/x-www-form-urlencoded"
-//         );
-
-//         req_2.onload = function () {
-//           let iElem_2 = document.createElement("i");
-//           log(req_2.response);
-//           if (req_2.readyState == req_2.DONE && req_2.status == 200) {
-//             if (req_2.response == 1) {
-//               iElem_2.className = "fa-solid fa-circle-xmark u-error";
-//             } else if (req_2.response == 2) {
-//               iElem_2.className = "fa-solid fa-circle-check u-success";
-//             }
-//             let iElems_2 = emailField.parentNode.childNodes;
-//             for (let i = 0, ii = iElems_2.length; i < ii; i++) {
-//               if (iElems_2[i].nodeName.toLowerCase() == "i") {
-//                 iElems_2[i].parentNode.removeChild(iElems_2[i]);
-//               }
-//             }
-//             emailField.parentNode.appendChild(iElem_2);
-//           }
-//         };
-
-//         req_2.send("Email=" + this.value);
-//       },
-//       false
-//     );
-//   }
-// })();
+check_user_email(
+  "http://sevenajjy.com/users/checkemailexistsajax",
+  "input[name=Email]",
+  "POST",
+  "Email"
+).then((result) => {});
 
 /**
  *  ===================================
