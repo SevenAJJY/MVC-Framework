@@ -366,3 +366,43 @@ if (salesForm != null) {
     if (errors.size != 0) event.preventDefault();
   };
 }
+
+/**
+ *  =======================================
+ *  =========== Style Switcher ============
+ *  =======================================
+ * */
+
+// Theme color
+(() => {
+  const hueSlider = document.querySelector(".js-hue-slider");
+  const html = document.querySelector("html");
+
+  const setHue = (value) => {
+    html.style.setProperty("--hue", value);
+    document.querySelector(".js-hue").innerHTML = value;
+  };
+
+  if (hueSlider != null) {
+    hueSlider.addEventListener("input", function () {
+      setHue(this.value);
+      window.localStorage.setItem("--hue", this.value);
+    });
+  }
+
+  const slider = (value) => {
+    hueSlider.value = value;
+  };
+
+  if (window.localStorage.getItem("--hue") !== null) {
+    setHue(window.localStorage.getItem("--hue"));
+    slider(window.localStorage.getItem("--hue"));
+  } else {
+    const hue = getComputedStyle(html).getPropertyValue("--hue");
+    setHue(hue);
+    slider(hue.split(" ").join(""));
+  }
+})();
+
+const themeColor = () => {};
+themeColor();
