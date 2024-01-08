@@ -6,6 +6,7 @@ return [
         'NAV'                => TEMPLATE_PATH . 'nav.php',
         'HEADER'             => TEMPLATE_PATH . 'header.php',
         ':VIEW'              => ':actionView' ,
+        'STYLESWITCHER'      =>  TEMPLATE_PATH . 'styleSwitcher.php',
         'WRAPPEREND'         => TEMPLATE_PATH . 'wrapperend.php',
     ],
     'headerResources' => [
