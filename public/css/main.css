@@ -2927,9 +2927,13 @@ body.element-none .home-content {
   z-index: 10;
   width: 280px;
   height: 100%;
-  box-shadow: var(--shadow);
-  /* transform: translate(100%); */
+  transform: translate(100%);
   transition: all 0.3s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+
+.style-switcher.open {
+  box-shadow: var(--shadow);
+  transform: translate(0%);
 }
 
 .style-switcher-main {
@@ -3090,4 +3094,17 @@ body.element-none .home-content {
   transform: translateX(calc(100% + 6px));
   background-color: var(--white-color);
   border-color: transparent;
+}
+
+.style__switcher-toggler-icon {
+  animation: settings 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+}
+
+@keyframes settings {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
