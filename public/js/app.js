@@ -404,5 +404,24 @@ if (salesForm != null) {
   }
 })();
 
-const themeColor = () => {};
+const themeColor = () => {
+  const darkModeCheckbox = document.querySelector(".js-dark-mode");
+  const themeMode = () => {
+    if (window.localStorage.getItem("darkMode") === "null") {
+      window.localStorage.setItem("darkMode", "enabled");
+      document.body.classList.add("dark");
+    } else {
+      window.localStorage.setItem("darkMode", null);
+      document.body.classList.remove("dark");
+    }
+  };
+
+  darkModeCheckbox.addEventListener("click", function () {
+    themeMode();
+  });
+
+  if (document.body.classList.contains("dark")) {
+    darkModeCheckbox.checked = true;
+  }
+};
 themeColor();
