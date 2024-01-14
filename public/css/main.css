@@ -8,8 +8,9 @@
 
 body {
   height: 100vh;
-  background-color: var(--body-color);
+  /* background-color: var(--body-color); */
   transition: var(--tran-05);
+  background: url("/img/main-bg-dark.png");
 }
 
 :root {
@@ -3130,4 +3131,25 @@ body.element-none .home-content {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+}
+
+/* index page */
+
+.info_logo {
+  background-image: url("/img/hajjyfoods.png");
+  background-position: 50% 42%;
+  background-size: cover;
+  height: 300px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--store-Degree-four);
+  box-shadow: 3px 3px 1px rgb(0 0 0 / 10%);
+}
+
+.info_logo div {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  width: 100%;
+  height: 100%;
 }
