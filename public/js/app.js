@@ -465,3 +465,28 @@ const themeColor = () => {
   }
 };
 themeColor();
+
+// show & hide style switcher
+const showHideStyleSwitcher = function () {
+  const inputBox = document.querySelector("#displayStyleSwitcher");
+  const styleSwitcher = document.querySelector(".js-style-switcher");
+
+  inputBox.addEventListener("click", (e) => {
+    window.localStorage.setItem("DSS", e.target.checked);
+    switchDisplay();
+  });
+
+  const switchDisplay = () => {
+    if (window.localStorage.getItem("DSS") === "true") {
+      styleSwitcher.classList.toggle("styleSwitcherShow");
+    } else {
+      styleSwitcher.classList.toggle("styleSwitcherShow");
+    }
+  };
+
+  if (styleSwitcher.classList.contains("styleSwitcherShow")) {
+    // TODO::MAKE SURE THAT THE CHECKBOX IS CHECKED WHEN YOU RELOAD THE PAGE
+    inputBox.checked = window.localStorage.getItem("DSS");
+  }
+};
+showHideStyleSwitcher();

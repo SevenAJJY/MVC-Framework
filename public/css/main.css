@@ -2936,6 +2936,10 @@ body.element-none .home-content {
   transform: translate(0%);
 }
 
+.style-switcher.styleSwitcherShow {
+  display: none;
+}
+
 .style-switcher-main {
   height: 100%;
   padding: 6.5rem 3rem;
@@ -3042,25 +3046,25 @@ body.element-none .home-content {
   font-size: var(--fs-sm);
 }
 
-.form-switch {
+.form_switch {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   padding: 0;
 }
 
-.form-switch span {
+.form_switch span {
   padding-right: 15px;
   color: var(--text-color);
 }
 
-.form-switch input {
+.form_switch input {
   position: absolute;
   pointer-events: none;
   opacity: 0;
 }
 
-.form-switch .box {
+.form_switch .box {
   height: 24px;
   width: 44px;
   border-radius: 12px;
@@ -3069,7 +3073,7 @@ body.element-none .home-content {
   transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.form-switch .box::before {
+.form_switch .box::before {
   content: "";
   height: 14px;
   width: 14px;
@@ -3081,16 +3085,16 @@ body.element-none .home-content {
   transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.form-switch input:checked + .box {
+.form_switch input:checked + .box {
   background-color: var(--main-color);
   border-color: var(--main-color);
 }
 
-.form-switch input:focus + .box {
+.form_switch input:focus + .box {
   box-shadow: var(--focus-shadow);
 }
 
-.form-switch input:checked + .box::before {
+.form_switch input:checked + .box::before {
   transform: translateX(calc(100% + 6px));
   background-color: var(--white-color);
   border-color: transparent;
@@ -3107,4 +3111,23 @@ body.element-none .home-content {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.setting__text {
+  color: var(--text-color);
+}
+
+.setting__text p {
+  display: inline;
+}
+
+.form-check-input:focus {
+  box-shadow: none;
+}
+
+.other__settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
