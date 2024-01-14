@@ -11,3 +11,4 @@ $_['text_profile'] = 'Profile';
 $_['text_edit_profile'] = 'Edit profile';
 $_['text_recent_activity'] = 'Recent Activity';
 $_['text_label_save'] = 'Save';
+$_['text_other_settings'] = 'other settings';

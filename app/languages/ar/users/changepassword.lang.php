@@ -11,3 +11,4 @@ $_['text_profile'] = 'الملف الشخصي';
 $_['text_edit_profile'] = 'تعديل الملف الشخصي';
 $_['text_recent_activity'] = 'النشاط الأخير';
 $_['text_label_save'] = 'حفظ';
+$_['text_other_settings'] = 'اعدادات اخرى';

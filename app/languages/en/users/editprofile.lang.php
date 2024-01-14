@@ -13,3 +13,4 @@ $_['text_edit_profile'] = 'Edit profile details';
 $_['text_recent_activity'] = 'Recent Activity';
 $_['text_subscription_date'] = 'Subscription Date';
 $_['text_group'] = 'Group';
+$_['text_other_settings'] = 'other settings';

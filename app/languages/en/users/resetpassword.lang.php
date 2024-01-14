@@ -6,3 +6,4 @@ $_['text_legend'] = 'Change Password';
 $_['text_ucpwd_label'] = 'Password';
 $_['text_ucpwdc_label'] = 'Confirm Password';
 $_['text_label_save'] = 'Save';
+$_['text_other_settings'] = 'other settings';

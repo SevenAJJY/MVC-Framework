@@ -13,3 +13,4 @@ $_['text_edit_profile'] = 'تعديل الملف الشخصي';
 $_['text_recent_activity'] = 'النشاط الأخير';
 $_['text_subscription_date'] = 'تاريخ الاشتراك';
 $_['text_group'] = 'المجموعة';
+$_['text_other_settings'] = 'اعدادات اخرى';

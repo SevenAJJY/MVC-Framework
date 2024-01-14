@@ -15,4 +15,5 @@ $_['text_recent_activity'] = 'Recent Activity';
 $_['text_subscription_date'] = 'Subscription Date';
 $_['text_total_privileges'] = 'Total Privileges';
 $_['text_change_photo'] = 'Change photo';
+$_['text_other_settings'] = 'other settings';
 $_['text_group'] = 'Group';

@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="style-switcher-item">
-            <label class="form-switch">
+            <label class="form_switch">
                 <span>Dark Mode</span>
                 <input type="checkbox" class="js-dark-mode" />
                 <div class="box"></div>

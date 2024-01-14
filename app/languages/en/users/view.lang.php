@@ -17,3 +17,4 @@ $_['text_subscription_date'] = 'Subscription Date';
 $_['text_total_privileges'] = 'Total Privileges';
 $_['text_change_photo'] = 'Change photo';
 $_['text_group'] = 'Group';
+$_['text_other_settings'] = 'other settings';

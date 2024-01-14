@@ -16,6 +16,8 @@ $_['text_recent_activity'] = 'النشاط الأخير';
 $_['text_subscription_date'] = 'تاريخ الاشتراك';
 $_['text_total_privileges'] = 'مجموع الصلاحيات';
 $_['text_change_photo'] = 'تغيير الصورة';
+$_['text_other_settings'] = 'اعدادات اخرى';
+
 
 
 $_['text_group'] = 'المجموعة';
