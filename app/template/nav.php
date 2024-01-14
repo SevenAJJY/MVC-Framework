@@ -3,7 +3,7 @@
     <div class="logo-details">
         <!-- <i class="fa-brands fa-shopify logo"></i> -->
         <div class="logo">
-            S7
+            <img src="/img/hajjyfoods.png" alt="">
         </div>
         <span class="logo_name"> SEVENAJJY </span>
     </div>

@@ -9,7 +9,7 @@
         </svg>
     </button>
     <div class="style-switcher-main">
-        <h2><span style="color: var(--main-color); font-weight: 700;">―</span>Style Switcher</h2>
+        <h2><span style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</span>Style Switcher</h2>
         <div class="style-switcher-item">
             <p>Theme Color</p>
             <div class="theme-color">
