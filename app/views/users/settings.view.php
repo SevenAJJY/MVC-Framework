@@ -39,14 +39,27 @@
                                     class="fa-solid fa-key"></i><span><?= $text_change_password ?></span></a></li>
                         <li class="<?= ($this->matchUrl('/users/settings')) ? 'u_active' : ''; ?>"> <a
                                 href="/users/settings"><i
-                                    class="fa-solid fa-gears"></i><span><?= "Other settings" ?></span></a></li>
+                                    class="fa-solid fa-gears"></i><span><?= $text_other_settings ?></span></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="col-md-12 d-flex align-items-center justify-content-center">
                     <div class="my-container editprofile">
-
+                        <h4><?= $text_header ?></h4>
+                        <label for="displayStyleSwitcher" class="other__settings">
+                            <span class="setting__text">
+                                <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>display
+                                <code style="color:var(--main-color)">'</code> style switcher <strong
+                                    style="color:var(--main-color)"> '</strong>
+                            </span>
+                            <span class="setting__type">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" id="displayStyleSwitcher" type="checkbox"
+                                        role="switch">
+                                </div>
+                            </span>
+                        </label>
                     </div>
                 </div>
             </div>
