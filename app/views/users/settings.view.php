@@ -47,10 +47,12 @@
                 <div class="col-md-12 d-flex align-items-center justify-content-center">
                     <div class="my-container editprofile">
                         <h4><?= $text_header ?></h4>
-                        <label for="displayStyleSwitcher" class="other__settings">
+                        <label for="displayStyleSwitcher" class="other__settings"
+                            style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
                             <span class="setting__text">
-                                <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>display
-                                <code style="color:var(--main-color)">'</code> style switcher <strong
+                                <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>
+                                <?= $text_hide ?>
+                                <code style="color:var(--main-color)">'</code> <?= $text_style_switcher ?> <strong
                                     style="color:var(--main-color)"> '</strong>
                             </span>
                             <span class="setting__type">

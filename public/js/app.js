@@ -468,25 +468,29 @@ themeColor();
 
 // show & hide style switcher
 const showHideStyleSwitcher = function () {
-  const inputBox = document.querySelector("#displayStyleSwitcher");
+  const inputCheckBox = document.querySelector("#displayStyleSwitcher");
   const styleSwitcher = document.querySelector(".js-style-switcher");
 
-  inputBox.addEventListener("click", (e) => {
-    window.localStorage.setItem("DSS", e.target.checked);
-    switchDisplay();
-  });
+  if (inputCheckBox !== null) {
+    inputCheckBox.addEventListener("click", (e) => {
+      window.localStorage.setItem("DSS", e.target.checked);
+      switchDisplay();
+    });
+  }
 
   const switchDisplay = () => {
     if (window.localStorage.getItem("DSS") === "true") {
-      styleSwitcher.classList.toggle("styleSwitcherShow");
+      styleSwitcher.classList.add("styleSwitcherShow");
     } else {
-      styleSwitcher.classList.toggle("styleSwitcherShow");
+      styleSwitcher.classList.remove("styleSwitcherShow");
     }
   };
+  switchDisplay();
 
-  if (styleSwitcher.classList.contains("styleSwitcherShow")) {
-    // TODO::MAKE SURE THAT THE CHECKBOX IS CHECKED WHEN YOU RELOAD THE PAGE
-    inputBox.checked = window.localStorage.getItem("DSS");
+  if (inputCheckBox !== null) {
+    if (styleSwitcher.classList.contains("styleSwitcherShow")) {
+      inputCheckBox.checked = window.localStorage.getItem("DSS");
+    }
   }
 };
 showHideStyleSwitcher();
