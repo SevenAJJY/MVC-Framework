@@ -78,7 +78,7 @@ body.dark {
   --store-Degree-four: #38444d;
   --alert-bg: #38444d;
   --text-shadow: #e6e6e64a;
-  --intro-color: #878787;
+  --intro-color: #000;
   --focus-shadow: 0 0 10px hsla(var(--hue), 57%, 63%, 0.6);
 }
 
@@ -391,7 +391,7 @@ ul {
   justify-content: center;
   border-radius: 50%;
   font-size: 15px;
-  color: var(--text-color);
+  color: var(--white-color);
   cursor: pointer;
   transition: var(--tran-03);
 }
@@ -3147,14 +3147,20 @@ body.element-none .home-content {
   background-color: var(--store-Degree-four);
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .dash_wrapper .welcome .intro {
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  background: var(--intro-color);
+  background-size: cover;
   height: 120px;
+  background-image: url("../img/main-bg-light.png");
+}
+
+body.dark .dash_wrapper .welcome .intro {
+  background-image: url("../img/main-bg-dark.png");
 }
 
 .intro div h3 {
@@ -3170,7 +3176,7 @@ body.element-none .home-content {
 
 .intro div p {
   margin-top: 5px;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-color);
 }
 
@@ -3178,6 +3184,7 @@ body.element-none .home-content {
   width: 180px;
   height: auto;
   margin-bottom: -10px;
+  transition: all 0.3s ease;
 }
 
 .dash_wrapper .welcome .avatar {
@@ -3200,9 +3207,9 @@ body.element-none .home-content {
 }
 
 .welcome_body > div {
-  /* border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee; */
   flex: 1;
+  color: var(--text-color);
+  font-weight: 500;
 }
 
 .welcome_body .body_span {
@@ -3225,6 +3232,18 @@ body.element-none .home-content {
   transition: 0.3s;
 }
 
+.dots {
+  background-image: radial-gradient(#a1a1a1 1.2px, transparent 0);
+  background-size: 13px 13px;
+  border-radius: 8rem;
+  height: 4rem;
+  opacity: 0.5;
+  width: 11rem;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+}
+
 @media (max-width: 767px) {
   .text-align-center {
     text-align: center;
@@ -3235,6 +3254,9 @@ body.element-none .home-content {
   .dash_wrapper {
     grid-template-columns: minmax(200px, 1fr);
     gap: 10px;
+  }
+  .welcome {
+    text-align: center;
   }
   .welcome .intro {
     padding-bottom: 30px;
@@ -3250,5 +3272,28 @@ body.element-none .home-content {
   }
   .block-mobile {
     display: block !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .intro svg {
+    width: 120px;
+    height: auto;
+  }
+  .intro div h3 {
+    font-size: 18px;
+  }
+  .intro div p {
+    font-size: 14px;
+  }
+  .dash_wrapper .welcome .avatar {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .intro svg {
+    display: none;
   }
 }

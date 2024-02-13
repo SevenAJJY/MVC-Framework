@@ -1,15 +1,13 @@
 <div class="home-content">
-    <?php //var_dump($this->session->u)?>
+    <?php //var_dump($this->session->u->GroupName)?>
     <h1 class=" main-head"><?= $text_header ;?></h1>
-    <!-- <div class="row"> -->
-    <!-- <div class="col-md-6"> -->
     <div class="dash_wrapper">
-        <div class="welcome  ds-block">
+        <div class="welcome  ds-block" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
             <div class="intro">
                 <div>
-                    <h3>― Welcome back, <span><?= $this->session->u->Username ?></span>
+                    <h3><?= $text_welcome_back ?><span> &nbsp;<?= $this->session->u->Username ?></span>
                     </h3>
-                    <p>Here's you will find all the statistics</p>
+                    <p><?= $text_dash_stats ?></p>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="889.07556" height="459.37952"
                     viewBox="0 0 889.07556 459.37952" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -148,13 +146,13 @@
             <div class="welcome_body block-mobile">
                 <div><?= $this->session->u->profile->FirstName . " " .  $this->session->u->profile->LastName ?><span
                         class="body_span">
-                        Developer</span></div>
-                <div>80<span class="body_span"> Projects</span></div>
-                <div>$8500<span class="body_span"> Earned</span></div>
+                        <?= $text_full_name ?></span></div>
+                <div><?= $this->session->u->GroupName ?><span class="body_span"> <?= $text_group_name ?></span></div>
+                <div><?= count($this->session->u->privileges) ?><span class="body_span">
+                        <?= $text_total_privileges ?></span></div>
             </div>
-            <a href="#" class="visit">Profile</a>
+            <a href="#" class="visit"><?= $text_profile ?> <i class="fa-solid fa-arrow-right-long"></i></a>
+            <div class="dots"></div>
         </div>
-        <!-- </div> -->
-        <!-- </div> -->
     </div>
 </div>
