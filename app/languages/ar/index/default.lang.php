@@ -25,6 +25,15 @@ $_['text_table_created'] = 'تمت الإضافة > ';
 $_['text_category_label'] = 'نوع المصاريف > ';
 $_['text_table_price'] = 'قيمة المصروف > ';
 
+$_['text_full_name'] = 'الاسم الكامل';
+$_['text_group_name'] = 'المجموعة';
+$_['text_total_privileges'] = 'الصلاحيات';
+$_['text_welcome_back'] = '― مرحبًا بعودتك،';
+$_['text_dash_stats'] = 'وهنا سوف تجد كافة الإحصائيات';
+$_['text_profile']   = 'صفحتي';
+
+
+
 $_['text_product_delivry_1'] = '<i class="fa fa-check"></i> تم التوصيل';
 $_['text_product_delivry_0'] = '<i class="fa fa-times"></i> لم يتم تسليمها';
 

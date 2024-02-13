@@ -25,6 +25,14 @@ $_['text_table_created'] = 'Added on >';
 $_['text_category_label'] = 'Expense type >';
 $_['text_table_price'] = 'Expense value >';
 
+$_['text_full_name'] = 'Full name';
+$_['text_group_name'] = 'Group name';
+$_['text_total_privileges'] = 'Privileges';
+$_['text_welcome_back'] = '― Welcome back,';
+$_['text_dash_stats']   = 'Here\'s you will find all the statistics';
+$_['text_profile']   = 'Profile';
+
+
 $_['text_product_delivry_1'] = '<i class="fa fa-check"></i> delivered';
 $_['text_product_delivry_0'] = '<i class="fa fa-times"></i> Not delivered';
 
