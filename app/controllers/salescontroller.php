@@ -3,6 +3,7 @@
     namespace SEVENAJJY\Controllers ;
 
     use SEVENAJJY\LIBRARY\Messenger;
+    use SEVENAJJY\LIBRARY\GeneratePDF;
     use SEVENAJJY\Models\ClientInvoiceDetailsModel;
     use SEVENAJJY\Models\ClientInvoiceModel;
     use SEVENAJJY\Models\ClientModel;
@@ -234,6 +235,19 @@
                 }
             }
             $this->redirect('/sales');
+        }
+
+        public function downloadbillAction(){
+            $this->_template->swapTemplate(
+                [':VIEW' => ':actionView' ]
+            );
+    
+            $this->language->load("auth.login");
+            $gpdf = new GeneratePDF();
+            $gpdf->generate();
+
+            
+            $this->_renderView();
         }
 
     }
