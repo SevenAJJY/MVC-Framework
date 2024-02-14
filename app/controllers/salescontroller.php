@@ -54,6 +54,8 @@
                 $productsIds = $this->filterStringArray($_POST["productv"]) ;
                 $productsPrices = $this->filterStringArray($_POST["productp"]) ;
                 $productsQuantities = $this->filterStringArray($_POST["productq"]) ;
+            // var_dump($productsQuantities);
+            // exit;
                 if ($sales->save()) {
                     for ($i=0; $i < count($productsIds); $i++) { 
                         $details = new ClientInvoiceDetailsModel();
@@ -85,16 +87,18 @@
                 $this->_data['invoice'] = $invoice;
                 
                 $details = $this->_data['details'] = ClientInvoiceDetailsModel::getInvoiceById($invoice);
-
                 $this->language->load('template.common');
                 $this->language->load('sales.edit');
                 $this->language->load('sales.labels');
                 $this->language->load('sales.messages');
                 $this->language->load('validation.errors');
-        
+                
                 $this->_data['clients'] = ClientModel::get(
-                    'SELECT ClientId, Name  from app_clients'
+                    'SELECT ClientId, Name from app_clients'
                 );
+                // var_dump( ClientModel::get(
+                //     'SELECT ClientId, Name from app_clients'
+                // ), $this->_data['invoice']);exit;
         
                 $products = ProductModel::getAll();
                 foreach ($products as &$product) {
@@ -181,11 +185,13 @@
             $id = $this->_getParams(0, 'int');
     
             $invoice = ClientInvoiceModel::getOne(
-                'SELECT *, (SELECT Name FROM app_clients WHERE app_clients.ClientId = app_sales_invoices.ClientId) Name
+                'SELECT *, 
+                (SELECT Name FROM app_clients WHERE app_clients.ClientId = app_sales_invoices.ClientId) Name,
+                (SELECT CodFISC FROM app_clients WHERE app_clients.ClientId = app_sales_invoices.ClientId) CodFISC,
+                (SELECT PartitaIVA FROM app_clients WHERE app_clients.ClientId = app_sales_invoices.ClientId) PartitaIVA
                 FROM app_sales_invoices
                 WHERE InvoiceId = ' . $id
             );
-    
             if($invoice === false) {
                 $this->redirectBack('/sales');
             }
