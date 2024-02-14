@@ -19,6 +19,8 @@ $_['text_price'] = 'السعر';
 $_['text_piecesBox'] = 'قطعة/صندوق';
 $_['text_total'] = 'المجموع';
 $_['text_total_end'] = ' DOC € المجموع';
+$_['text_tot'] = 'المجموع';
+
 
 
 

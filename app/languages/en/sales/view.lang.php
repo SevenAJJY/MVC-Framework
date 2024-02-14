@@ -17,6 +17,7 @@ $_['text_unit'] = 'Unit';
 $_['text_Quantity'] = 'Quantity';
 $_['text_pieces'] = 'Pieces';
 $_['text_price'] = 'Price';
+$_['text_tot'] = 'Tot';
 $_['text_total'] = 'Total';
 $_['text_total_end'] = 'TOT. DOC €';
 

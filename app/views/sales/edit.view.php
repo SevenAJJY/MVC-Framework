@@ -18,7 +18,7 @@
                                     <?php if (false !== $clients): ?>
                                     <?php foreach ($clients as $client):?>
                                     <option value="<?= $client->ClientId ?>"
-                                        <?= $this->selectedIf('ClientId' ,  $client->ClientId, $client);  ?>>
+                                        <?= $this->selectedIf('ClientId' , @$invoice->ClientId, $client);  ?>>
                                         <?=  $client->Name ?></option>
                                     <?php endforeach;?>
                                     <?php endif;?>

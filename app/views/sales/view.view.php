@@ -5,13 +5,16 @@
             <span class="headder"><?= $text_header; ?></span>
         </div>
         <div class="self_info">
+            <div class="login-logo">
+                <img src="/img/hajjyfoodsgrande.png" alt="hajjy food logo">
+            </div>
             <strong>HAJJY FOODS</strong> di Elhajjy Rahal
             <p class="self_address">Via DE NICOLA 8/10 95131 Catania, Italy</p>
             <p class="self_cod">Cod. Fisc.:LHJRHL68T15Z330I</p>
             <p class="self_iva">P. iva 03588290837</p>
         </div>
 
-        <?php /*var_dump($this->session->lang);*/ ?>
+        <?php //var_dump($invoice);?>
 
         <div class="purchase-invoice" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
             <div class="row">
@@ -32,12 +35,16 @@
                 <div class="col-md-3 col-sm-6">
                     <div><?= $text_payment_status ?></div>
                     <div><?= $text_discount_percentage ?></div>
+                    <div><?= 'P. IVA' ?></div>
+                    <div><?= 'Codice fiscale' ?></div>
                 </div>
                 <div class=" col-md-3 col-sm-6">
                     <div>: <span class="ms-3">
                             <?= ${'text_payment_status_' . $invoice->PaymentStatus} ?>
                     </div>
                     <div>: <span class="ms-3"><?= $invoice->Discount ?>%</div>
+                    <div>: <span class="ms-3"><?= $invoice->PartitaIVA ?></div>
+                    <div>: <span class="ms-3"><?= $invoice->CodFISC ?></div>
                 </div>
             </div>
         </div>
@@ -54,7 +61,7 @@
                     <th scope="col"><?= $text_piecesBox ?></th>
                     <th scope="col"><?= $text_pieces ?></th>
                     <th scope="col"><?= $text_price ?></th>
-                    <th scope="col" style="text-align:right"><?= $text_price ?></th>
+                    <th scope="col" style="text-align:right"><?= $text_tot ?></th>
                 </tr>
             </thead>
             <tbody class="product-list">
