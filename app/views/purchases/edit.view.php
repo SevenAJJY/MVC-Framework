@@ -17,7 +17,7 @@
                                     <?php if (false !== $suppliers): ?>
                                     <?php foreach ($suppliers as $supplier):?>
                                     <option value="<?= $supplier->SupplierId ?>"
-                                        <?= $this->selectedIf('SupplierId' ,  $supplier->SupplierId, $supplier);  ?>>
+                                        <?= $this->selectedIf('SupplierId' ,  $invoice->SupplierId, $supplier);  ?>>
                                         <?=  $supplier->Name ?></option>
                                     <?php endforeach;?>
                                     <?php endif;?>
