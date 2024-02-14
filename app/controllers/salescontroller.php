@@ -96,9 +96,7 @@
                 $this->_data['clients'] = ClientModel::get(
                     'SELECT ClientId, Name from app_clients'
                 );
-                // var_dump( ClientModel::get(
-                //     'SELECT ClientId, Name from app_clients'
-                // ), $this->_data['invoice']);exit;
+                // var_dump($details);exit;
         
                 $products = ProductModel::getAll();
                 foreach ($products as &$product) {
