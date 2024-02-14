@@ -33,6 +33,7 @@ body {
   --white-color: #fff;
   --primary-color: #11101d;
   --secondary-color: hsl(var(--hue), var(--sat), var(--lightness));
+  --secondary-color-forte: hsl(var(--hue), 100%, 36%);
   --secondary-color-alt: hsl(var(--hue) var(--sat) var(--lightness) / 12%);
   --primary-color-logo: #11101d;
   --primary-color-light: #f6f5ff;
@@ -1285,7 +1286,7 @@ input:is(:focus, :valid) {
 }
 
 .input-box input[type="submit"]:hover {
-  background-color: #04a4b9;
+  background-color: var(--secondary-color-forte);
   border: none;
 }
 
@@ -3232,18 +3233,6 @@ body.dark .dash_wrapper .welcome .intro {
   transition: 0.3s;
 }
 
-.dots {
-  background-image: radial-gradient(#a1a1a1 1.2px, transparent 0);
-  background-size: 13px 13px;
-  border-radius: 8rem;
-  height: 4rem;
-  opacity: 0.5;
-  width: 11rem;
-  left: 0;
-  bottom: 0;
-  position: absolute;
-}
-
 @media (max-width: 767px) {
   .text-align-center {
     text-align: center;
@@ -3296,4 +3285,40 @@ body.dark .dash_wrapper .welcome .intro {
   .intro svg {
     display: none;
   }
+}
+
+.login-logo {
+  text-align: center;
+}
+
+.login-logo img {
+  width: 200px;
+  height: auto;
+}
+
+/* TODO::FIX DOTS */
+
+.dots {
+  background-image: radial-gradient(#a1a1a1 1.2px, transparent 0);
+  background-size: 13px 13px;
+  height: 7rem;
+  opacity: 0.5;
+  width: 6rem;
+  left: 9px;
+  bottom: 9px;
+  position: absolute;
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+}
+
+.dots-login-under {
+}
+
+.dots-login-above {
+  left: 300px;
+  top: 9px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.login_bx {
+  padding-bottom: 80px;
 }

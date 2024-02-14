@@ -44,8 +44,13 @@
              }
     ?>
         <div class="col-md-12 d-flex align-items-center justify-content-center">
-            <div class="my-container">
+            <div class="my-container login_bx">
+                <div class="dots dots-login-above"></div>
+
                 <h4><?php echo $login_header ?></h4>
+                <div class="login-logo">
+                    <img src="/img/hajjyfoodsgrande.png" alt="hajjy food logo">
+                </div>
                 <form action="" class="appform" method="post" autocomplete="off"
                     enctype="application/x-www-form-urlencoded">
                     <div class="input-box">
@@ -60,6 +65,8 @@
                         <input type="submit" name="login" value="<?php echo $login_button ?>" maxlength="30" required>
                     </div>
                 </form>
+                <div class="dots dots-login-under"></div>
+
             </div>
         </div>
     </div>
