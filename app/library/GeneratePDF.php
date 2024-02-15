@@ -1,25 +1,23 @@
 <?php
 
 namespace SEVENAJJY\Library;
-        // require 'vendor/autoload.php';
 
 require  VENDOR . "autoload.php";
 use Dompdf\Dompdf;
 
 class GeneratePDF {
     public function generate() {
+
+        $html = '<h1 style="color:green">Exemple<h1>';
+        $html .= '<img src="perDPDF.png" />' ;
         
-        // instantiate and use the dompdf class
         $dompdf = new Dompdf();
-        $dompdf->loadHtml('polleta');
-        
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
-        
-        // Render the HTML as PDF
+        $dompdf->getOptions()->set('chroot', '/' );
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        
+            
         // Output the generated PDF to Browser
-        $dompdf->stream('invoice.pdf');
+        $dompdf->stream('invoice.pdf', ['Attachment' => 0 ]);
     }
 }
