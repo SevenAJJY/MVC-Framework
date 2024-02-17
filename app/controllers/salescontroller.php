@@ -238,16 +238,27 @@
         }
 
         public function downloadbillAction(){
-            $this->_template->swapTemplate(
-                [':VIEW' => ':actionView' ]
-            );
-    
-            $this->language->load("auth.login");
-            $gpdf = new GeneratePDF();
-            $gpdf->generate();
-
+            $id = $this->_getParams(0, 'int');
             
-            $this->_renderView();
+            $invoice = ClientInvoiceModel::getOne(
+                'SELECT API.*,AC.*
+                FROM app_sales_invoices API
+                INNER JOIN app_clients AC
+                ON AC.ClientId = API.ClientId
+                WHERE InvoiceId = ' . $id
+            );
+            if($invoice === false) {
+                $this->redirectBack('/sales');
+            }
+            $this->language->load('template.common');
+            $this->language->load('sales.view');
+            $this->language->load('sales.labels');
+            $this->language->load('sales.units');
+            
+            
+            $productDetails = ClientInvoiceDetailsModel::getInvoiceById($invoice);
+            
+            GeneratePDF::generate($invoice, $productDetails, $this->language->getDictionary());
         }
 
     }
