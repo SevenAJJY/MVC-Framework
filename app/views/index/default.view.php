@@ -140,8 +140,8 @@
                 </svg>
             </div>
             <?php
-            
-                        $imageProfile = !empty($this->session->u->profile->Image) && file_exists($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
+                        // var_dump();exit;
+                        $imageProfile = !empty($this->session->u->profile->Image) && file_exists(IMAGES_UPLOAD_STORAGE. DS .$this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
                         ?>
             <img src="/uploads/images/<?= $imageProfile ?>" alt="profile image" class="avatar">
             <div class="welcome_body block-mobile">

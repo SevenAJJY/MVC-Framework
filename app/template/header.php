@@ -7,7 +7,8 @@
                 <div class="menu-n">
                     <div>
                         <?php
-                        $imageProfile = !empty($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
+
+                        $imageProfile = !empty($this->session->u->profile->Image) && file_exists(IMAGES_UPLOAD_STORAGE. DS .$this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
                         ?>
                         <div class="info-n">
                             <img src="/uploads/images/<?= $imageProfile ?>" class="logo-n">

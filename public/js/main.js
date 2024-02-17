@@ -23,7 +23,7 @@ $("a.addProduct").click(function (evt) {
         '\')" class="input-products" type="number" required min="1" data-quantity="' +
         $("select[name=products] option:selected").attr("data-quantity") +
         '"></td>' +
-        '<td><input name="productp[]" class="input-products" type="number" required  value="' +
+        '<td><input type="number" name="productp[]" class="input-products" step="0.01" min="0" required  value="' +
         $("select[name=products] option:selected").attr("data-price") +
         '">' +
         '<input name="productv[]" type="hidden" value="' +

@@ -11,7 +11,7 @@
                                 <input type="file" name="image" class="my__file" id="">
                             </form>
                             <?php
-                                $imageProfile = !empty($profile->Image) ? $profile->Image : 'noImage.jpg';
+                                $imageProfile = !empty($profile->Image) && file_exists(IMAGES_UPLOAD_STORAGE. DS .$profile->Image) ? $profile->Image : 'noImage.jpg';
                             ?>
                             <img src="/uploads/images/<?= $imageProfile ?>" alt="photo de profile">
                         </div>

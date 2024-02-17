@@ -138,7 +138,7 @@
             <div class="profile-details">
                 <div class="profile-content">
                     <?php
-                        $imageProfile = !empty($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
+                        $imageProfile = !empty($this->session->u->profile->Image) && file_exists(IMAGES_UPLOAD_STORAGE. DS .$this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
                     ?>
                     <img src="/uploads/images/<?= $imageProfile ?>" class="image" alt="profileImg">
                 </div>
