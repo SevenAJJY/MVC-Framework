@@ -134,7 +134,7 @@
                                         </td>
                                         <td>
                                             <input name="productp[]" class="input-products" type="number" required
-                                                min="<?= $detail->ProductPrice ?>" value="<?= $detail->ProductPrice ?>">
+                                                step="0.01" min="0" value="<?= $detail->ProductPrice ?>">
                                             <input name="productv[]" class="input-products" type="hidden"
                                                 value="<?= $detail->ProductId ?>">
                                         </td>
