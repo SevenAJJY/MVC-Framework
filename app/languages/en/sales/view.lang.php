@@ -23,10 +23,6 @@ $_['text_total_end'] = 'TOT. DOC €';
 
 
 $_['text_piecesBox'] = 'Pieces/Box';
-
-
-
-
 $_['text_payment_type_1'] = 'cash Money';
 $_['text_payment_type_2'] = 'pay on credit';
 $_['text_payment_status_1'] = 'all driven';
