@@ -140,7 +140,7 @@
                 </svg>
             </div>
             <?php
-            // var_dump();exit;
+            
                         $imageProfile = !empty($this->session->u->profile->Image) && file_exists($this->session->u->profile->Image) ? $this->session->u->profile->Image : 'noImage.jpg';
                         ?>
             <img src="/uploads/images/<?= $imageProfile ?>" alt="profile image" class="avatar">
