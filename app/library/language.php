@@ -8,7 +8,7 @@ namespace SEVENAJJY\Library;
  */
 class Language{
 
-    private $_dictionary = [];
+    private array $_dictionary = [];
     
     public function load($path){
         $defaultLanguage = APP_DEFAULT_LANGUAGE;
@@ -31,7 +31,10 @@ class Language{
         }
     }
 
-    public function getDictionary(){
+    /**
+     * @return array
+     */
+    public function getDictionary(): array{
         return $this->_dictionary;
     }
 
