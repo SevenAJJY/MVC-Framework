@@ -1,5 +1,5 @@
 <div class="home-content">
-    <?php //var_dump($this->session->u->GroupName)?>
+    <?php //var_dump(__DIR__)?>
     <h1 class=" main-head"><?= $text_header ;?></h1>
     <div class="dash_wrapper">
         <div class="welcome  ds-block" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">

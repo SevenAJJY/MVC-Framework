@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="input-box">
-                            <input type="number" spellcheck="false" name="Quantity" min="1" step="1"
+                            <input type="number" spellcheck="false" name="Quantity" min="0" step="1"
                                 value="<?= $this->showValueV2('Quantity') ?>" required />
                             <label><?= $text_label_Quantity ?></label>
                         </div>
@@ -41,6 +41,8 @@
                                 <option value="2" <?= $this->selectedIf('Unit' , 2); ?>><?= $text_unit_2 ?></option>
                                 <option value="3" <?= $this->selectedIf('Unit' , 3); ?>><?= $text_unit_3 ?></option>
                                 <option value="4" <?= $this->selectedIf('Unit' , 4); ?>><?= $text_unit_4 ?></option>
+                                <option value="5" <?= $this->selectedIf('Unit' , 5); ?>><?= $text_unit_5 ?></option>
+                                <option value="6" <?= $this->selectedIf('Unit' , 6); ?>><?= $text_unit_6 ?></option>
                             </select>
                         </div>
                     </div>

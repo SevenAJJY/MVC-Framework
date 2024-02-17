@@ -51,6 +51,8 @@
                     </td>
                     <td class="controls_td">
                         <a href="/sales/view/<?= $invoice->InvoiceId ?>"><i class="fa-regular fa-eye"></i></a>
+                        <a target="_blank" href="/sales/downloadbill/<?= $invoice->InvoiceId ?>"><i
+                                class="fa-regular fa-file-pdf"></i></a>
                         <?php if ($invoice->ProductsDelivery != 1): ?>
                         <a href="/sales/edit/<?= $invoice->InvoiceId ?>"><i class="fas fa-edit"></i></a>
                         <a href="/sales/delete/<?= $invoice->InvoiceId ?>"
