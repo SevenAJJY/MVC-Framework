@@ -140,6 +140,8 @@
         {
             $id = $this->_getParams(0, 'int');
             $voucher = ClientInvoiceReceiptModel::getByKey($id);
+
+            // var_dump($voucher);exit;
     
             if(false === $voucher)
             {

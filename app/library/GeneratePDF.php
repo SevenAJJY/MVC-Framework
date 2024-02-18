@@ -240,7 +240,7 @@ class GeneratePDF {
                                 $total = (($product->Quantity *  $product->PiecesInBox) * $product->ProductPrice) + $total;
                                 $html .= "<tr>";
                                      $html .= '<td style="text-align:center">' . ++$i                 . ' </td>' ;
-                                     $html .= '<td>' . $product->Name       . ' </td>' ;
+                                     $html .= '<td style="text-align:left">' . $product->Name       . ' </td>' ;
                                      $html .= '<td style="text-align:center">' . $dictionary['text_unit_'. $product->Unit]        . ' </td>' ;
                                      $html .= '<td style="text-align:center">' . $product->Quantity   . ' </td>' ;
                                      $html .= '<td style="text-align:center">' . $product->PiecesInBox  . ' </td>' ;
