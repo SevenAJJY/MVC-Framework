@@ -26,12 +26,12 @@
                     <td><?= $voucher->PaymentAmount; ?> DH</td>
                     <td><?= ${'text_payment_type_' . $voucher->PaymentType}; ?></td>
                     <td>
-                        <a href="/paymentvoucher/view/<?= $voucher->ReceiptId ?>"><i class="fa fa-eye"></i></a>
-                        <!-- <a href="/paymentvoucher/edit/<?= $voucher->ReceiptId ?>"><i class="fa fa-edit"></i></a> -->
-                        <a href="/paymentvoucher/delete/<?= $voucher->ReceiptId ?>"
+                        <a href="/receiptvoucher/view/<?= $voucher->ReceiptId ?>"><i class="fa fa-eye"></i></a>
+                        <!-- <a href="/receiptvoucher/edit/<?= $voucher->ReceiptId ?>"><i class="fa fa-edit"></i></a> -->
+                        <a href="/receiptvoucher/delete/<?= $voucher->ReceiptId ?>"
                             onclick="if(!confirm('<?= $text_table_control_delete_confirm ?>')) return false;"><i
                                 class="fa-regular fa-trash-can"></i></a>
-                        <!-- <a href="/paymentvoucher/attachcopy/<?= $voucher->ReceiptId ?>"><i class="fa fa-paperclip"></i></a> -->
+                        <!-- <a href="/receiptvoucher/attachcopy/<?= $voucher->ReceiptId ?>"><i class="fa fa-paperclip"></i></a> -->
                     </td>
                 </tr>
                 <?php
@@ -39,7 +39,7 @@
                 }
             }
             else {
-                    echo '<tr><td rowspan="4" class="alert alert-success text-center mb-2 mt-2">
+                    echo '<tr><td colspan="7" class="alert alert-success text-center mb-2 mt-2">
                                 <i class="fas fa-exclamation-triangle me-3 "></i> '.$text_no_data.
                         '</td></tr>';
             }
