@@ -47,7 +47,7 @@
                 $sales->ClientId = $this->filterInt($_POST["ClientId"]) ;
                 $sales->PaymentType = $this->filterInt($_POST["PaymentType"]) ;
                 $sales->PaymentStatus = $this->filterInt($_POST["PaymentStatus"]) ;
-                $sales->Created = date("Y-m-d") ;
+                $sales->Created = date('Y-m-d H:i:s');
                 $sales->Discount = isset($_POST['Discount']) ? $this->filterFloat($_POST["Discount"]) : "";
                 $sales->UserId = $this->session->u->UserId;
                 $sales->ProductsDelivery = 0;
@@ -55,8 +55,7 @@
                 $productsIds = $this->filterStringArray($_POST["productv"]) ;
                 $productsPrices = $this->filterStringArray($_POST["productp"]) ;
                 $productsQuantities = $this->filterStringArray($_POST["productq"]) ;
-            // var_dump($productsQuantities);
-            // exit;
+                
                 if ($sales->save()) {
                     for ($i=0; $i < count($productsIds); $i++) { 
                         $details = new ClientInvoiceDetailsModel();
