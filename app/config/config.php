@@ -36,7 +36,9 @@
     defined('UPLOAD_STORAGE')           ? null : define ('UPLOAD_STORAGE', APP_PATH  . DS . '..' . DS . 'public' . DS . 'uploads');
     defined('IMAGES_UPLOAD_STORAGE')    ? null : define ('IMAGES_UPLOAD_STORAGE', UPLOAD_STORAGE . DS .'images');
     defined('DOCUMENTS_UPLOAD_STORAGE') ? null : define ('DOCUMENTS_UPLOAD_STORAGE', UPLOAD_STORAGE . DS .'documents');
+    defined('JSON_DATA')                ? null : define ('JSON_DATA', UPLOAD_STORAGE . DS .'data');
+    defined('PRODUCT_LIST')             ? null : define ('PRODUCT_LIST', UPLOAD_STORAGE . DS .'data' . DS . 'ProductList.json');
     defined('MAX_FILE_SIZE_ALLOWED')    ? null : define ('MAX_FILE_SIZE_ALLOWED', ini_get('upload_max_filesize'));
     
     // DOMPDF 
-    defined('VENDOR')    ? null : define ('VENDOR', APP_PATH . DS . 'library' . DS . 'vendor' . DS);
+    defined('VENDOR')                   ? null : define ('VENDOR', APP_PATH . DS . 'library' . DS . 'vendor' . DS);
