@@ -1,5 +1,6 @@
 <?php 
 
+$_['text_unit'] = 'Unit';
 $_['text_unit_1'] = 'KG';
 $_['text_unit_2'] = 'CT';
 $_['text_unit_3'] = 'M';
