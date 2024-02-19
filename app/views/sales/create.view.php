@@ -79,8 +79,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="input-box">
-                                <select name="products" class="form-select select-box " id="products">
+                            <!-- <div class="input-box"> -->
+                            <!-- <select name="products" class="form-select select-box " id="products">
                                     <option value=""><?= $text_select ?></option>
                                     <?php if (false !== $products): foreach ($products as $product): ?>
                                     <option data-price="<?= $product->SellPrice ?>"
@@ -88,9 +88,30 @@
                                         <?= $this->selectedIf('products' ,  $product->ProductId);  ?>
                                         value="<?= $product->ProductId ?>"><?= $product->Name ?></option>
                                     <?php endforeach;endif; ?>
-                                </select>
+                                </select> -->
 
+                            <div class="select_wrapper">
+                                <div class="select_btn">
+                                    <span>Select Product</span>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                                <div class="product_content">
+                                    <div class="search">
+                                        <!-- <input type="text" placeholder="Search..."> -->
+                                        <div class="input-box">
+                                            <input type="text" class="product_search" spellcheck="false" name="LastName"
+                                                id="LastName" required />
+                                            <label for="LastName">Search</label>
+                                        </div>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                    <ul class="product_options">
+                                    </ul>
+                                </div>
                             </div>
+
+
+                            <!-- </div> -->
                         </div>
                         <div class="col-md-2 add-prodcuts d-flex align-items-center">
                             <a class="addProduct" href="javascript:void(0);"><i class="fa fa-plus"></i>
@@ -115,6 +136,7 @@
                                 <thead>
                                     <tr>
                                         <td><?= $text_product_name ?></td>
+                                        <!-- <td><?= $text_unit ?></td> -->
                                         <td><?= $text_product_quantity ?></td>
                                         <td><?= $text_product_price ?></td>
                                         <td><?= $text_delete ?></td>

@@ -1,11 +1,80 @@
-$(document).click(function () {
-  $("div.select_checkbox div.options").slideUp();
-  $("a.open_controls")
-    .html('<i class="fa fa-caret-square-o-left"></i>')
-    .css({ color: "#735602" });
-  $("div.controls_container").hide();
-  $("div.controls_container").css({ top: 6 });
-});
+// $(document).click(function () {
+//   $("div.select_checkbox div.options").slideUp();
+//   $("a.open_controls")
+//     .html('<i class="fa fa-caret-square-o-left"></i>')
+//     .css({ color: "#735602" });
+//   $("div.controls_container").hide();
+//   $("div.controls_container").css({ top: 6 });
+// });
+
+const wrapper = document.querySelector(".select_wrapper");
+const selectBtn = document.querySelector(".select_btn");
+const productOptions = document.querySelector(".product_options");
+const productSearchBox = document.querySelector(".product_search");
+/**
+ * We will fetch all products names from database & store them in this empty array
+ * @var array
+ */
+let productNames = [];
+
+if (selectBtn != null) {
+  selectBtn.addEventListener("click", (e) => {
+    wrapper.classList.toggle("active");
+  });
+}
+
+/**
+ * get all product Names names and store him in  suggestions
+ * @returns void
+ */
+async function getAllCountriesNames() {
+  try {
+    let response = await fetch("/uploads/data/ProductList.json");
+    let products = await response.json();
+
+    Object.entries(products).forEach((product) => {
+      productNames.push(product[1]);
+    });
+
+    productNames = productNames.sort();
+    addProducts(productNames);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function addProducts(products) {
+  if (products != null && products != undefined) {
+    Object.entries(products).forEach((product) => {
+      let li = `<li onclick="updateName(this)" data-price="${product[1].SellPrice}" data-Quantity="${product[1].Quantity}" data-value="${product[1].ProductId}">${product[1].Name}</li>`;
+      if (productOptions != null) {
+        productOptions.insertAdjacentHTML("beforeend", li);
+      }
+    });
+  }
+}
+
+function updateName(selectedProduct) {
+  wrapper.classList.remove("active");
+  selectBtn.firstElementChild.textContent = selectedProduct.innerText;
+}
+
+if (productSearchBox != null) {
+  productSearchBox.addEventListener("keyup", (e) => {
+    let arr = [];
+    let searchedValue = e.currentTarget.value;
+
+    //TODO:: HOW I CAN FIX THAT "The object cannot be searched" TOMORROW I WILL FIXED inchaalh
+    console.log(
+      productNames.filter((data) => {
+        return data;
+      })
+    );
+  });
+}
+
+getAllCountriesNames();
+addProducts();
 
 $("a.addProduct").click(function (evt) {
   evt.preventDefault();

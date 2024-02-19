@@ -1258,7 +1258,7 @@ body.dark .home-section nav .profile-details {
   height: 100%;
   width: 100%;
   outline: none;
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
   border-radius: 6px;
   padding: 0 35px 0 15px;
   transition: all 0.2s linear;
@@ -1323,7 +1323,7 @@ input:is(:focus, :valid) ~ i {
   height: 100%;
   width: 100%;
   outline: none;
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
   border-radius: 6px;
   padding: 0 35px 0 15px;
   transition: all 0.2s linear;
@@ -1335,7 +1335,7 @@ input:is(:focus, :valid) ~ i {
 
 .input-box .form-select:focus {
   box-shadow: none !important;
-  border: 2px solid var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .input-box .select-box {
@@ -1343,7 +1343,7 @@ input:is(:focus, :valid) ~ i {
   height: 100%;
   width: 100%;
   outline: none;
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
   border-radius: 6px;
   padding: 0 35px 0 15px;
   transition: all 0.2s linear;
@@ -1361,11 +1361,11 @@ input:is(:focus, :valid) ~ i {
 }
 
 .input-box > input.borderError {
-  border: 2px solid var(--color-danger);
+  border: 1px solid var(--color-danger);
 }
 
 .input-box > input.bordersuccess {
-  border: 2px solid var(--color-success);
+  border: 1px solid var(--color-success);
 }
 
 .input-box > label.label-Error {
@@ -3402,4 +3402,123 @@ body.dark .dash_wrapper .welcome .intro {
 .bookmarkBtn:active {
   transform: scale(0.95);
   transition-duration: 0.3s;
+}
+
+/* SELECT + SEARCH PRODUCT */
+
+.select_wrapper {
+  position: relative;
+  transition: var(--tran-04);
+}
+
+.select_btn,
+.product_options li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.select_btn {
+  height: 50px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-radius: 7px;
+  background: var(--store-Degree-four);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+}
+
+.select_btn i {
+  font-size: 1rem;
+  transition: transform 0.3s linear;
+}
+
+.select_wrapper.active .select_btn i {
+  transform: rotate(-180deg);
+}
+
+.product_content {
+  display: none;
+  margin-top: 15px;
+  padding: 20px 10px;
+  background: var(--store-Degree-two);
+  border-radius: 7px;
+  z-index: 100000;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 0 5px #ddd;
+  transform: scale(0.7);
+  transition: var(--tran-04);
+}
+
+.select_wrapper.active .product_content {
+  display: block;
+  transform: scale(1);
+}
+
+body.dark .product_content {
+  box-shadow: none;
+}
+
+.product_content .search {
+  position: relative;
+}
+
+.search label {
+  left: 40px;
+}
+
+.search i {
+  position: absolute;
+  left: 15px;
+  line-height: 53px;
+  color: #999;
+  font-size: 14px;
+  top: 0px;
+}
+
+.search input {
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 1px 0 43px;
+  outline: none;
+  border-radius: 5px;
+  background: var(--store-Degree-two) !important;
+}
+
+.search input:is(:focus, :valid) ~ label {
+  background: var(--store-Degree-two);
+}
+
+.product_content .product_options {
+  margin-top: 10px;
+  max-height: 0px;
+  overflow-y: auto;
+  transition: var(--tran-04);
+}
+
+.select_wrapper.active .product_content .product_options {
+  max-height: 250px;
+}
+
+.product_options li {
+  height: 35px;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0 13px;
+  color: var(--text-color);
+  margin-bottom: 3px;
+}
+
+body.dark .product_options li:hover {
+  background-color: var(--store-Degree-four) !important;
+  cursor: pointer;
+}
+
+body .product_options li:hover {
+  background-color: #efefef;
 }
