@@ -2,6 +2,7 @@
 
     namespace SEVENAJJY\Controllers ;
 
+    use SEVENAJJY\Library\GenerateJSONFile;
     use SEVENAJJY\LIBRARY\Messenger;
     use SEVENAJJY\LIBRARY\GeneratePDF;
     use SEVENAJJY\Models\ClientInvoiceDetailsModel;
@@ -11,6 +12,7 @@
 
     class SalesController extends AbstractController
     {
+        use GenerateJSONFile;
         private $_createActionRoles = 
         [
             'ClientId'        => 'req|alphanum',
@@ -33,13 +35,16 @@
         {
             $this->language->load('template.common');
             $this->language->load('sales.create');
+            $this->language->load('sales.units');
             $this->language->load('sales.labels');
             $this->language->load('sales.messages');
             $this->language->load('validation.errors');
 
+            
             $this->_data['clients'] = ClientModel::getAll();
-
+            
             $this->_data['products'] = ProductModel::getAll();
+            $this->GenerateJSONFile($this->_data['products'], PRODUCT_LIST);
 
             if (isset($_POST['submit'])) {
 
@@ -72,7 +77,6 @@
                 }
                 $this->redirect('/sales') ;
             }
-
             $this->_renderView();
         }
 
@@ -96,7 +100,6 @@
                 $this->_data['clients'] = ClientModel::get(
                     'SELECT ClientId, Name from app_clients'
                 );
-                // var_dump($details);exit;
         
                 $products = ProductModel::getAll();
                 foreach ($products as &$product) {
