@@ -11,11 +11,16 @@ const wrapper = document.querySelector(".select_wrapper");
 const selectBtn = document.querySelector(".select_btn");
 const productOptions = document.querySelector(".product_options");
 const productSearchBox = document.querySelector(".product_search");
+const addBtn = document.querySelector("a.addProduct");
+const JSONFILE = "/uploads/data/ProductList.json";
 /**
  * We will fetch all products names from database & store them in this empty array
  * @var array
  */
 let productNames = [];
+let productInfos = [];
+
+// const selectedProduct = "";
 
 if (selectBtn != null) {
   selectBtn.addEventListener("click", (e) => {
@@ -29,24 +34,31 @@ if (selectBtn != null) {
  */
 async function getAllCountriesNames() {
   try {
-    let response = await fetch("/uploads/data/ProductList.json");
+    let response = await fetch(JSONFILE);
     let products = await response.json();
 
     Object.entries(products).forEach((product) => {
-      productNames.push(product[1]);
+      productInfos.push(product[1]);
+      productNames.push(product[1].Name);
+      // console.log(product[1]);
     });
 
     productNames = productNames.sort();
+    productInfos = productInfos.sort();
     addProducts(productNames);
   } catch (error) {
     console.log(error);
   }
 }
 
-function addProducts(products) {
+function addProducts(products, selectedLi = "") {
+  // productOptions.innerHTML = "";
+  // console.log(products);
   if (products != null && products != undefined) {
     Object.entries(products).forEach((product) => {
-      let li = `<li onclick="updateName(this)" data-price="${product[1].SellPrice}" data-Quantity="${product[1].Quantity}" data-value="${product[1].ProductId}">${product[1].Name}</li>`;
+      console.log(product[1] == selectedLi.innerText ? "selected" : "");
+      let isSelected = product[1] == selectedLi.innerText ? "selected" : "";
+      let li = `<li onclick="updateName(this)" class="${isSelected}" data-name="${product[1]}" >${product[1]}</li>`;
       if (productOptions != null) {
         productOptions.insertAdjacentHTML("beforeend", li);
       }
@@ -55,26 +67,45 @@ function addProducts(products) {
 }
 
 function updateName(selectedProduct) {
+  productSearchBox.value = "";
+  addProducts(productNames, selectedProduct);
   wrapper.classList.remove("active");
   selectBtn.firstElementChild.textContent = selectedProduct.innerText;
+  selectBtn.firstElementChild.setAttribute(
+    "data-name",
+    selectedProduct.dataset.name
+  );
 }
 
 if (productSearchBox != null) {
   productSearchBox.addEventListener("keyup", (e) => {
     let arr = [];
-    let searchedValue = e.currentTarget.value;
+    let searchedValue = e.currentTarget.value.trim().toUpperCase();
 
-    //TODO:: HOW I CAN FIX THAT "The object cannot be searched" TOMORROW I WILL FIXED inchaalh
-    console.log(
-      productNames.filter((data) => {
-        return data;
+    arr = Object.values(productNames)
+      .filter((data) => {
+        return data.startsWith(searchedValue);
       })
-    );
+      .map(
+        (data) =>
+          `<li onclick="updateName(this)" data-name="${data}" >${data}</li>`
+      )
+      .join("");
+    productOptions.innerHTML = arr
+      ? arr
+      : `<p class="pro-notfound">Oops! product not found</p>`;
   });
 }
 
+addBtn.onclick = function () {
+  if (selectBtn.firstElementChild.hasAttribute("data-name")) {
+    productSelected = selectBtn.firstElementChild.dataset.name;
+    console.log(productInfos);
+  }
+};
+
 getAllCountriesNames();
-addProducts();
+// addProducts();
 
 $("a.addProduct").click(function (evt) {
   evt.preventDefault();
