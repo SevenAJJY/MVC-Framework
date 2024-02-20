@@ -45,20 +45,17 @@ async function getAllCountriesNames() {
 
     productNames = productNames.sort();
     productInfos = productInfos.sort();
+
     addProducts(productNames);
   } catch (error) {
     console.log(error);
   }
 }
 
-function addProducts(products, selectedLi = "") {
-  // productOptions.innerHTML = "";
-  // console.log(products);
+function addProducts(products) {
   if (products != null && products != undefined) {
     Object.entries(products).forEach((product) => {
-      console.log(product[1] == selectedLi.innerText ? "selected" : "");
-      let isSelected = product[1] == selectedLi.innerText ? "selected" : "";
-      let li = `<li onclick="updateName(this)" class="${isSelected}" data-name="${product[1]}" >${product[1]}</li>`;
+      let li = `<li onclick="updateName(this)" data-name="${product[1]}" >${product[1]}</li>`;
       if (productOptions != null) {
         productOptions.insertAdjacentHTML("beforeend", li);
       }
@@ -68,7 +65,7 @@ function addProducts(products, selectedLi = "") {
 
 function updateName(selectedProduct) {
   productSearchBox.value = "";
-  addProducts(productNames, selectedProduct);
+  addProducts(productNames);
   wrapper.classList.remove("active");
   selectBtn.firstElementChild.textContent = selectedProduct.innerText;
   selectBtn.firstElementChild.setAttribute(
@@ -100,7 +97,26 @@ if (productSearchBox != null) {
 addBtn.onclick = function () {
   if (selectBtn.firstElementChild.hasAttribute("data-name")) {
     productSelected = selectBtn.firstElementChild.dataset.name;
-    console.log(productInfos);
+    let filtered = Object.values(productInfos).filter(function (product) {
+      let productObj = product.Name == productSelected ? product : "";
+      return productObj;
+    });
+    const productList = document.querySelector("div.products_list table tbody");
+    log(filtered[0]);
+    if (filtered.length > 0) {
+      productList.innerHTML += `
+      <tr>
+        <td><p>${filtered[0].Name}</p></td>
+        <td><input name="productq[]" onkeyup="checkQuantity(this,'${filtered[0].Name}')" onclick="checkQuantity(this,'${filtered[0].Name}')" class="input-products" type="number" required min="1" data-quantity="${filtered[0].Quantity}"></td>
+        <td><input name="productp[]" type="number"  class="input-products" step="0.01" min="0" required  value="${filtered[0].SellPrice}"></td>
+        <td><input name="productv[]" type="hidden" value="${filtered[0].ProductId}">
+        <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>
+      </tr>
+      `;
+    }
+    //TODO::REMOVE THE PRODUCT SELECTED FROM THE SELECT LIST
+    //TODO:: WE WILL USE ONLY JS VANILLA WE WILL DISPENSE WITH JQUERY
+    console.log(productNames);
   }
 };
 
