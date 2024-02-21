@@ -1,12 +1,3 @@
-// $(document).click(function () {
-//   $("div.select_checkbox div.options").slideUp();
-//   $("a.open_controls")
-//     .html('<i class="fa fa-caret-square-o-left"></i>')
-//     .css({ color: "#735602" });
-//   $("div.controls_container").hide();
-//   $("div.controls_container").css({ top: 6 });
-// });
-
 const wrapper = document.querySelector(".select_wrapper");
 const selectBtn = document.querySelector(".select_btn");
 const productOptions = document.querySelector(".product_options");
@@ -30,9 +21,9 @@ if (selectBtn != null) {
 
 /**
  * get all product Names names and store him in  suggestions
- * @returns void
+ * @returns
  */
-async function getAllCountriesNames() {
+window.onload = async function () {
   try {
     let response = await fetch(JSONFILE);
     let products = await response.json();
@@ -40,21 +31,21 @@ async function getAllCountriesNames() {
     Object.entries(products).forEach((product) => {
       productInfos.push(product[1]);
       productNames.push(product[1].Name);
-      // console.log(product[1]);
     });
 
-    productNames = productNames.sort();
     productInfos = productInfos.sort();
 
-    addProducts(productNames);
+    addProducts();
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-function addProducts(products) {
-  if (products != null && products != undefined) {
-    Object.entries(products).forEach((product) => {
+function addProducts() {
+  productOptions.innerHTML = "";
+  productNames = productNames.sort();
+  if (productNames != null && productNames != undefined) {
+    Object.entries(productNames).forEach((product) => {
       let li = `<li onclick="updateName(this)" data-name="${product[1]}" >${product[1]}</li>`;
       if (productOptions != null) {
         productOptions.insertAdjacentHTML("beforeend", li);
@@ -65,7 +56,6 @@ function addProducts(products) {
 
 function updateName(selectedProduct) {
   productSearchBox.value = "";
-  addProducts(productNames);
   wrapper.classList.remove("active");
   selectBtn.firstElementChild.textContent = selectedProduct.innerText;
   selectBtn.firstElementChild.setAttribute(
@@ -95,14 +85,16 @@ if (productSearchBox != null) {
 }
 
 addBtn.onclick = function () {
-  if (selectBtn.firstElementChild.hasAttribute("data-name")) {
+  if (
+    selectBtn.firstElementChild.hasAttribute("data-name") &&
+    selectBtn.firstElementChild.getAttribute('"data-name"') !== ""
+  ) {
     productSelected = selectBtn.firstElementChild.dataset.name;
     let filtered = Object.values(productInfos).filter(function (product) {
       let productObj = product.Name == productSelected ? product : "";
       return productObj;
     });
     const productList = document.querySelector("div.products_list table tbody");
-    log(filtered[0]);
     if (filtered.length > 0) {
       productList.innerHTML += `
       <tr>
@@ -113,68 +105,27 @@ addBtn.onclick = function () {
         <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>
       </tr>
       `;
+      /**
+       * REMOVE THE PRODUCT SELECTED FROM THE SELECT LIST
+       */
+      productNames = Object.values(productNames).filter((product) => {
+        return product != filtered[0].Name;
+      });
+
+      selectBtn.innerHTML = `<span>Select Product</span>`;
+
+      addProducts();
     }
-    //TODO::REMOVE THE PRODUCT SELECTED FROM THE SELECT LIST
-    //TODO:: WE WILL USE ONLY JS VANILLA WE WILL DISPENSE WITH JQUERY
-    console.log(productNames);
   }
 };
 
-getAllCountriesNames();
-// addProducts();
-
-$("a.addProduct").click(function (evt) {
-  evt.preventDefault();
-  if ($("select[name=products]").val() != "") {
-    $("div.products_list table").append(
-      "<tr><td>" +
-        "" +
-        "<p>" +
-        $("select[name=products] option:selected").text() +
-        "</p></td>" +
-        '<td><input name="productq[]" onkeyup="checkQuantity(this, \'' +
-        $("select[name=products] option:selected").text() +
-        "')\" onclick=\"checkQuantity(this, '" +
-        $("select[name=products] option:selected").text() +
-        '\')" class="input-products" type="number" required min="1" data-quantity="' +
-        $("select[name=products] option:selected").attr("data-quantity") +
-        '"></td>' +
-        '<td><input type="number" name="productp[]" class="input-products" step="0.01" min="0" required  value="' +
-        $("select[name=products] option:selected").attr("data-price") +
-        '">' +
-        '<input name="productv[]" type="hidden" value="' +
-        $("select[name=products]").val() +
-        '"> ' +
-        "</td>" +
-        '<td><a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>' +
-        "</tr>"
-    );
-    $("select[name=products] option:selected").remove();
+function removeProduct(product) {
+  let parent = product.parentElement.parentElement;
+  let productName;
+  if (parent != null) {
+    productName = parent.querySelector("td p").innerText;
   }
-});
-
-function removeProduct(t) {
-  var parent = $(t).parent().parent();
-  var price = $(parent).find("input[name*=productp]").val();
-  var text = $(parent).find("p").text();
-  var value = $(parent).find("input[name*=productv]").val();
-  $("select[name=products]").append(
-    '<option data-price="' +
-      price +
-      '" value="' +
-      value +
-      '">' +
-      text +
-      "</option>"
-  );
-  $(parent).remove();
+  productNames.push(productName);
+  addProducts();
+  parent.remove();
 }
-
-$("input.purchaseBtn").click(function (evt) {
-  if (document.querySelector("input[name*=product]") == null) {
-    evt.preventDefault();
-    alert(
-      "Désolé, vous devez choisir des articles dans la liste et les ajouter à la facture"
-    );
-  }
-});
