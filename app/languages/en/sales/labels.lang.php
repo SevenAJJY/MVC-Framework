@@ -19,6 +19,7 @@ $_['text_tilte_3'] = 'Invoice List';
 
 $_['text_new_item'] = 'New sales invoice';
 $_['text_no_data'] = 'No data to display';
+$_['text_search'] = 'Search';
 
 $_['text_table_ref'] = 'invoice number';
 $_['text_table_client'] = 'the client';

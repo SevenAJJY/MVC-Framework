@@ -19,6 +19,7 @@ $_['text_tilte_3'] = 'قائمة الفاتورة';
 
 $_['text_new_item'] = 'فاتورة مبيعات  جديدة';
 $_['text_no_data'] = 'لا يوجد بيانات لعرضها';
+$_['text_search'] = 'بحث';
 $_['text_table_control_delete_confirm'] = 'هل تود حذف الفاتورة ؟';
 
 $_['text_table_ref'] = 'رقم الفاتورة';
