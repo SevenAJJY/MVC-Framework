@@ -42,7 +42,7 @@ window.onload = async function () {
 };
 
 function addProducts() {
-  productOptions.innerHTML = "";
+  if (productOptions != null) productOptions.innerHTML = "";
   productNames = productNames.sort();
   if (productNames != null && productNames != undefined) {
     Object.entries(productNames).forEach((product) => {
@@ -84,40 +84,46 @@ if (productSearchBox != null) {
   });
 }
 
-addBtn.onclick = function () {
-  if (
-    selectBtn.firstElementChild.hasAttribute("data-name") &&
-    selectBtn.firstElementChild.getAttribute('"data-name"') !== ""
-  ) {
-    productSelected = selectBtn.firstElementChild.dataset.name;
-    let filtered = Object.values(productInfos).filter(function (product) {
-      let productObj = product.Name == productSelected ? product : "";
-      return productObj;
-    });
-    const productList = document.querySelector("div.products_list table tbody");
-    if (filtered.length > 0) {
-      productList.innerHTML += `
-      <tr>
-        <td><p>${filtered[0].Name}</p></td>
-        <td><input name="productq[]" onkeyup="checkQuantity(this,'${filtered[0].Name}')" onclick="checkQuantity(this,'${filtered[0].Name}')" class="input-products" type="number" required min="1" data-quantity="${filtered[0].Quantity}"></td>
-        <td><input name="productp[]" type="number"  class="input-products" step="0.01" min="0" required  value="${filtered[0].SellPrice}"></td>
-        <td><input name="productv[]" type="hidden" value="${filtered[0].ProductId}">
-        <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>
-      </tr>
-      `;
-      /**
-       * REMOVE THE PRODUCT SELECTED FROM THE SELECT LIST
-       */
-      productNames = Object.values(productNames).filter((product) => {
-        return product != filtered[0].Name;
+if (addBtn != null) {
+  addBtn.onclick = function () {
+    if (
+      selectBtn.firstElementChild !== null &&
+      selectBtn.firstElementChild.hasAttribute("data-name") &&
+      selectBtn.firstElementChild.getAttribute('"data-name"') !== ""
+    ) {
+      productSelected = selectBtn.firstElementChild.dataset.name;
+      let filtered = Object.values(productInfos).filter(function (product) {
+        let productObj = product.Name == productSelected ? product : "";
+        return productObj;
       });
+      const productList = document.querySelector(
+        "div.products_list table tbody"
+      );
+      if (filtered.length > 0) {
+        let productInTable = `
+          <tr>
+            <td><p>${filtered[0].Name}</p></td>
+            <td><input name="productq[]" onkeyup="checkQuantity(this,'${filtered[0].Name}')" onclick="checkQuantity(this,'${filtered[0].Name}')" class="input-products" type="number" required min="1" data-quantity="${filtered[0].Quantity}"></td>
+            <td><input name="productp[]" type="number"  class="input-products" step="0.01" min="0" required  value="${filtered[0].SellPrice}"></td>
+            <td><input name="productv[]" type="hidden" value="${filtered[0].ProductId}">
+            <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>
+          </tr>
+        `;
+        productList.insertAdjacentHTML("beforeend", productInTable);
+        /**
+         * REMOVE THE PRODUCT SELECTED FROM THE SELECT LIST
+         */
+        productNames = Object.values(productNames).filter((product) => {
+          return product != filtered[0].Name;
+        });
 
-      selectBtn.innerHTML = `<span>Select Product</span>`;
+        selectBtn.innerHTML = `<span>Select Product</span>`;
 
-      addProducts();
+        addProducts();
+      }
     }
-  }
-};
+  };
+}
 
 function removeProduct(product) {
   let parent = product.parentElement.parentElement;

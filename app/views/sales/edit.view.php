@@ -79,16 +79,23 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="input-box">
-                                <select name="products" class="form-select select-box " id="products">
-                                    <option value=""><?= $text_select ?></option>
-                                    <?php if (false !== $products): foreach ($products as $product): ?>
-                                    <option data-price="<?= $product->SellPrice ?>"
-                                        data-quantity="<?= $product->Quantity ?>"
-                                        <?= $this->selectedIf('products' ,  $product->ProductId);  ?>
-                                        value="<?= $product->ProductId ?>"><?= $product->Name ?></option>
-                                    <?php endforeach;endif; ?>
-                                </select>
+                            <div class="select_wrapper">
+                                <div class="select_btn">
+                                    <span>Select Product</span>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                                <div class="product_content">
+                                    <div class="search">
+                                        <!-- <input type="text" placeholder="Search..."> -->
+                                        <div class="input-box">
+                                            <input type="text" class="product_search" spellcheck="false" />
+                                            <label for="LastName"><?= $text_search ?></label>
+                                        </div>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                    <ul class="product_options">
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-2 add-prodcuts d-flex align-items-center">
