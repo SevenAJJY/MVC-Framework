@@ -2,7 +2,8 @@
     <?php //var_dump(__DIR__)?>
     <h1 class=" main-head"><?= $text_header ;?></h1>
     <div class="dash_wrapper">
-        <div class="welcome  ds-block" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
+        <div class="welcome stats__boxes ds-block"
+            style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
             <div class="intro">
                 <div>
                     <h3><?= $text_welcome_back ?><span> &nbsp;<?= $this->session->u->Username ?></span>
@@ -152,8 +153,78 @@
                 <div><?= count($this->session->u->privileges) ?><span class="body_span">
                         <?= $text_total_privileges ?></span></div>
             </div>
-            <a href="#" class="visit"><?= $text_profile ?> <i class="fa-solid fa-arrow-right-long"></i></a>
+            <div class="profile_btn">
+                <button class="btn"><i class="animation"></i><?= $text_profile ?><i class="animation"></i>
+                </button>
+            </div>
             <div class="dots"></div>
         </div>
+        <div class="stats__home stats__boxes">
+            <h2>Statistics</h2>
+            <p>If you want more statistics click on three dots</p>
+            <div class="stats__box">
+                <div class="box_stat box_stat-1">
+                    <div class="stats_header" style="border-color: #a63cdd;">
+                        <div class="stat_left">
+                            <p>Users</p>
+                            <span>10</span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-danger);">
+                        <i class=" fa-solid fa-arrow-up"></i>
+                        <span>+10% since week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-2">
+                    <div class="stats_header" style="border-color: #3cbfdd;">
+                        <div class="stat_left">
+                            <p>Sales</p>
+                            <span>10</span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10% since week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-3">
+                    <div class="stats_header" style="border-color: #6dd100;">
+                        <div class="stat_left">
+                            <p>Purchases</p>
+                            <span>10</span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-danger);">
+                        <i class=" fa-solid fa-arrow-up"></i>
+                        <span>+10% since week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-4">
+                    <div class="stats_header" style="border-color: #ffeb00;">
+                        <div class="stat_left">
+                            <p>Clients</p>
+                            <span>10</span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10.50% since last week</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
