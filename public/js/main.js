@@ -99,12 +99,17 @@ if (addBtn != null) {
       const productList = document.querySelector(
         "div.products_list table tbody"
       );
+      console.log(addBtn.parentElement.dataset.type);
       if (filtered.length > 0) {
+        filteredPrice =
+          addBtn.parentElement.dataset.type === "sales"
+            ? filtered[0].SellPrice
+            : filtered[0].BuyPrice;
         let productInTable = `
           <tr>
             <td><p>${filtered[0].Name}</p></td>
             <td><input name="productq[]" onkeyup="checkQuantity(this,'${filtered[0].Name}')" onclick="checkQuantity(this,'${filtered[0].Name}')" class="input-products" type="number" required min="1" data-quantity="${filtered[0].Quantity}"></td>
-            <td><input name="productp[]" type="number"  class="input-products" step="0.01" min="0" required  value="${filtered[0].SellPrice}"></td>
+            <td><input name="productp[]" type="number"  class="input-products" step="0.01" min="0" required  value="${filteredPrice}"></td>
             <td><input name="productv[]" type="hidden" value="${filtered[0].ProductId}">
             <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>
           </tr>

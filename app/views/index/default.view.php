@@ -154,8 +154,8 @@
                         <?= $text_total_privileges ?></span></div>
             </div>
             <div class="profile_btn">
-                <button class="btn"><i class="animation"></i><?= $text_profile ?><i class="animation"></i>
-                </button>
+                <a href="/users/view" class="btn"><i class="animation"></i><?= $text_profile ?><i class="animation"></i>
+                </a>
             </div>
             <div class="dots"></div>
         </div>
@@ -166,7 +166,7 @@
                 <div class="box_stat box_stat-1">
                     <div class="stats_header" style="border-color: #a63cdd;">
                         <div class="stat_left">
-                            <p>Users</p>
+                            <p><?= $text_total_users ?></p>
                             <span>10</span>
                         </div>
                         <div class="stat_right">
@@ -181,7 +181,7 @@
                 <div class="box_stat box_stat-2">
                     <div class="stats_header" style="border-color: #3cbfdd;">
                         <div class="stat_left">
-                            <p>Sales</p>
+                            <p><?= $text_total_sales ?></p>
                             <span>10</span>
                         </div>
                         <div class="stat_right">
@@ -196,7 +196,7 @@
                 <div class="box_stat box_stat-3">
                     <div class="stats_header" style="border-color: #6dd100;">
                         <div class="stat_left">
-                            <p>Purchases</p>
+                            <p><?= $text_total_purchases ?></p>
                             <span>10</span>
                         </div>
                         <div class="stat_right">
@@ -211,11 +211,11 @@
                 <div class="box_stat box_stat-4">
                     <div class="stats_header" style="border-color: #ffeb00;">
                         <div class="stat_left">
-                            <p>Clients</p>
+                            <p><?= $text_total_clients ?></p>
                             <span>10</span>
                         </div>
                         <div class="stat_right">
-                            <i class="fa-regular fa-user"></i>
+                            <i class="fa-solid fa-user-tie"></i>
                         </div>
                     </div>
                     <div class="stats_footer" style="color: var(--color-success);">
