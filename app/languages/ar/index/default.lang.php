@@ -3,11 +3,11 @@
 $_['title'] = 'المخزن الالكتروني';
 $_['text_header'] = 'لوحة التحكم';
 
-$_['text_total_users'] = 'عدد المستخدمين';
+$_['text_total_users'] = 'المستخدمين';
 $_['text_total_suppliers'] = 'عدد الموردين';
-$_['text_total_clients'] = 'عدد العميل';
-$_['text_total_purchases'] = 'عدد المشتريات';
-$_['text_total_sales'] = 'عدد المبيعات';
+$_['text_total_clients'] = 'العملاء';
+$_['text_total_purchases'] = 'المشتريات';
+$_['text_total_sales'] = 'المبيعات';
 $_['text_total_privileges'] = 'عدد الامتيازات';
 $_['text_total_expences'] = ' عدد المصروفات  ';
 $_['text_total_products'] = 'عدد المنتجات';

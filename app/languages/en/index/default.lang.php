@@ -3,11 +3,11 @@
 $_['title'] = 'eStore';
 $_['text_header'] = 'Dashboard';
 
-$_['text_total_users'] = 'Total Users';
+$_['text_total_users'] = 'Users';
 $_['text_total_suppliers'] = 'Total Suppliers';
-$_['text_total_clients'] = 'Total Client';
-$_['text_total_purchases'] = 'Total Purchases';
-$_['text_total_sales'] = 'Total Sales';
+$_['text_total_clients'] = 'Client';
+$_['text_total_purchases'] = 'Purchases';
+$_['text_total_sales'] = 'Sales';
 $_['text_total_privileges'] = 'Total Privileges';
 $_['text_total_expences'] = 'Total Expences';
 $_['text_total_products'] = 'Total Products';
