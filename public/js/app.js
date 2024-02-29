@@ -494,3 +494,25 @@ const showHideStyleSwitcher = function () {
   }
 };
 showHideStyleSwitcher();
+
+/**
+ *  Choose ' the statistics ' that will appear in the dashboard
+ */
+document.querySelector(".settings_bottom").onclick = () => {
+  let AllChoices = document.querySelectorAll("li input[name=stats]");
+  let errorsContainer = document.querySelector(".check_errors");
+  let inputsChecked = document.querySelectorAll("li input[name=stats]:checked");
+  if (inputsChecked.length > 4) {
+    errorsContainer.innerHTML =
+      "― You can choose only four statistics to display in the control panel";
+    errorsContainer.style.display = "block";
+  } else {
+    errorsContainer.innerHTML = "";
+    errorsContainer.style.display = "none";
+
+    // TODO:: store the choices checked in local storage
+    inputsChecked.forEach((e) => {
+      console.log(e.dataset.stats);
+    });
+  }
+};

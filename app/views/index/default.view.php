@@ -154,7 +154,8 @@
                         <?= $text_total_privileges ?></span></div>
             </div>
             <div class="profile_btn">
-                <a href="/users/view" class="btn"><i class="animation"></i><?= $text_profile ?><i class="animation"></i>
+                <a href="/users/view" class="home_btn"><i class="animation"></i><?= $text_profile ?><i
+                        class="animation"></i>
                 </a>
             </div>
             <div class="dots"></div>
@@ -167,7 +168,7 @@
                     <div class="stats_header" style="border-color: #a63cdd;">
                         <div class="stat_left">
                             <p><?= $text_total_users ?></p>
-                            <span>10</span>
+                            <span><?= $totalUsers > 10 ?  $totalUsers : '0' .  $totalUsers?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-regular fa-user"></i>
@@ -182,7 +183,7 @@
                     <div class="stats_header" style="border-color: #3cbfdd;">
                         <div class="stat_left">
                             <p><?= $text_total_sales ?></p>
-                            <span>10</span>
+                            <span><?= $totalSales > 10 ?  $totalSales : '0' .  $totalSales ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-regular fa-user"></i>
@@ -197,7 +198,7 @@
                     <div class="stats_header" style="border-color: #6dd100;">
                         <div class="stat_left">
                             <p><?= $text_total_purchases ?></p>
-                            <span>10</span>
+                            <span><?= $totalPurchases > 10 ?  $totalPurchases : '0' .  $totalPurchases ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-regular fa-user"></i>
@@ -212,7 +213,67 @@
                     <div class="stats_header" style="border-color: #ffeb00;">
                         <div class="stat_left">
                             <p><?= $text_total_clients ?></p>
-                            <span>10</span>
+                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10.50% since last week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-5">
+                    <div class="stats_header" style="border-color: #ff0000;">
+                        <div class="stat_left">
+                            <p><?= $text_total_clients ?></p>
+                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10.50% since last week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-6">
+                    <div class="stats_header" style="border-color: #0400ff;">
+                        <div class="stat_left">
+                            <p><?= $text_total_clients ?></p>
+                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10.50% since last week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-7">
+                    <div class="stats_header" style="border-color: #ff6a00;">
+                        <div class="stat_left">
+                            <p><?= $text_total_clients ?></p>
+                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10.50% since last week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-8">
+                    <div class="stats_header" style="border-color: #ff005e;">
+                        <div class="stat_left">
+                            <p><?= $text_total_clients ?></p>
+                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-solid fa-user-tie"></i>
