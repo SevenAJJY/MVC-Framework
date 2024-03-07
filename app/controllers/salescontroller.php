@@ -97,11 +97,13 @@
                 $this->language->load('sales.messages');
                 $this->language->load('validation.errors');
                 
+                
                 $this->_data['clients'] = ClientModel::get(
                     'SELECT ClientId, Name from app_clients'
                 );
-        
+                
                 $products = ProductModel::getAll();
+                $this->GenerateJSONFile($products, PRODUCT_LIST);
                 foreach ($products as &$product) {
                     foreach ($details as $detail) {
                         if($detail->ProductId == @$product->ProductId) {
