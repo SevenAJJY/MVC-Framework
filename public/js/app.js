@@ -498,21 +498,79 @@ showHideStyleSwitcher();
 /**
  *  Choose ' the statistics ' that will appear in the dashboard
  */
-document.querySelector(".settings_bottom").onclick = () => {
-  let AllChoices = document.querySelectorAll("li input[name=stats]");
-  let errorsContainer = document.querySelector(".check_errors");
-  let inputsChecked = document.querySelectorAll("li input[name=stats]:checked");
-  if (inputsChecked.length > 4) {
-    errorsContainer.innerHTML =
-      "― You can choose only four statistics to display in the control panel";
-    errorsContainer.style.display = "block";
-  } else {
-    errorsContainer.innerHTML = "";
-    errorsContainer.style.display = "none";
+let errorsContainer = document.querySelector(".check_errors");
+let allLiChoices = document.querySelectorAll(".settings_bottom li");
+if (document.querySelector(".settings_bottom") != null) {
+  document.querySelector(".settings_bottom").onclick = () => {
+    let choicesChckd = document.querySelectorAll(
+      ".settings_bottom [data-checked='checked']"
+    );
 
-    // TODO:: store the choices checked in local storage
-    inputsChecked.forEach((e) => {
-      console.log(e.dataset.stats);
+    if (choicesChckd.length > 4) {
+      errorsContainer.innerHTML =
+        "― You can choose only four statistics to display in the control panel";
+      errorsContainer.style.display = "block";
+    } else {
+      errorsContainer.innerHTML = "";
+      errorsContainer.style.display = "none";
+      let arr = [];
+      choicesChckd.forEach((e) => {
+        arr.push(e.dataset.stats);
+      });
+
+      log(arr);
+      storeInLS(arr);
+    }
+  };
+}
+
+allLiChoices.forEach((li) => {
+  li.addEventListener("click", (ele) => {
+    if (!ele.currentTarget.dataset.checked) {
+      ele.currentTarget.style.backgroundColor = "var(--main-color)";
+    } else {
+      ele.currentTarget.style.backgroundColor = "var(--color-stats-bg)";
+    }
+  });
+});
+
+/**
+ * function to store data in local storage
+ * @param array
+ * @return void
+ */
+function storeInLS(arr) {
+  console.log();
+  window.localStorage.setItem("stats", JSON.stringify(arr));
+}
+
+if (
+  localStorage.getItem("stats") == "[]" &&
+  localStorage.getItem("stats") == null
+) {
+  storeInLS(["Users", "Sales", "Purchases", "Clients"]);
+}
+
+/**
+ * function to get data from local storage
+ * @return object
+ */
+function getFromLS(key) {
+  if (window.localStorage.getItem(key) != null)
+    return JSON.parse(window.localStorage.getItem(key));
+}
+
+function checkedInput() {
+  let data = getFromLS("stats");
+  allLiChoices.forEach((li) => {
+    data.forEach((stats) => {
+      if (stats === li.dataset.stats) {
+        li.style.backgroundColor = "var(--main-color)";
+      } else {
+        li.style.backgroundColor = "var(--color-stats-bg)";
+      }
     });
-  }
-};
+  });
+  console.log(allLiChoices);
+}
+checkedInput();

@@ -84,6 +84,15 @@ if (productSearchBox != null) {
   });
 }
 
+const units = {
+  text_unit_1: "KG",
+  text_unit_2: "CT",
+  text_unit_3: "M",
+  text_unit_4: "PZ",
+  text_unit_5: "BG",
+  text_unit_6: "PK",
+};
+
 if (addBtn != null) {
   addBtn.onclick = function () {
     if (
@@ -99,7 +108,6 @@ if (addBtn != null) {
       const productList = document.querySelector(
         "div.products_list table tbody"
       );
-      console.log(addBtn.parentElement.dataset.type);
       if (filtered.length > 0) {
         filteredPrice =
           addBtn.parentElement.dataset.type === "sales"
@@ -108,9 +116,18 @@ if (addBtn != null) {
         let productInTable = `
           <tr>
             <td><p>${filtered[0].Name}</p></td>
-            <td><input name="productq[]" onkeyup="checkQuantity(this,'${filtered[0].Name}')" onclick="checkQuantity(this,'${filtered[0].Name}')" class="input-products" type="number" required min="1" data-quantity="${filtered[0].Quantity}"></td>
+            <td><p>${units["text_unit_" + filtered[0].Unit]}</p></td>
+            <td><input name="productq[]" onkeyup="checkQuantity(this,'${
+              filtered[0].Name
+            }')" onclick="checkQuantity(this,'${
+          filtered[0].Name
+        }')" class="input-products" type="number" required min="1" data-quantity="${
+          filtered[0].Quantity
+        }"></td>
             <td><input name="productp[]" type="number"  class="input-products" step="0.01" min="0" required  value="${filteredPrice}"></td>
-            <td><input name="productv[]" type="hidden" value="${filtered[0].ProductId}">
+            <td><input name="productv[]" type="hidden" value="${
+              filtered[0].ProductId
+            }">
             <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a></td>
           </tr>
         `;

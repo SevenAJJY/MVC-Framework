@@ -73,77 +73,33 @@
                                     dashboard
                                 </div>
                                 <ul class="settings_bottom">
-                                    <li>
-                                        <label for="users">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Users" class="form-check-input" id="users"
-                                                    type="checkbox" role="switch" name="stats" checked>
-                                            </div>
-                                            Users
-                                        </label>
+                                    <li data-stats="Users" data-checked="checked"
+                                        style="background-color: var(--main-color);">
+                                        <span>Users</span>
                                     </li>
-                                    <li>
-                                        <label for="sales">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Sales" class="form-check-input" id="sales"
-                                                    type="checkbox" role="switch" name="stats" checked>
-                                            </div>
-                                            Sales
-                                        </label>
+                                    <li data-stats="Sales" data-checked="checked"
+                                        style="background-color: var(--main-color);">
+                                        <span>Sales</span>
                                     </li>
-                                    <li>
-                                        <label for="purchases">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Purchases" class="form-check-input" id="purchases"
-                                                    type="checkbox" role="switch" name="stats" checked>
-                                            </div>
-                                            Purchases
-                                        </label>
+                                    <li data-stats="Purchases" data-checked="checked"
+                                        style="background-color: var(--main-color);">
+                                        <span>Purchases</span>
                                     </li>
-                                    <li>
-                                        <label for="clients">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Clients" class="form-check-input" id="clients"
-                                                    type="checkbox" role="switch" name="stats" checked>
-                                            </div>
-                                            Clients
-                                        </label>
+                                    <li data-stats="Clients" data-checked="checked"
+                                        style="background-color: var(--main-color);">
+                                        <span>Clients</span>
                                     </li>
-                                    <li>
-                                        <label for="suppliers">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Suppliers" class="form-check-input" id="suppliers"
-                                                    type="checkbox" role="switch" name="stats">
-                                            </div>
-                                            Suppliers
-                                        </label>
+                                    <li data-stats="Suppliers">
+                                        <span>Suppliers</span>
                                     </li>
-                                    <li>
-                                        <label for="products">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Products" class="form-check-input" id="products"
-                                                    type="checkbox" role="switch" name="stats">
-                                            </div>
-                                            Products
-                                        </label>
+                                    <li data-stats="Products">
+                                        <span>Products</span>
                                     </li>
-                                    <li>
-                                        <label for="productscategories">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Products Categories" class="form-check-input"
-                                                    id="productscategories" type="checkbox" role="switch" name="stats">
-                                            </div>
-                                            Products Categories
-                                        </label>
+                                    <li data-stats="Products Categories">
+                                        <span>Products Categories</span>
                                     </li>
-                                    <li>
-                                        <label for="dailyexpenses">
-                                            <div class="form-check form-switch">
-                                                <input data-stats="Daily Expenses" class="form-check-input"
-                                                    id="dailyexpenses" type="checkbox" role="switch" name="stats">
-                                            </div>
-                                            Daily Expenses
-                                        </label>
+                                    <li data-stats="Daily Expenses">
+                                        <span>Daily Expenses</span>
                                     </li>
                                 </ul>
                             </span>

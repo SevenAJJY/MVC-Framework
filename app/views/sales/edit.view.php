@@ -136,8 +136,8 @@
                                             <input name="productq[]" class="input-products"
                                                 onkeyup="checkQuantity(this, '<?= $detail->Name ?>')"
                                                 onclick="checkQuantity(this, '<?= $detail->Name ?>')"
-                                                data-quantity="<?= $detail->Quantity ?>" type="number" required min="1"
-                                                value="<?= $detail->Quantity ?>">
+                                                data-quantity="<?= $detail->QuantityAvailable ?>" type="number" required
+                                                min="1" value="<?= $detail->Quantity ?>">
                                         </td>
                                         <td>
                                             <input name="productp[]" class="input-products" type="number" required

@@ -121,7 +121,7 @@
                                 <thead>
                                     <tr>
                                         <td><?= $text_product_name ?></td>
-                                        <!-- <td><?= $text_unit ?></td> -->
+                                        <td><?= $text_unit ?></td>
                                         <td><?= $text_product_quantity ?></td>
                                         <td><?= $text_product_price ?></td>
                                         <td><?= $text_delete ?></td>
