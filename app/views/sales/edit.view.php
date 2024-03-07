@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 add-prodcuts d-flex align-items-center" data-type="sales">
+                        <div class="col-md-4 add-prodcuts d-flex align-items-center" data-type="sales">
                             <a class="addProduct" href="javascript:void(0);"><i class="fa fa-plus"></i>
                                 <?= $text_add_product ?></a>
                         </div>

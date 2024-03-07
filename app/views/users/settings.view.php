@@ -73,20 +73,16 @@
                                     dashboard
                                 </div>
                                 <ul class="settings_bottom">
-                                    <li data-stats="Users" data-checked="checked"
-                                        style="background-color: var(--main-color);">
+                                    <li data-stats="Users">
                                         <span>Users</span>
                                     </li>
-                                    <li data-stats="Sales" data-checked="checked"
-                                        style="background-color: var(--main-color);">
+                                    <li data-stats="Sales">
                                         <span>Sales</span>
                                     </li>
-                                    <li data-stats="Purchases" data-checked="checked"
-                                        style="background-color: var(--main-color);">
+                                    <li data-stats="Purchases">
                                         <span>Purchases</span>
                                     </li>
-                                    <li data-stats="Clients" data-checked="checked"
-                                        style="background-color: var(--main-color);">
+                                    <li data-stats="Clients">
                                         <span>Clients</span>
                                     </li>
                                     <li data-stats="Suppliers">
@@ -100,6 +96,9 @@
                                     </li>
                                     <li data-stats="Daily Expenses">
                                         <span>Daily Expenses</span>
+                                    </li>
+                                    <li data-stats="Privileges">
+                                        <span>Privileges</span>
                                     </li>
                                 </ul>
                             </span>

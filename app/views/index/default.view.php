@@ -164,7 +164,7 @@
             <h2>Statistics</h2>
             <p>If you want more statistics click on three dots</p>
             <div class="stats__box">
-                <div class="box_stat box_stat-1">
+                <div class="box_stat box_stat-1" data-stats="Users">
                     <div class="stats_header" style="border-color: #a63cdd;">
                         <div class="stat_left">
                             <p><?= $text_total_users ?></p>
@@ -179,7 +179,7 @@
                         <span>+10% since week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-2">
+                <div class="box_stat box_stat-2" data-stats="Sales">
                     <div class="stats_header" style="border-color: #3cbfdd;">
                         <div class="stat_left">
                             <p><?= $text_total_sales ?></p>
@@ -194,7 +194,7 @@
                         <span>+10% since week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-3">
+                <div class="box_stat box_stat-3" data-stats="Purchases">
                     <div class="stats_header" style="border-color: #6dd100;">
                         <div class="stat_left">
                             <p><?= $text_total_purchases ?></p>
@@ -209,7 +209,7 @@
                         <span>+10% since week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-4">
+                <div class="box_stat box_stat-4" data-stats="Clients">
                     <div class="stats_header" style="border-color: #ffeb00;">
                         <div class="stat_left">
                             <p><?= $text_total_clients ?></p>
@@ -224,10 +224,10 @@
                         <span>+10.50% since last week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-5">
+                <div class="box_stat box_stat-5" data-stats="Suppliers">
                     <div class="stats_header" style="border-color: #ff0000;">
                         <div class="stat_left">
-                            <p><?= $text_total_clients ?></p>
+                            <p><?= $text_total_suppliers ?></p>
                             <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
                         </div>
                         <div class="stat_right">
@@ -239,10 +239,10 @@
                         <span>+10.50% since last week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-6">
+                <div class="box_stat box_stat-6" data-stats="Products">
                     <div class="stats_header" style="border-color: #0400ff;">
                         <div class="stat_left">
-                            <p><?= $text_total_clients ?></p>
+                            <p><?= $text_total_products?></p>
                             <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
                         </div>
                         <div class="stat_right">
@@ -254,10 +254,10 @@
                         <span>+10.50% since last week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-7">
+                <div class="box_stat box_stat-7" data-stats="Daily Expenses">
                     <div class="stats_header" style="border-color: #ff6a00;">
                         <div class="stat_left">
-                            <p><?= $text_total_clients ?></p>
+                            <p><?= $text_total_expences ?></p>
                             <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
                         </div>
                         <div class="stat_right">
@@ -269,10 +269,25 @@
                         <span>+10.50% since last week</span>
                     </div>
                 </div>
-                <div class="box_stat box_stat-8">
+                <div class="box_stat box_stat-8" data-stats="Products Categories">
                     <div class="stats_header" style="border-color: #ff005e;">
                         <div class="stat_left">
-                            <p><?= $text_total_clients ?></p>
+                            <p><?= $text_total_products_categories ?></p>
+                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                        </div>
+                        <div class="stat_right">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="stats_footer" style="color: var(--color-success);">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>+10.50% since last week</span>
+                    </div>
+                </div>
+                <div class="box_stat box_stat-9" data-stats="Privileges">
+                    <div class="stats_header" style="border-color: #8b9091;">
+                        <div class="stat_left">
+                            <p><?= $text_total_privileges ?></p>
                             <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
                         </div>
                         <div class="stat_right">

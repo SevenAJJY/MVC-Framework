@@ -503,7 +503,7 @@ let allLiChoices = document.querySelectorAll(".settings_bottom li");
 if (document.querySelector(".settings_bottom") != null) {
   document.querySelector(".settings_bottom").onclick = () => {
     let choicesChckd = document.querySelectorAll(
-      ".settings_bottom [data-checked='checked']"
+      ".settings_bottom li.checked_stats"
     );
 
     if (choicesChckd.length > 4) {
@@ -518,7 +518,6 @@ if (document.querySelector(".settings_bottom") != null) {
         arr.push(e.dataset.stats);
       });
 
-      log(arr);
       storeInLS(arr);
     }
   };
@@ -526,10 +525,10 @@ if (document.querySelector(".settings_bottom") != null) {
 
 allLiChoices.forEach((li) => {
   li.addEventListener("click", (ele) => {
-    if (!ele.currentTarget.dataset.checked) {
-      ele.currentTarget.style.backgroundColor = "var(--main-color)";
+    if (!ele.currentTarget.classList.contains("checked_stats")) {
+      ele.currentTarget.classList.toggle("checked_stats");
     } else {
-      ele.currentTarget.style.backgroundColor = "var(--color-stats-bg)";
+      ele.currentTarget.classList.toggle("checked_stats");
     }
   });
 });
@@ -540,12 +539,11 @@ allLiChoices.forEach((li) => {
  * @return void
  */
 function storeInLS(arr) {
-  console.log();
   window.localStorage.setItem("stats", JSON.stringify(arr));
 }
 
 if (
-  localStorage.getItem("stats") == "[]" &&
+  localStorage.getItem("stats") == "[]" ||
   localStorage.getItem("stats") == null
 ) {
   storeInLS(["Users", "Sales", "Purchases", "Clients"]);
@@ -561,16 +559,17 @@ function getFromLS(key) {
 }
 
 function checkedInput() {
-  let data = getFromLS("stats");
-  allLiChoices.forEach((li) => {
-    data.forEach((stats) => {
-      if (stats === li.dataset.stats) {
-        li.style.backgroundColor = "var(--main-color)";
-      } else {
-        li.style.backgroundColor = "var(--color-stats-bg)";
-      }
+  if (allLiChoices != null && getFromLS("stats")) {
+    allLiChoices.forEach((li) => {
+      getFromLS("stats").forEach((stats) => {
+        console.log(li.dataset.stats == stats);
+        if (li.dataset.stats == stats) {
+          li.classList.add("checked_stats");
+        }
+      });
     });
-  });
-  console.log(allLiChoices);
+  }
 }
 checkedInput();
+
+//TODO:: NOW, All that remains is to match the type of statistics selected from the settings with all statistics to hide unselected statistics.
