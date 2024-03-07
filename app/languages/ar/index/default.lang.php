@@ -4,13 +4,15 @@ $_['title'] = 'المخزن الالكتروني';
 $_['text_header'] = 'لوحة التحكم';
 
 $_['text_total_users'] = 'المستخدمين';
-$_['text_total_suppliers'] = 'عدد الموردين';
+$_['text_total_suppliers'] = ' الموردين';
 $_['text_total_clients'] = 'العملاء';
 $_['text_total_purchases'] = 'المشتريات';
 $_['text_total_sales'] = 'المبيعات';
-$_['text_total_privileges'] = 'عدد الامتيازات';
-$_['text_total_expences'] = ' عدد المصروفات  ';
-$_['text_total_products'] = 'عدد المنتجات';
+$_['text_total_privileges'] = ' الامتيازات';
+$_['text_total_expences'] = '  المصروفات  ';
+$_['text_total_products'] = ' المنتجات';
+$_['text_total_products_categories'] = 'اصناف المنتجات';
+
 $_['text_latest_products'] = ' آخر خمس منتجات تمت إضافتها';
 $_['text_latest_sales'] = 'آخر خمس فواتير مبيعات';
 $_['text_latest_purchases'] = 'آخر خمس فواتير شراء';
