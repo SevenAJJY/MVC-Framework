@@ -3631,10 +3631,24 @@ body .product_options li.selected {
   font-weight: 500;
 }
 
-.stats__home > p {
+.stats__home .bx__stats-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats__home .bx__stats-body p {
   margin-top: 5px;
   font-size: 14px;
   color: var(--text-color);
+}
+
+.stats__home .bx__stats-body a {
+  color: var(--main-color);
+}
+
+.stats__home .bx__stats-body a:hover {
+  color: var(--main-color-dcv);
 }
 
 .stats__home .stats__box {

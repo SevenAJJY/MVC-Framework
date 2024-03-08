@@ -161,8 +161,11 @@
             <div class="dots"></div>
         </div>
         <div class="stats__home stats__boxes">
-            <h2>Statistics</h2>
-            <p>If you want more statistics click on three dots</p>
+            <h2><?= $text_stats ?></h2>
+            <div class="bx__stats-body">
+                <p><?= $text_edit_stats ?></p>
+                <a href="/users/settings#Edit-stats" class="edit_stats"><i class="fa-regular fa-pen-to-square"></i></a>
+            </div>
             <div class="stats__box">
                 <div class="box_stat box_stat-1" data-stats="Users">
                     <div class="stats_header" style="border-color: #a63cdd;">
@@ -228,7 +231,7 @@
                     <div class="stats_header" style="border-color: #ff0000;">
                         <div class="stat_left">
                             <p><?= $text_total_suppliers ?></p>
-                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                            <span><?= $totalSuppliers > 10 ?  $totalSuppliers : '0' .  $totalSuppliers ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-solid fa-user-tie"></i>
@@ -243,7 +246,7 @@
                     <div class="stats_header" style="border-color: #0400ff;">
                         <div class="stat_left">
                             <p><?= $text_total_products?></p>
-                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                            <span><?= $totalProducts > 10 ?  $totalProducts : '0' .  $totalProducts ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-solid fa-user-tie"></i>
@@ -258,7 +261,7 @@
                     <div class="stats_header" style="border-color: #ff6a00;">
                         <div class="stat_left">
                             <p><?= $text_total_expences ?></p>
-                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                            <span><?= $totalDailyExp > 10 ?  $totalDailyExp : '0' .  $totalDailyExp ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-solid fa-user-tie"></i>
@@ -273,7 +276,7 @@
                     <div class="stats_header" style="border-color: #ff005e;">
                         <div class="stat_left">
                             <p><?= $text_total_products_categories ?></p>
-                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                            <span><?= $totalProductscategories > 10 ?  $totalProductscategories : '0' .  $totalProductscategories ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-solid fa-user-tie"></i>
@@ -288,7 +291,7 @@
                     <div class="stats_header" style="border-color: #8b9091;">
                         <div class="stat_left">
                             <p><?= $text_total_privileges ?></p>
-                            <span><?= $totalClients > 10 ?  $totalClients : '0' .  $totalClients ?></span>
+                            <span><?= $totalPrivileges > 10 ?  $totalPrivileges : '0' .  $totalPrivileges ?></span>
                         </div>
                         <div class="stat_right">
                             <i class="fa-solid fa-user-tie"></i>

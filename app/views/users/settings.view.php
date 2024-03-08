@@ -48,13 +48,11 @@
                     <div class="my-container editprofile">
                         <h4><?= $text_header ?></h4>
                         <span class="check_errors"></span>
-                        <label for="displayStyleSwitcher" class="other__settings"
-                            style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
+                        <label for="displayStyleSwitcher" class="other__settings">
                             <span class="setting__text">
                                 <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>
                                 <?= $text_hide ?>
-                                <code style="color:var(--main-color)">' <?= $text_style_switcher ?></code> <strong
-                                    style="color:var(--main-color)"> '</strong>
+                                <strong style="color:var(--main-color)"> <?= $text_style_switcher ?> </strong>
                             </span>
                             <span class="setting__type">
                                 <div class="form-check form-switch">
@@ -63,42 +61,41 @@
                                 </div>
                             </span>
                         </label>
-                        <div class="">
+                        <div id="Edit-stats">
                             <span class="setting__text">
                                 <div class="settings_top">
                                     <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>
-                                    <?= "Choose" ?>
-                                    <code style="color:var(--main-color)">' <?= " the statistics" ?></code>
-                                    <strong style="color:var(--main-color)"> '</strong> that will appear in the
-                                    dashboard
+                                    <?= $text_choose ?>
+                                    <strong style="color:var(--main-color)">' <?= $text_stats ?> '</strong>
+                                    <?= $text_change_stats ?>
                                 </div>
                                 <ul class="settings_bottom">
                                     <li data-stats="Users">
-                                        <span>Users</span>
+                                        <span><?= $text_total_users ?></span>
                                     </li>
                                     <li data-stats="Sales">
-                                        <span>Sales</span>
+                                        <span><?= $text_total_sales ?></span>
                                     </li>
                                     <li data-stats="Purchases">
-                                        <span>Purchases</span>
+                                        <span><?= $text_total_purchases ?></span>
                                     </li>
                                     <li data-stats="Clients">
-                                        <span>Clients</span>
+                                        <span><?= $text_total_clients ?></span>
                                     </li>
                                     <li data-stats="Suppliers">
-                                        <span>Suppliers</span>
+                                        <span><?= $text_total_suppliers ?></span>
                                     </li>
                                     <li data-stats="Products">
-                                        <span>Products</span>
+                                        <span><?= $text_total_products ?></span>
                                     </li>
                                     <li data-stats="Products Categories">
-                                        <span>Products Categories</span>
+                                        <span><?= $text_total_products_categories ?></span>
                                     </li>
                                     <li data-stats="Daily Expenses">
-                                        <span>Daily Expenses</span>
+                                        <span><?= $text_total_expences ?></span>
                                     </li>
                                     <li data-stats="Privileges">
-                                        <span>Privileges</span>
+                                        <span><?= $text_total_privileges ?></span>
                                     </li>
                                 </ul>
                             </span>
