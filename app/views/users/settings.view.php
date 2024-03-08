@@ -48,7 +48,8 @@
                     <div class="my-container editprofile">
                         <h4><?= $text_header ?></h4>
                         <span class="check_errors"></span>
-                        <label for="displayStyleSwitcher" class="other__settings">
+                        <label for="displayStyleSwitcher" class="other__settings"
+                            style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
                             <span class="setting__text">
                                 <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>
                                 <?= $text_hide ?>
@@ -61,7 +62,7 @@
                                 </div>
                             </span>
                         </label>
-                        <div id="Edit-stats">
+                        <div id="Edit-stats" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
                             <span class="setting__text">
                                 <div class="settings_top">
                                     <p style="color: var(--main-color); font-weight: 700;margin-right: 15px;">―</p>
@@ -98,6 +99,7 @@
                                         <span><?= $text_total_privileges ?></span>
                                     </li>
                                 </ul>
+
                             </span>
 
                         </div>

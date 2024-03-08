@@ -160,7 +160,7 @@
             </div>
             <div class="dots"></div>
         </div>
-        <div class="stats__home stats__boxes">
+        <div class="stats__home stats__boxes" style="direction:<?= ($this->session->lang == 'ar')? 'rtl' : 'ltr'; ?>">
             <h2><?= $text_stats ?></h2>
             <div class="bx__stats-body">
                 <p><?= $text_edit_stats ?></p>
