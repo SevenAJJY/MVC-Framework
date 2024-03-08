@@ -558,11 +558,10 @@ function getFromLS(key) {
     return JSON.parse(window.localStorage.getItem(key));
 }
 
-function checkedInput() {
+function checkStats() {
   if (allLiChoices != null && getFromLS("stats")) {
     allLiChoices.forEach((li) => {
       getFromLS("stats").forEach((stats) => {
-        console.log(li.dataset.stats == stats);
         if (li.dataset.stats == stats) {
           li.classList.add("checked_stats");
         }
@@ -570,6 +569,22 @@ function checkedInput() {
     });
   }
 }
-checkedInput();
+checkStats();
 
-//TODO:: NOW, All that remains is to match the type of statistics selected from the settings with all statistics to hide unselected statistics.
+function displayStats() {
+  const allDashboardStats = document.querySelectorAll(".box_stat");
+  const [statsUNO, statsDUE, statsTRE, statsQUATRO] = getFromLS("stats");
+  if (allDashboardStats != null) {
+    allDashboardStats.forEach((box) => {
+      if (
+        box.dataset.stats == statsUNO ||
+        box.dataset.stats == statsDUE ||
+        box.dataset.stats == statsTRE ||
+        box.dataset.stats == statsQUATRO
+      ) {
+        box.classList.add("show_stats");
+      }
+    });
+  }
+}
+displayStats();

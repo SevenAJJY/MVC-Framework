@@ -3649,6 +3649,7 @@ body .product_options li.selected {
   padding: 15px 20px;
   background: var(--color-stats-bg);
   border-radius: 10px;
+  display: none;
 }
 
 @media (max-width: 767px) {
@@ -3751,4 +3752,8 @@ body.dark .stats__home .box_stat {
 .checked_stats {
   background: var(--main-color) !important;
   color: var(--white-color);
+}
+
+.stats__home .show_stats {
+  display: block !important;
 }
