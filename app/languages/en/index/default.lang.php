@@ -32,6 +32,9 @@ $_['text_total_privileges'] = 'Privileges';
 $_['text_welcome_back'] = '― Welcome back,';
 $_['text_dash_stats']   = 'Here\'s you will find all the statistics';
 $_['text_profile']   = 'Profile';
+$_['text_edit_stats']   = 'If you want to edit the statistics, click on the icon';
+$_['text_stats']   = 'Statistics';
+
 
 
 $_['text_product_delivry_1'] = '<i class="fa fa-check"></i> delivered';

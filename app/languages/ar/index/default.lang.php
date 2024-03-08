@@ -26,6 +26,8 @@ $_['text_product_quantity'] = 'كمية المنتج : ';
 $_['text_table_created'] = 'تمت الإضافة > ';
 $_['text_category_label'] = 'نوع المصاريف > ';
 $_['text_table_price'] = 'قيمة المصروف > ';
+$_['text_edit_stats'] = 'إذا كنت تريد التعديل على الإحصائيات، انقر على الرمز';
+$_['text_stats']   = 'الإحصائيات';
 
 $_['text_full_name'] = 'الاسم الكامل';
 $_['text_group_name'] = 'المجموعة';
